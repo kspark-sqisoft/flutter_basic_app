@@ -19,6 +19,7 @@ class BasicApp extends StatelessWidget {
       listenable: controller,
       builder: (context, child) {
         print('controller.useFlexColorScheme:${controller.useFlexColorScheme}');
+        //확인
         return MaterialApp(
           title: 'Basic App',
           debugShowCheckedModeBanner: false,
