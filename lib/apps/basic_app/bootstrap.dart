@@ -14,7 +14,6 @@ import '../../core/theme_service/theme_service_hive.dart';
 import 'basic_app.dart';
 
 Future<void> bootstrap() async {
-  //theme
   final ThemeService themeService =
       ThemeServiceHive('flex_color_scheme_v5_box_5');
   await themeService.init();
