@@ -18,8 +18,6 @@ class BasicApp extends StatelessWidget {
     return ListenableBuilder(
       listenable: controller,
       builder: (context, child) {
-        print('controller.useFlexColorScheme:${controller.useFlexColorScheme}');
-
         return MaterialApp(
           title: 'Basic App',
           debugShowCheckedModeBanner: false,
