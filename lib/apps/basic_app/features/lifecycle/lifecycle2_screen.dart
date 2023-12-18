@@ -28,7 +28,8 @@ class _LifeCycle2ScreenState extends State<LifeCycle2Screen> {
               children: [
                 FractionallySizedBox(
                   widthFactor: 0.6,
-                  child: Image.asset('assets/images/my/lifecycle_overview.png'),
+                  child:
+                      Image.asset('assets/images/etc/lifecycle_overview.png'),
                 ),
                 const SizedBox(
                   height: 10,

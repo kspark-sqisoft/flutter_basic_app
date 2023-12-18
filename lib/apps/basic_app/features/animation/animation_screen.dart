@@ -27,34 +27,36 @@ class AnimationScreen extends StatelessWidget {
                 AnimatedOpacityWidget(),
               ],
             ),
-            Column(
-              children: [
-                Text(
-                  '명시적 애니메이션(Explicit Animation)',
-                  style: TextStyle(fontSize: 20),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text('1. 빌트인 위젯 사용'),
-                FadeTransitionWidget(),
-                SizedBox(
-                  height: 50,
-                ),
-                Text('2. AnimatedBuilder 사용'),
-                SizedBox(
-                  height: 40,
-                ),
-                RotateAnimationWidget(),
-                SizedBox(
-                  height: 50,
-                ),
-                Text('3. Tween 사용(범위 바꾸기)(case1, case2)'),
-                SizedBox(
-                  height: 40,
-                ),
-                TranslateAnimationWidget(),
-              ],
+            Expanded(
+              child: Column(
+                children: [
+                  Text(
+                    '명시적 애니메이션(Explicit Animation)',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text('1. 빌트인 위젯 사용'),
+                  FadeTransitionWidget(),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Text('2. AnimatedBuilder 사용'),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  RotateAnimationWidget(),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Text('3. Tween 사용(범위 바꾸기)(case1, case2)'),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  TranslateAnimationWidget(),
+                ],
+              ),
             ),
           ],
         ),

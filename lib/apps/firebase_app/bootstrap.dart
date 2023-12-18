@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:developer';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
-import 'firebase_app.dart';
+import '../../firebase_options.dart';
+import 'firebase_app.dart' as firebase;
 
 Future<void> bootstrap() async {
   runZonedGuarded(() async {
@@ -13,8 +15,9 @@ Future<void> bootstrap() async {
       debugPrint(
           '${rec.loggerName}>${rec.level.name}: ${rec.time}: ${rec.message}');
     });
+    _initializeFirebase();
     runApp(
-      const FirebaseApp(),
+      const firebase.FirebaseApp(),
     );
     FlutterError.onError = (FlutterErrorDetails details) {
       FlutterError.presentError(details);
@@ -31,4 +34,10 @@ Future<void> bootstrap() async {
   }, (error, stackTrace) {
     log(error.toString(), stackTrace: stackTrace);
   });
+}
+
+void _initializeFirebase() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }

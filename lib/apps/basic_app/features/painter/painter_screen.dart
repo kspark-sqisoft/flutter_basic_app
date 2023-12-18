@@ -9,14 +9,19 @@ class PainterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Painter')),
-      body: Column(
-        children: [
-          //CustomPaint painter에게 그려질 영역의 크기 제공
-          CustomPaint(
-            painter: SmilingFacePainter(),
-            size: const Size(500, 500),
-          )
-        ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              //CustomPaint painter에게 그려질 영역의 크기 제공
+              CustomPaint(
+                painter: SmilingFacePainter(),
+                size: const Size(500, 500),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

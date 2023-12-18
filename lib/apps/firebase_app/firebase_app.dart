@@ -1,7 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'features/auth/login_screen.dart';
+import 'features/chat/chat_home_screen.dart';
 import 'firebase_app_home_screen.dart';
+
+late Size mq;
 
 class FirebaseApp extends StatelessWidget {
   const FirebaseApp({super.key});
@@ -19,7 +23,20 @@ class FirebaseApp extends StatelessWidget {
           PointerDeviceKind.unknown,
         },
       ),
-      home: const FirebaseAppHomeScreen(),
+      theme: ThemeData(
+        useMaterial3: false,
+        appBarTheme: const AppBarTheme(
+            centerTitle: true,
+            elevation: 1,
+            iconTheme: IconThemeData(color: Colors.black),
+            titleTextStyle: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.normal,
+              fontSize: 19,
+            ),
+            backgroundColor: Colors.white),
+      ),
+      home: const LoginScreen(),
     );
   }
 }

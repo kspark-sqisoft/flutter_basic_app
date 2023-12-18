@@ -37,7 +37,7 @@ class BasicApp extends StatelessWidget {
               : themeDataDark(controller),
           themeMode: controller.themeMode,
           initialRoute: BasicAppHomeScreen.routeName,
-          onGenerateRoute: (settings) {
+          onGenerateRoute: (RouteSettings settings) {
             return switch (settings.name) {
               BasicAppHomeScreen.routeName => MaterialPageRoute(
                   builder: (context) => BasicAppHomeScreen(
