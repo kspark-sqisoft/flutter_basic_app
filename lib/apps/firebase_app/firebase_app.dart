@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'features/auth/login_screen.dart';
 import 'features/chat/chat_home_screen.dart';
+import 'features/splash_screen.dart';
 import 'firebase_app_home_screen.dart';
 
 late Size mq;
@@ -36,7 +37,7 @@ class FirebaseApp extends StatelessWidget {
             ),
             backgroundColor: Colors.white),
       ),
-      home: const LoginScreen(),
+      home: const SplashScreen(),
     );
   }
 }
