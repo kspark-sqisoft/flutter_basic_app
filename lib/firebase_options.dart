@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,15 +49,6 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyB7wMQ_z1bj7Hnl9zNEADCwPlvnd29oJp0',
-    appId: '1:937792262665:web:32d9d6c00b9ea368cdded8',
-    messagingSenderId: '937792262665',
-    projectId: 'fir-app-10500',
-    authDomain: 'fir-app-10500.firebaseapp.com',
-    storageBucket: 'fir-app-10500.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDhG2MJR211HKrmRz74sQyx7dqkxxYpv2A',
     appId: '1:937792262665:android:4cc987d074391a29cdded8',
@@ -66,15 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '937792262665',
     projectId: 'fir-app-10500',
     storageBucket: 'fir-app-10500.appspot.com',
+    iosClientId: '937792262665-smfu5b735u768neohoaji6eh1ju4osua.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterBasicApp',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDTjAW4Er2ZbjF7wjy2H8DBHzXaXatclfw',
-    appId: '1:937792262665:ios:0148adf7c8f99609cdded8',
-    messagingSenderId: '937792262665',
-    projectId: 'fir-app-10500',
-    storageBucket: 'fir-app-10500.appspot.com',
-    iosBundleId: 'com.example.flutterBasicApp.RunnerTests',
   );
 }

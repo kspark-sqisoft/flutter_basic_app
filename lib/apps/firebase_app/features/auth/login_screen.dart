@@ -1,4 +1,9 @@
+import 'dart:developer';
+import 'dart:io';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../firebase_app.dart';
 import '../chat/chat_home_screen.dart';
@@ -13,6 +18,38 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool _isAnimatedPosition = false;
   bool _isAnimatedOpacity = false;
+
+  void _handleGoogleButtonClick() {
+    _signInWithGoogle().then((user) {
+      log('\nUser:${user?.user}');
+      log('\nAdditionalUserInfo:${user?.additionalUserInfo}');
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (_) => const ChatHomeScreen(),
+          ));
+    });
+  }
+
+  Future<UserCredential?> _signInWithGoogle() async {
+    await InternetAddress.lookup('google.com');
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
   @override
   void initState() {
     Future.delayed(const Duration(milliseconds: 500), () {
@@ -62,11 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   elevation: 1,
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const ChatHomeScreen(),
-                      ));
+                  _handleGoogleButtonClick();
                 },
                 icon: Image.asset(
                   'assets/images/chat/google.png',
