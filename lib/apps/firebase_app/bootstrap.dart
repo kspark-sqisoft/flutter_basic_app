@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
 
 import '../../firebase_options.dart';
@@ -11,14 +12,21 @@ import 'firebase_app.dart' as firebase;
 Future<void> bootstrap() async {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]).then((value) {
+      _initializeFirebase();
+      runApp(
+        const firebase.FirebaseApp(),
+      );
+    });
     Logger.root.onRecord.listen((LogRecord rec) {
       debugPrint(
           '${rec.loggerName}>${rec.level.name}: ${rec.time}: ${rec.message}');
     });
-    _initializeFirebase();
-    runApp(
-      const firebase.FirebaseApp(),
-    );
+
     FlutterError.onError = (FlutterErrorDetails details) {
       FlutterError.presentError(details);
     };
