@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDhG2MJR211HKrmRz74sQyx7dqkxxYpv2A',
-    appId: '1:937792262665:android:4cc987d074391a29cdded8',
+    appId: '1:937792262665:android:8be86b96958c8430cdded8',
     messagingSenderId: '937792262665',
     projectId: 'fir-app-10500',
     storageBucket: 'fir-app-10500.appspot.com',
@@ -63,6 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '937792262665',
     projectId: 'fir-app-10500',
     storageBucket: 'fir-app-10500.appspot.com',
+    androidClientId: '937792262665-264vcsh7fav8cplcsv2v8mc6sqm7sg9f.apps.googleusercontent.com',
     iosClientId: '937792262665-smfu5b735u768neohoaji6eh1ju4osua.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterBasicApp',
   );
