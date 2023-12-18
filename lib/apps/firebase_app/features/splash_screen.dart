@@ -1,7 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../firebase_app.dart';
+import 'api/apis.dart';
 import 'auth/login_screen.dart';
 import 'chat/chat_home_screen.dart';
 
@@ -19,7 +20,9 @@ class _SplashScreenState extends State<SplashScreen> {
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
       SystemChrome.setSystemUIOverlayStyle(
           const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-      if (FirebaseAuth.instance.currentUser != null) {
+      if (APIs.auth.currentUser != null) {
+        log('\nUser:${APIs.auth.currentUser}');
+
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => const ChatHomeScreen()));
       } else {

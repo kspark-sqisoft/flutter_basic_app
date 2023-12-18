@@ -2,12 +2,12 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../firebase_app.dart';
 import '../../helper/diolog.dart';
+import '../api/apis.dart';
 import '../chat/chat_home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -24,17 +24,31 @@ class _LoginScreenState extends State<LoginScreen> {
   void _handleGoogleButtonClick() {
     //show progressbar
     Dialogs.showProgressbar(context);
-    _signInWithGoogle().then((user) {
+    _signInWithGoogle().then((user) async {
       //hide progressbar
       Navigator.pop(context);
       if (user != null) {
         log('\nUser:${user.user}');
         log('\nAdditionalUserInfo:${user.additionalUserInfo}');
-        Navigator.pushReplacement(
+
+        if (await APIs.userExists()) {
+          if (!mounted) return;
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (_) => const ChatHomeScreen(),
-            ));
+            ),
+          );
+        } else {
+          await APIs.createUser().then((value) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const ChatHomeScreen(),
+              ),
+            );
+          });
+        }
       }
     });
   }
@@ -61,9 +75,10 @@ class _LoginScreenState extends State<LoginScreen> {
       );
 
       // Once signed in, return the UserCredential
-      return await FirebaseAuth.instance.signInWithCredential(credential);
+      return await APIs.auth.signInWithCredential(credential);
     } catch (e) {
       log('\n_signInWithGoogle error:$e');
+      if (!mounted) return null;
       Dialogs.showSnackbar(context, 'Something Went Wrong (Check Internet!)');
       return null;
     }

@@ -63,8 +63,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '937792262665',
     projectId: 'fir-app-10500',
     storageBucket: 'fir-app-10500.appspot.com',
-    androidClientId: '937792262665-1opv61iksbv8sv0stc5cejllagmdj3od.apps.googleusercontent.com',
-    iosClientId: '937792262665-ptbnumcha53in5jvitruqc53g9sv8lc7.apps.googleusercontent.com',
+    androidClientId:
+        '937792262665-1opv61iksbv8sv0stc5cejllagmdj3od.apps.googleusercontent.com',
+    iosClientId:
+        '937792262665-ptbnumcha53in5jvitruqc53g9sv8lc7.apps.googleusercontent.com',
     iosBundleId: 'com.noa99kee.flutterBasicApp',
   );
 }
