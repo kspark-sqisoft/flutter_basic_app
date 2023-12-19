@@ -88,7 +88,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         bottom: 0,
                         right: 0,
                         child: MaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            _showBottomSheet();
+                          },
                           elevation: 1,
                           color: Colors.white,
                           shape: const CircleBorder(),
@@ -182,6 +184,53 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  void _showBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      builder: (context) => ListView(
+        padding: EdgeInsets.only(top: mq.height * .02, bottom: mq.height * .05),
+        shrinkWrap: true,
+        children: [
+          const Text(
+            'Pick Profile Picture',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+          ),
+          SizedBox(
+            height: mq.height * .02,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: const CircleBorder(),
+                    fixedSize: Size(mq.width * .3, mq.height * .15)),
+                onPressed: () {},
+                child: Image.asset('assets/images/chat/add_image.png'),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: const CircleBorder(),
+                    fixedSize: Size(mq.width * .3, mq.height * .15)),
+                onPressed: () {},
+                child: Image.asset('assets/images/chat/camera.png'),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
