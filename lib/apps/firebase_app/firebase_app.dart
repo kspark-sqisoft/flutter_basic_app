@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'features/auth/login_screen.dart';
-import 'features/splash_screen.dart';
 
 late Size mq;
 

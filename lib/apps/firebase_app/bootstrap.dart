@@ -12,7 +12,10 @@ import 'firebase_app.dart' as firebase;
 Future<void> bootstrap() async {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
+    //상단바, 하단바 없애기
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
+    //세로 고정
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
