@@ -153,6 +153,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   SizedBox(
                     height: mq.height * .05,
                   ),
+                  //Update Profile Button
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
                           shape: const StadiumBorder(),
@@ -162,7 +163,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           _formKey.currentState!.save();
                           log('_formKey.currentState validate');
                           log('changed ${APIs.me}');
-                          APIs.updateUserInfo();
+                          APIs.updateUserInfo().then((value) {
+                            Dialogs.showSnackbar(
+                                context, 'Profile Updated Successfully!');
+                          });
                         }
                       },
                       icon: const Icon(
