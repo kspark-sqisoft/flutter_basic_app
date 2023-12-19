@@ -28,6 +28,7 @@ class _ChatUserCardState extends State<ChatUserCard> {
             child: CachedNetworkImage(
               width: mq.height * .055,
               height: mq.height * .055,
+              fit: BoxFit.cover,
               imageUrl: widget.chatUser.image!,
               placeholder: (context, url) => const CircularProgressIndicator(),
               errorWidget: (context, url, error) => const CircleAvatar(
