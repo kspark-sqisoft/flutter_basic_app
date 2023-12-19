@@ -21,6 +21,21 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isAnimatedPosition = false;
   bool _isAnimatedOpacity = false;
 
+  @override
+  void initState() {
+    Future.delayed(const Duration(milliseconds: 300), () {
+      setState(() {
+        _isAnimatedPosition = true;
+      });
+    });
+    Future.delayed(const Duration(milliseconds: 500), () {
+      setState(() {
+        _isAnimatedOpacity = true;
+      });
+    });
+    super.initState();
+  }
+
   void _handleGoogleButtonClick() {
     //show progressbar
     Dialogs.showProgressbar(context);
@@ -28,8 +43,8 @@ class _LoginScreenState extends State<LoginScreen> {
       //hide progressbar
       Navigator.pop(context);
       if (user != null) {
-        log('\nUser:${user.user}');
-        log('\nAdditionalUserInfo:${user.additionalUserInfo}');
+        log('\nlogged in User:${user.user}');
+        log('\nlogged in AdditionalUserInfo:${user.additionalUserInfo}');
 
         if (await APIs.userExists()) {
           if (!mounted) return;
@@ -53,11 +68,6 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  Future<void> _signOut() async {
-    await FirebaseAuth.instance.signOut();
-    await GoogleSignIn().signOut();
-  }
-
   Future<UserCredential?> _signInWithGoogle() async {
     try {
       await InternetAddress.lookup('google.com');
@@ -79,24 +89,10 @@ class _LoginScreenState extends State<LoginScreen> {
     } catch (e) {
       log('\n_signInWithGoogle error:$e');
       if (!mounted) return null;
-      Dialogs.showSnackbar(context, 'Something Went Wrong (Check Internet!)');
+      Dialogs.showSnackbar(
+          context, 'Something Went Wrong (Check Internet!) or ${e.toString()}');
       return null;
     }
-  }
-
-  @override
-  void initState() {
-    Future.delayed(const Duration(milliseconds: 500), () {
-      setState(() {
-        _isAnimatedPosition = true;
-      });
-    });
-    Future.delayed(const Duration(milliseconds: 800), () {
-      setState(() {
-        _isAnimatedOpacity = true;
-      });
-    });
-    super.initState();
   }
 
   @override

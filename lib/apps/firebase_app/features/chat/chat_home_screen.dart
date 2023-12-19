@@ -19,9 +19,11 @@ class ChatHomeScreen extends StatefulWidget {
 
 class _ChatHomeScreenState extends State<ChatHomeScreen> {
   List<ChatUser> users = [];
-  Future<void> _signOut() async {
-    await APIs.auth.signOut();
-    await GoogleSignIn().signOut();
+
+  @override
+  void initState() {
+    APIs.getSelfInfo();
+    super.initState();
   }
 
   @override
@@ -37,9 +39,11 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ProfileScreen(
-                      chatUser: users[0],
-                    ),
+                    builder: (context) {
+                      return ProfileScreen(
+                        currentUser: APIs.me,
+                      );
+                    },
                   ),
                 );
               },
@@ -49,14 +53,12 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 10.0),
         child: FloatingActionButton(
-          onPressed: () {
-            _signOut();
-          },
+          onPressed: () {},
           child: const Icon(Icons.add_comment_rounded),
         ),
       ),
       body: StreamBuilder(
-          stream: APIs.fireStore.collection('users').snapshots(),
+          stream: APIs.getAllUsers(),
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
               case ConnectionState.waiting:

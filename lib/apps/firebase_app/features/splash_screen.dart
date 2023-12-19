@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
       SystemChrome.setSystemUIOverlayStyle(
           const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
       if (APIs.auth.currentUser != null) {
-        log('\nUser:${APIs.auth.currentUser}');
+        log('\ncurrentUser:${APIs.auth.currentUser}');
 
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => const ChatHomeScreen()));
