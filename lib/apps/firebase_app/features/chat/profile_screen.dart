@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
@@ -22,7 +23,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final _formKey = GlobalKey<FormState>();
-  String? _image;
+  String? _imagePath;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -71,21 +72,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   Stack(
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(mq.height * .1),
-                        child: CachedNetworkImage(
-                          width: mq.height * .2,
-                          height: mq.height * .2,
-                          fit: BoxFit.fill,
-                          imageUrl: widget.currentUser.image!,
-                          placeholder: (context, url) =>
-                              const CircularProgressIndicator(),
-                          errorWidget: (context, url, error) =>
-                              const CircleAvatar(
-                            child: Icon(Icons.error),
-                          ),
-                        ),
-                      ),
+                      _imagePath != null
+                          ?
+                          //local image
+                          ClipRRect(
+                              borderRadius:
+                                  BorderRadius.circular(mq.height * .1),
+                              child: Image.file(
+                                File(_imagePath!),
+                                width: mq.height * .2,
+                                height: mq.height * .2,
+                                fit: BoxFit.cover,
+                              ),
+                            )
+                          :
+                          //image from server
+                          ClipRRect(
+                              borderRadius:
+                                  BorderRadius.circular(mq.height * .1),
+                              child: CachedNetworkImage(
+                                width: mq.height * .2,
+                                height: mq.height * .2,
+                                fit: BoxFit.cover,
+                                imageUrl: widget.currentUser.image!,
+                                errorWidget: (context, url, error) =>
+                                    const CircleAvatar(
+                                        child: Icon(CupertinoIcons.person)),
+                              ),
+                            ),
                       Positioned(
                         bottom: 0,
                         right: 0,
@@ -228,11 +242,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   if (image != null) {
                     log('Image Path: ${image.path}');
                     setState(() {
-                      _image = image.path;
+                      _imagePath = image.path;
                     });
 
-                    //APIs.updateProfilePicture(File(_image!));
+                    APIs.updateProfilePicture(File(_imagePath!));
                     // for hiding bottom sheet
+                    if (!mounted) {
+                      return;
+                    }
                     Navigator.pop(context);
                   }
                 },
@@ -252,11 +269,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   if (image != null) {
                     log('Image Path: ${image.path}');
                     setState(() {
-                      _image = image.path;
+                      _imagePath = image.path;
                     });
 
-                    //APIs.updateProfilePicture(File(_image!));
+                    APIs.updateProfilePicture(File(_imagePath!));
                     // for hiding bottom sheet
+                    if (!mounted) {
+                      return;
+                    }
                     Navigator.pop(context);
                   }
                 },
