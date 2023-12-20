@@ -13,10 +13,8 @@ Future<void> bootstrap() async {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
     //상단바, 하단바 없애기, 화면 로테이션이 가능한 풀스크린 앱
-    //SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-
-    //화면 로테이션이 없는 풀스크린 앱
-    //SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+    //enter full-screen
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 
     //세로 고정
     SystemChrome.setPreferredOrientations([

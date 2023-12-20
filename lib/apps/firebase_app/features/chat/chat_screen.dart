@@ -1,8 +1,11 @@
 import 'dart:async';
 
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../firebase_app.dart';
 import 'models/chat_user.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -32,18 +35,59 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Widget _appBar() {
-    return Row(
-      children: [
-        IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black54,
+    return InkWell(
+      onTap: () {},
+      child: Row(
+        children: [
+          IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.black54,
+            ),
           ),
-        ),
-      ],
+          ClipRRect(
+            borderRadius: BorderRadius.circular(mq.height * .03),
+            child: CachedNetworkImage(
+              width: mq.height * .05,
+              height: mq.height * .05,
+              fit: BoxFit.cover,
+              imageUrl: widget.chatUser.image!,
+              errorWidget: (context, url, error) => const CircleAvatar(
+                child: Icon(CupertinoIcons.person),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.chatUser.name!,
+                style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.black54,
+                    fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(
+                height: 2,
+              ),
+              const Text(
+                'Last seen not available',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.black54,
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }

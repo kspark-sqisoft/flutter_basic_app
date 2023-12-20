@@ -97,7 +97,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 imageUrl: widget.currentUser.image!,
                                 errorWidget: (context, url, error) =>
                                     const CircleAvatar(
-                                        child: Icon(CupertinoIcons.person)),
+                                  child: Icon(CupertinoIcons.person),
+                                ),
                               ),
                             ),
                       Positioned(
