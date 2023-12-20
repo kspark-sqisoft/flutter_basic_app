@@ -12,8 +12,11 @@ import 'firebase_app.dart' as firebase;
 Future<void> bootstrap() async {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
-    //상단바, 하단바 없애기
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    //상단바, 하단바 없애기, 화면 로테이션이 가능한 풀스크린 앱
+    //SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
+    //화면 로테이션이 없는 풀스크린 앱
+    //SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
     //세로 고정
     SystemChrome.setPreferredOrientations([
