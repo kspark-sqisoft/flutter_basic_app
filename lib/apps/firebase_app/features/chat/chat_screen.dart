@@ -121,55 +121,63 @@ class _ChatScreenState extends State<ChatScreen> {
       onTap: () {},
       child: Padding(
         padding: const EdgeInsets.only(top: 25),
-        child: Row(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.black54,
-              ),
+            SizedBox(
+              height: 15,
             ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(mq.height * .03),
-              child: CachedNetworkImage(
-                width: mq.height * .05,
-                height: mq.height * .05,
-                fit: BoxFit.cover,
-                imageUrl: widget.chatUser.image!,
-                errorWidget: (context, url, error) => const CircleAvatar(
-                  child: Icon(CupertinoIcons.person),
-                ),
-              ),
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
               children: [
-                Text(
-                  widget.chatUser.name!,
-                  style: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.black87,
-                      fontWeight: FontWeight.w500),
-                ),
-                const SizedBox(
-                  height: 2,
-                ),
-                const Text(
-                  'Last seen not available',
-                  style: TextStyle(
-                    fontSize: 13,
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back,
                     color: Colors.black54,
                   ),
                 ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(mq.height * .03),
+                  child: CachedNetworkImage(
+                    width: mq.height * .05,
+                    height: mq.height * .05,
+                    fit: BoxFit.cover,
+                    imageUrl: widget.chatUser.image!,
+                    errorWidget: (context, url, error) => const CircleAvatar(
+                      child: Icon(CupertinoIcons.person),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.chatUser.name!,
+                      style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.black87,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    const SizedBox(
+                      height: 2,
+                    ),
+                    const Text(
+                      'Last seen not available',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ],
+                )
               ],
-            )
+            ),
           ],
         ),
       ),
