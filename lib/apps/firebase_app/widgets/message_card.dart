@@ -26,9 +26,9 @@ class _MessageCardState extends State<MessageCard> {
   //sender or another user message, me
   Widget _blueMessage() {
     //update last read message if sender and receiver are diffenent
-    if (widget.message.read!.isNotEmpty) {
+
+    if (widget.message.read!.isEmpty) {
       APIs.updateMessageReadStatus(widget.message);
-      log('message read updated');
     }
 
     return Row(
@@ -56,8 +56,7 @@ class _MessageCardState extends State<MessageCard> {
         Padding(
           padding: EdgeInsets.only(right: mq.width * .04),
           child: Text(
-            MyDateUtil.getFormattedTime(
-                context: context, time: widget.message.sent!),
+            MyDateUtil.getFormattedTime(time: widget.message.sent!),
             style: const TextStyle(fontSize: 13, color: Colors.black54),
           ),
         ),
@@ -88,8 +87,7 @@ class _MessageCardState extends State<MessageCard> {
             ),
             //sent time
             Text(
-              MyDateUtil.getFormattedTime(
-                  context: context, time: widget.message.sent!),
+              MyDateUtil.getFormattedTime(time: widget.message.sent!),
               style: const TextStyle(fontSize: 13, color: Colors.black54),
             ),
           ],
