@@ -34,9 +34,12 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 234, 248, 255),
-      appBar: AppBar(
-        automaticallyImplyLeading: false, //뒤로 가기 없애기
-        flexibleSpace: _appBar(),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(60),
+        child: AppBar(
+          automaticallyImplyLeading: false, //뒤로 가기 없애기
+          flexibleSpace: _appBar(),
+        ),
       ),
       body: SafeArea(
         child: Column(
