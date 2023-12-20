@@ -23,7 +23,7 @@ mixin _$Message {
   String? get msg => throw _privateConstructorUsedError;
   String? get toId => throw _privateConstructorUsedError;
   String? get read => throw _privateConstructorUsedError;
-  String? get type => throw _privateConstructorUsedError;
+  Type? get type => throw _privateConstructorUsedError;
   String? get sent => throw _privateConstructorUsedError;
   String? get fromId => throw _privateConstructorUsedError;
 
@@ -41,7 +41,7 @@ abstract class $MessageCopyWith<$Res> {
       {String? msg,
       String? toId,
       String? read,
-      String? type,
+      Type? type,
       String? sent,
       String? fromId});
 }
@@ -82,7 +82,7 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Type?,
       sent: freezed == sent
           ? _value.sent
           : sent // ignore: cast_nullable_to_non_nullable
@@ -106,7 +106,7 @@ abstract class _$$MessageImplCopyWith<$Res> implements $MessageCopyWith<$Res> {
       {String? msg,
       String? toId,
       String? read,
-      String? type,
+      Type? type,
       String? sent,
       String? fromId});
 }
@@ -145,7 +145,7 @@ class __$$MessageImplCopyWithImpl<$Res>
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Type?,
       sent: freezed == sent
           ? _value.sent
           : sent // ignore: cast_nullable_to_non_nullable
@@ -159,7 +159,8 @@ class __$$MessageImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$MessageImpl implements _Message {
   _$MessageImpl(
       {this.msg, this.toId, this.read, this.type, this.sent, this.fromId});
@@ -174,7 +175,7 @@ class _$MessageImpl implements _Message {
   @override
   final String? read;
   @override
-  final String? type;
+  final Type? type;
   @override
   final String? sent;
   @override
@@ -222,7 +223,7 @@ abstract class _Message implements Message {
       {final String? msg,
       final String? toId,
       final String? read,
-      final String? type,
+      final Type? type,
       final String? sent,
       final String? fromId}) = _$MessageImpl;
 
@@ -235,7 +236,7 @@ abstract class _Message implements Message {
   @override
   String? get read;
   @override
-  String? get type;
+  Type? get type;
   @override
   String? get sent;
   @override

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../firebase_app.dart';
+import '../../widgets/message_card.dart';
 import '../api/apis.dart';
 import 'models/chat_user.dart';
 import 'models/message.dart';
@@ -22,6 +23,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   List<Message> _messages = [];
+  final _textController = TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -40,32 +42,56 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             Expanded(
               child: StreamBuilder(
-                stream: APIs.getAllMessages(),
+                stream: APIs.getAllMessages(widget.chatUser),
                 builder: (context, snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
                     case ConnectionState.none:
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
+                      return const SizedBox();
 
                     case ConnectionState.active:
                     case ConnectionState.done:
                       final messagesDocs = snapshot.data?.docs;
-                      log('message[0]:${jsonEncode(messagesDocs![0].data())}');
-                      _messages = messagesDocs
-                              .map((messageDoc) =>
-                                  Message.fromJson(messageDoc.data()))
-                              .toList() ??
-                          [];
+                      if (messagesDocs != null) {
+                        _messages = messagesDocs
+                            .map((messageDoc) =>
+                                Message.fromJson(messageDoc.data()))
+                            .toList();
+                      } else {
+                        _messages = [];
+                      }
 
+                      /*
+                      _messages.clear();
+                      _messages.add(
+                        Message(
+                          toId: 'xyz',
+                          msg: 'Hii',
+                          read: '',
+                          type: Type.text,
+                          fromId: APIs.currentUser.uid,
+                          sent: '12:00 AM',
+                        ),
+                      );
+                      _messages.add(
+                        Message(
+                          toId: APIs.currentUser.uid,
+                          msg: 'Hello',
+                          read: '',
+                          type: Type.text,
+                          fromId: 'xyz',
+                          sent: '12:05 AM',
+                        ),
+                      );
+                      */
                       if (_messages.isNotEmpty) {
                         return ListView.builder(
                           itemCount: _messages.length,
                           padding: EdgeInsets.only(top: mq.height * .01),
                           physics: const BouncingScrollPhysics(),
-                          itemBuilder: (context, index) =>
-                              Text('Message: ${_messages[index].msg}'),
+                          itemBuilder: (context, index) => MessageCard(
+                            message: _messages[index],
+                          ),
                         );
                       } else {
                         return const Center(
@@ -166,11 +192,12 @@ class _ChatScreenState extends State<ChatScreen> {
                       size: 25,
                     ),
                   ),
-                  const Expanded(
+                  Expanded(
                     child: TextField(
+                      controller: _textController,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         hintText: 'Type Something...',
                         hintStyle: TextStyle(
                           color: Colors.blueAccent,
@@ -203,7 +230,13 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
           MaterialButton(
-            onPressed: () {},
+            onPressed: () {
+              if (_textController.text.isNotEmpty) {
+                APIs.sendMessage(
+                    widget.chatUser, _textController.text, Type.text);
+                _textController.text = '';
+              }
+            },
             shape: const CircleBorder(),
             color: Colors.green,
             padding:

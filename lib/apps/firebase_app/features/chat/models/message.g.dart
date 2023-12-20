@@ -11,7 +11,7 @@ _$MessageImpl _$$MessageImplFromJson(Map<String, dynamic> json) =>
       msg: json['msg'] as String?,
       toId: json['toId'] as String?,
       read: json['read'] as String?,
-      type: json['type'] as String?,
+      type: $enumDecodeNullable(_$TypeEnumMap, json['type']),
       sent: json['sent'] as String?,
       fromId: json['fromId'] as String?,
     );
@@ -21,7 +21,12 @@ Map<String, dynamic> _$$MessageImplToJson(_$MessageImpl instance) =>
       'msg': instance.msg,
       'toId': instance.toId,
       'read': instance.read,
-      'type': instance.type,
+      'type': instance.type?.toJson(),
       'sent': instance.sent,
       'fromId': instance.fromId,
     };
+
+const _$TypeEnumMap = {
+  Type.text: 'text',
+  Type.image: 'image',
+};
