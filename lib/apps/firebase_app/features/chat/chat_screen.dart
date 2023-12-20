@@ -26,6 +26,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: const Color.fromARGB(255, 234, 248, 255),
         appBar: AppBar(
           automaticallyImplyLeading: false, //뒤로 가기 없애기
           flexibleSpace: _appBar(),
@@ -71,7 +72,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 widget.chatUser.name!,
                 style: const TextStyle(
                     fontSize: 16,
-                    color: Colors.black54,
+                    color: Colors.black87,
                     fontWeight: FontWeight.w500),
               ),
               const SizedBox(
