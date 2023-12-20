@@ -253,6 +253,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                     ),
                   ),
+                  //pick image from gallery button
                   IconButton(
                     onPressed: () {},
                     icon: const Icon(
@@ -261,6 +262,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       size: 26,
                     ),
                   ),
+                  //take image from camera button
                   IconButton(
                     onPressed: () {},
                     icon: const Icon(

@@ -43,8 +43,9 @@ class _MessageCardState extends State<MessageCard> {
                 color: const Color.fromARGB(255, 221, 245, 255),
                 border: Border.all(color: Colors.lightBlue),
                 borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30),
+                  //topLeft: Radius.circular(30),
                   topRight: Radius.circular(30),
+                  bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30),
                 )),
             child: Text(
@@ -57,10 +58,13 @@ class _MessageCardState extends State<MessageCard> {
           padding: EdgeInsets.only(right: mq.width * .04),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('${widget.message.fromName}'),
+            Text(
+              '${widget.message.fromName}',
+              style: const TextStyle(fontSize: 13),
+            ),
             Text(
               MyDateUtil.getFormattedTime(time: widget.message.sent!),
-              style: const TextStyle(fontSize: 13, color: Colors.black54),
+              style: const TextStyle(fontSize: 12, color: Colors.black54),
             )
           ]),
         ),
@@ -92,7 +96,7 @@ class _MessageCardState extends State<MessageCard> {
             //sent time
             Text(
               MyDateUtil.getFormattedTime(time: widget.message.sent!),
-              style: const TextStyle(fontSize: 13, color: Colors.black54),
+              style: const TextStyle(fontSize: 12, color: Colors.black54),
             ),
           ],
         ),
@@ -106,8 +110,9 @@ class _MessageCardState extends State<MessageCard> {
                 border: Border.all(color: Colors.lightGreen),
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
+                  //topRight: Radius.circular(30),
                   bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
                 )),
             child: Text(
               '${widget.message.msg}',
