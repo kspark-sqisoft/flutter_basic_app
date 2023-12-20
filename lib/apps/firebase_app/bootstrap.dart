@@ -4,6 +4,8 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 import 'package:logging/logging.dart';
 
 import '../../firebase_options.dart';
@@ -21,6 +23,9 @@ Future<void> bootstrap() async {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]).then((value) {
+      Intl.defaultLocale =
+          'ko-KR'; //Intl 관련된 defaultLocale, Intl 포멧 관련 한번에 KR로 설정
+
       _initializeFirebase();
       runApp(
         const firebase.FirebaseApp(),
