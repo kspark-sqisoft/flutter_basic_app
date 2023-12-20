@@ -14,6 +14,7 @@ _$MessageImpl _$$MessageImplFromJson(Map<String, dynamic> json) =>
       type: $enumDecodeNullable(_$TypeEnumMap, json['type']),
       sent: json['sent'] as String?,
       fromId: json['fromId'] as String?,
+      fromName: json['fromName'] as String?,
     );
 
 Map<String, dynamic> _$$MessageImplToJson(_$MessageImpl instance) =>
@@ -24,6 +25,7 @@ Map<String, dynamic> _$$MessageImplToJson(_$MessageImpl instance) =>
       'type': instance.type?.toJson(),
       'sent': instance.sent,
       'fromId': instance.fromId,
+      'fromName': instance.fromName,
     };
 
 const _$TypeEnumMap = {

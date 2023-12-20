@@ -32,13 +32,13 @@ class _MessageCardState extends State<MessageCard> {
     }
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Flexible(
           child: Container(
             padding: EdgeInsets.all(mq.width * .04),
             margin: EdgeInsets.symmetric(
-                horizontal: mq.width * .04, vertical: mq.height * .01),
+                horizontal: mq.width * .01, vertical: mq.height * .01),
             decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 221, 245, 255),
                 border: Border.all(color: Colors.lightBlue),
@@ -55,10 +55,14 @@ class _MessageCardState extends State<MessageCard> {
         ),
         Padding(
           padding: EdgeInsets.only(right: mq.width * .04),
-          child: Text(
-            MyDateUtil.getFormattedTime(time: widget.message.sent!),
-            style: const TextStyle(fontSize: 13, color: Colors.black54),
-          ),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text('${widget.message.fromName}'),
+            Text(
+              MyDateUtil.getFormattedTime(time: widget.message.sent!),
+              style: const TextStyle(fontSize: 13, color: Colors.black54),
+            )
+          ]),
         ),
       ],
     );
@@ -67,7 +71,7 @@ class _MessageCardState extends State<MessageCard> {
   //our or currentUser message
   Widget _greenMessage() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Row(
           children: [
@@ -96,7 +100,7 @@ class _MessageCardState extends State<MessageCard> {
           child: Container(
             padding: EdgeInsets.all(mq.width * .04),
             margin: EdgeInsets.symmetric(
-                horizontal: mq.width * .04, vertical: mq.height * .01),
+                horizontal: mq.width * .01, vertical: mq.height * .01),
             decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 218, 255, 176),
                 border: Border.all(color: Colors.lightGreen),

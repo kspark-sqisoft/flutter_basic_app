@@ -21,6 +21,7 @@ class Message with _$Message {
     Type? type,
     String? sent,
     String? fromId,
+    String? fromName,
   }) = _Message;
 
   factory Message.fromJson(Map<String, dynamic> json) =>

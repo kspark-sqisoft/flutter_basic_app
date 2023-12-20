@@ -26,6 +26,7 @@ mixin _$Message {
   Type? get type => throw _privateConstructorUsedError;
   String? get sent => throw _privateConstructorUsedError;
   String? get fromId => throw _privateConstructorUsedError;
+  String? get fromName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +44,8 @@ abstract class $MessageCopyWith<$Res> {
       String? read,
       Type? type,
       String? sent,
-      String? fromId});
+      String? fromId,
+      String? fromName});
 }
 
 /// @nodoc
@@ -65,6 +67,7 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
     Object? type = freezed,
     Object? sent = freezed,
     Object? fromId = freezed,
+    Object? fromName = freezed,
   }) {
     return _then(_value.copyWith(
       msg: freezed == msg
@@ -91,6 +94,10 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
           ? _value.fromId
           : fromId // ignore: cast_nullable_to_non_nullable
               as String?,
+      fromName: freezed == fromName
+          ? _value.fromName
+          : fromName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -108,7 +115,8 @@ abstract class _$$MessageImplCopyWith<$Res> implements $MessageCopyWith<$Res> {
       String? read,
       Type? type,
       String? sent,
-      String? fromId});
+      String? fromId,
+      String? fromName});
 }
 
 /// @nodoc
@@ -128,6 +136,7 @@ class __$$MessageImplCopyWithImpl<$Res>
     Object? type = freezed,
     Object? sent = freezed,
     Object? fromId = freezed,
+    Object? fromName = freezed,
   }) {
     return _then(_$MessageImpl(
       msg: freezed == msg
@@ -154,6 +163,10 @@ class __$$MessageImplCopyWithImpl<$Res>
           ? _value.fromId
           : fromId // ignore: cast_nullable_to_non_nullable
               as String?,
+      fromName: freezed == fromName
+          ? _value.fromName
+          : fromName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -163,7 +176,13 @@ class __$$MessageImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$MessageImpl implements _Message {
   _$MessageImpl(
-      {this.msg, this.toId, this.read, this.type, this.sent, this.fromId});
+      {this.msg,
+      this.toId,
+      this.read,
+      this.type,
+      this.sent,
+      this.fromId,
+      this.fromName});
 
   factory _$MessageImpl.fromJson(Map<String, dynamic> json) =>
       _$$MessageImplFromJson(json);
@@ -180,10 +199,12 @@ class _$MessageImpl implements _Message {
   final String? sent;
   @override
   final String? fromId;
+  @override
+  final String? fromName;
 
   @override
   String toString() {
-    return 'Message(msg: $msg, toId: $toId, read: $read, type: $type, sent: $sent, fromId: $fromId)';
+    return 'Message(msg: $msg, toId: $toId, read: $read, type: $type, sent: $sent, fromId: $fromId, fromName: $fromName)';
   }
 
   @override
@@ -196,13 +217,15 @@ class _$MessageImpl implements _Message {
             (identical(other.read, read) || other.read == read) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.sent, sent) || other.sent == sent) &&
-            (identical(other.fromId, fromId) || other.fromId == fromId));
+            (identical(other.fromId, fromId) || other.fromId == fromId) &&
+            (identical(other.fromName, fromName) ||
+                other.fromName == fromName));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, msg, toId, read, type, sent, fromId);
+      Object.hash(runtimeType, msg, toId, read, type, sent, fromId, fromName);
 
   @JsonKey(ignore: true)
   @override
@@ -225,7 +248,8 @@ abstract class _Message implements Message {
       final String? read,
       final Type? type,
       final String? sent,
-      final String? fromId}) = _$MessageImpl;
+      final String? fromId,
+      final String? fromName}) = _$MessageImpl;
 
   factory _Message.fromJson(Map<String, dynamic> json) = _$MessageImpl.fromJson;
 
@@ -241,6 +265,8 @@ abstract class _Message implements Message {
   String? get sent;
   @override
   String? get fromId;
+  @override
+  String? get fromName;
   @override
   @JsonKey(ignore: true)
   _$$MessageImplCopyWith<_$MessageImpl> get copyWith =>

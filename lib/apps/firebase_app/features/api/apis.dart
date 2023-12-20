@@ -114,12 +114,14 @@ class APIs {
 
     //message to send
     final Message message = Message(
-        toId: chatUser.id,
-        msg: msg,
-        read: '',
-        type: type,
-        fromId: currentUser.uid,
-        sent: time);
+      toId: chatUser.id,
+      msg: msg,
+      read: '',
+      type: type,
+      fromId: currentUser.uid,
+      sent: time,
+      fromName: currentUser.displayName,
+    );
 
     final ref = fireStore
         .collection('chats/${getConversationID(chatUser.id!)}/messages/');
