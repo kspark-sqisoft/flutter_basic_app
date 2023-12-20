@@ -7,6 +7,7 @@ import '../features/chat/chat_screen.dart';
 import '../features/chat/models/chat_user.dart';
 import '../features/chat/models/message.dart';
 import '../firebase_app.dart';
+import '../helper/my_date_util.dart';
 
 class ChatUserCard extends StatefulWidget {
   const ChatUserCard({super.key, required this.chatUser});
@@ -37,10 +38,19 @@ class _ChatUserCardState extends State<ChatUserCard> {
         child: StreamBuilder(
           stream: APIs.getLastMessage(widget.chatUser),
           builder: (context, snapshot) {
-            final data = snapshot.data?.docs;
-            if (data != null && data.first.exists) {
-              message = Message.fromJson(data.first.data());
+            List<Message> messages;
+            final messagesDocs = snapshot.data?.docs;
+            if (messagesDocs != null) {
+              messages = messagesDocs
+                  .map((messageDoc) => Message.fromJson(messageDoc.data()))
+                  .toList();
+            } else {
+              messages = [];
             }
+            if (messages.isNotEmpty) {
+              message = messages[0];
+            }
+
             return ListTile(
               leading: ClipRRect(
                 borderRadius: BorderRadius.circular(mq.height * .3),
@@ -56,19 +66,38 @@ class _ChatUserCardState extends State<ChatUserCard> {
                   ),
                 ),
               ),
+              //user name
               title: Text('${widget.chatUser.name}'),
+              //last message
               subtitle: Text(
                 message != null ? message!.msg! : '${widget.chatUser.about}',
                 maxLines: 1,
               ),
-              trailing: Container(
-                width: 15,
-                height: 15,
-                decoration: BoxDecoration(
-                  color: Colors.greenAccent.shade400,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
+              //last message time
+              trailing: message == null
+                  ? null
+                  : message!.read!.isEmpty &&
+                          message!.fromId != APIs.currentUser.uid
+                      ?
+                      //show for uread message
+                      Container(
+                          width: 15,
+                          height: 15,
+                          decoration: BoxDecoration(
+                            color: Colors.greenAccent.shade400,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        )
+                      :
+                      //message sent time
+                      Text(
+                          MyDateUtil.getLastMessageTime(
+                            context: context,
+                            time: message!.sent!,
+                            showYear: false,
+                          ),
+                          style: const TextStyle(color: Colors.black54),
+                        ),
             );
           },
         ),

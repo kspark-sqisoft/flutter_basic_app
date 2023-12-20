@@ -198,6 +198,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       controller: _textController,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
+                      onTap: () {},
                       decoration: const InputDecoration(
                         hintText: 'Type Something...',
                         hintStyle: TextStyle(
