@@ -43,9 +43,9 @@ class _MessageCardState extends State<MessageCard> {
                 color: const Color.fromARGB(255, 221, 245, 255),
                 border: Border.all(color: Colors.lightBlue),
                 borderRadius: const BorderRadius.only(
-                  //topLeft: Radius.circular(30),
+                  topLeft: Radius.circular(30), //카카오 주석
                   topRight: Radius.circular(30),
-                  bottomLeft: Radius.circular(30),
+                  //bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30),
                 )),
             child: Text(
@@ -110,9 +110,9 @@ class _MessageCardState extends State<MessageCard> {
                 border: Border.all(color: Colors.lightGreen),
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(30),
-                  //topRight: Radius.circular(30),
+                  topRight: Radius.circular(30), //카카오 주석
                   bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
+                  //bottomRight: Radius.circular(30),
                 )),
             child: Text(
               '${widget.message.msg}',
