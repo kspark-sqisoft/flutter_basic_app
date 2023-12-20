@@ -109,47 +109,47 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
             ),
           ),
           body: StreamBuilder(
-              stream: APIs.getAllUsers(),
-              builder: (context, snapshot) {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.waiting:
-                  case ConnectionState.none:
-                    return const Center(
-                      child: CircularProgressIndicator(),
+            stream: APIs.getAllUsers(),
+            builder: (context, snapshot) {
+              switch (snapshot.connectionState) {
+                case ConnectionState.waiting:
+                case ConnectionState.none:
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+
+                case ConnectionState.active:
+                case ConnectionState.done:
+                  final usersDocs = snapshot.data?.docs;
+                  _users = usersDocs
+                          ?.map((userDoc) => ChatUser.fromJson(userDoc.data()))
+                          .toList() ??
+                      [];
+
+                  if (_users.isNotEmpty) {
+                    return ListView.builder(
+                      itemCount: _isSearchingUsers
+                          ? _searchUsers.length
+                          : _users.length,
+                      padding: EdgeInsets.only(top: mq.height * .01),
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) => ChatUserCard(
+                        chatUser: _isSearchingUsers
+                            ? _searchUsers[index]
+                            : _users[index],
+                      ),
                     );
-
-                  case ConnectionState.active:
-                  case ConnectionState.done:
-                    final usersDocs = snapshot.data?.docs;
-                    _users = usersDocs
-                            ?.map(
-                                (userDoc) => ChatUser.fromJson(userDoc.data()))
-                            .toList() ??
-                        [];
-
-                    if (_users.isNotEmpty) {
-                      return ListView.builder(
-                        itemCount: _isSearchingUsers
-                            ? _searchUsers.length
-                            : _users.length,
-                        padding: EdgeInsets.only(top: mq.height * .01),
-                        physics: const BouncingScrollPhysics(),
-                        itemBuilder: (context, index) => ChatUserCard(
-                          chatUser: _isSearchingUsers
-                              ? _searchUsers[index]
-                              : _users[index],
-                        ),
-                      );
-                    } else {
-                      return const Center(
-                        child: Text(
-                          'No Users Collections Found!',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      );
-                    }
-                }
-              }),
+                  } else {
+                    return const Center(
+                      child: Text(
+                        'No Users Collections Found!',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    );
+                  }
+              }
+            },
+          ),
         ),
       ),
     );
