@@ -70,7 +70,11 @@ class _ChatUserCardState extends State<ChatUserCard> {
               title: Text('${widget.chatUser.name}'),
               //last message
               subtitle: Text(
-                message != null ? message!.msg! : '${widget.chatUser.about}',
+                message != null
+                    ? message!.type == Type.image
+                        ? 'Image'
+                        : message!.msg!
+                    : '${widget.chatUser.about}',
                 maxLines: 1,
               ),
               //last message time
