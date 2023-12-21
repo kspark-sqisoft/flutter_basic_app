@@ -80,22 +80,25 @@ class APIs {
         log('me Token: ${me.pushToken}');
       }
     });
-
+    /*
     //for handling foreground messages
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
-      log('Got a message whilst in the foreground!');
-      log('Message data: ${message.data}');
+    FirebaseMessaging.onMessage.listen(
+      (RemoteMessage message) async {
+        log('Got a message whilst in the foreground!');
+        log('Message data: ${message.data}');
 
-      if (message.notification != null) {
-        log('notification.title: ${message.notification!.title}');
-        log('notification.body: ${message.notification!.body}');
+        if (message.notification != null) {
+          log('notification.title: ${message.notification!.title}');
+          log('notification.body: ${message.notification!.body}');
 
-        await cancelLocalNotification();
-        await showLocalNotification(
-            title: message.notification!.title!,
-            body: message.notification!.body!);
-      }
-    });
+          await cancelLocalNotification();
+          await showLocalNotification(
+              title: message.notification!.title!,
+              body: message.notification!.body!);
+        }
+      },
+    );
+    */
   }
 
   // for sending push notification
