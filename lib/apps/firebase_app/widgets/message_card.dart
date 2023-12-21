@@ -38,7 +38,7 @@ class _MessageCardState extends State<MessageCard> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(15)),
@@ -54,30 +54,42 @@ class _MessageCardState extends State<MessageCard> {
                 ),
               ),
             ),
-            Text(
-              '${widget.message.fromName}',
-              style: const TextStyle(fontSize: 12),
+            SizedBox(
+              height: mq.height * 0.05,
             ),
           ],
         ),
         Flexible(
-          child: Container(
-            padding: EdgeInsets.all(mq.width * .04),
-            margin: EdgeInsets.symmetric(
-                horizontal: mq.width * .01, vertical: mq.height * .01),
-            decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 221, 245, 255),
-                border: Border.all(color: Colors.lightBlue),
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30), //카카오 주석
-                  topRight: Radius.circular(30),
-                  //bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
-                )),
-            child: Text(
-              '${widget.message.msg}',
-              style: const TextStyle(fontSize: 15, color: Colors.black87),
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: mq.width * 0.01),
+                child: Text(
+                  '${widget.message.fromName}',
+                  style: const TextStyle(fontSize: 12),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(mq.width * .04),
+                margin: EdgeInsets.symmetric(
+                    horizontal: mq.width * .01, vertical: mq.height * .005),
+                decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 221, 245, 255),
+                    border: Border.all(color: Colors.lightBlue),
+                    borderRadius: const BorderRadius.only(
+                      //topLeft: Radius.circular(30), //카카오 주석
+                      topRight: Radius.circular(30),
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                    )),
+                child: Text(
+                  '${widget.message.msg}',
+                  style: const TextStyle(fontSize: 15, color: Colors.black87),
+                ),
+              ),
+            ],
           ),
         ),
         Padding(
