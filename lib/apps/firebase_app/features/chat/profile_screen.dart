@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -38,12 +39,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
             backgroundColor: Colors.redAccent,
             onPressed: () async {
               Dialogs.showProgressbar(context);
+
+              await APIs.updateActiveStatus(false);
+
               await APIs.auth.signOut().then(
                 (value) async {
                   await GoogleSignIn().signOut();
                   if (!context.mounted) return;
                   //remove progress dialog
                   Navigator.pop(context);
+
+                  APIs.auth = FirebaseAuth.instance;
+
                   //move home screen
                   Navigator.pop(context);
 
