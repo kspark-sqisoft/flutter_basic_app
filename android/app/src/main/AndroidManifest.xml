@@ -1,9 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- app name change android:label-->
+    <!-- storage permission-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- internet permission -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Push 메시지 수신을 위한 권한을 받도록 하자 -->
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
     <application
         android:label="flutter_basic_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_rauncher">
+        <!--Push 메시지의 중요도가 높다고 등록해 주어야 Push를 정상적으로 수신하는 것이 가능하다. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="high_importance_channel" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -12,6 +21,11 @@
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
+            <!-- Push 메시지를 클릭하여 앱에 진입할 때에 메시지 안에 담겨있는 정보를 받기 위해 추가하여야 하는 태그 -->
+            <intent-filter>
+                <action android:name="FLUTTER_NOTIFICATION_CLICK" />
+                <category android:name="android.intent.category.DEFAULT" />
+          </intent-filter>
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues

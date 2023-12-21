@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -5,9 +6,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:http/http.dart';
 
 import '../chat/models/chat_user.dart';
-import '../chat/models/message.dart';
+import '../chat/models/message.dart' as my;
 
 class APIs {
   static FirebaseAuth auth = FirebaseAuth.instance;
@@ -15,6 +18,48 @@ class APIs {
   static FirebaseFirestore fireStore = FirebaseFirestore.instance;
   static FirebaseStorage storage = FirebaseStorage.instance;
   static FirebaseMessaging messaging = FirebaseMessaging.instance;
+  static FlutterLocalNotificationsPlugin localNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
+  //initialization flutter local notification
+  static initLocalNotification() async {
+    AndroidInitializationSettings initSettingsAndroid =
+        const AndroidInitializationSettings('@mipmap/ic_rauncher');
+    DarwinInitializationSettings initSettingsIOS =
+        const DarwinInitializationSettings(
+      requestSoundPermission: false,
+      requestBadgePermission: false,
+      requestAlertPermission: false,
+    );
+    InitializationSettings initSettings = InitializationSettings(
+      android: initSettingsAndroid,
+      iOS: initSettingsIOS,
+    );
+    await localNotificationsPlugin.initialize(initSettings);
+  }
+
+  static Future<void> cancelLocalNotification() async {
+    await localNotificationsPlugin.cancelAll();
+  }
+
+  static Future<void> showLocalNotification(
+      {required String title, required String body}) async {
+    localNotificationsPlugin.show(
+      11,
+      title,
+      body,
+      const NotificationDetails(
+        android: AndroidNotificationDetails(
+          'channelId',
+          'channelName',
+        ),
+        iOS: DarwinNotificationDetails(
+          badgeNumber: 1,
+          subtitle: '',
+        ),
+      ),
+    );
+  }
 
   static User get currentUser => auth.currentUser!;
 
@@ -22,7 +67,11 @@ class APIs {
 
   // for getting firebase messaging token
   static Future<void> getFirebaseMessagingToken() async {
-    await messaging.requestPermission();
+    await messaging.requestPermission(
+      badge: true,
+      alert: true,
+      sound: true,
+    );
 
     await messaging.getToken().then((t) {
       if (t != null) {
@@ -31,15 +80,51 @@ class APIs {
       }
     });
 
-    // for handling foreground messages
-    // FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    //   log('Got a message whilst in the foreground!');
-    //   log('Message data: ${message.data}');
+    //for handling foreground messages
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
+      log('Got a message whilst in the foreground!');
+      log('Message data: ${message.data}');
 
-    //   if (message.notification != null) {
-    //     log('Message also contained a notification: ${message.notification}');
-    //   }
-    // });
+      if (message.notification != null) {
+        log('notification.title: ${message.notification!.title}');
+        log('notification.body: ${message.notification!.body}');
+
+        await cancelLocalNotification();
+        await showLocalNotification(
+            title: message.notification!.title!,
+            body: message.notification!.body!);
+      }
+    });
+  }
+
+  // for sending push notification
+  static Future<void> sendPushNotification(
+      ChatUser chatUser, String msg) async {
+    try {
+      final body = {
+        "to": chatUser.pushToken,
+        "notification": {
+          "title": me.name, //our name should be send
+          "body": msg,
+          "android_channel_id": "chats"
+        },
+        // "data": {
+        //   "some_data": "User ID: ${me.id}",
+        // },
+      };
+
+      var res = await post(Uri.parse('https://fcm.googleapis.com/fcm/send'),
+          headers: {
+            HttpHeaders.contentTypeHeader: 'application/json',
+            HttpHeaders.authorizationHeader:
+                'key=AAAA2ljGUgk:APA91bEPJJCQhGhQiSPevJUWhK66x9kgUd30L14sBPS7PxGcMo_78RqHxCWCABSpClKITwybMsgI96KczM3_fEgqrd0CvHj2V6jCcfwt4gDW-3yezw6vpzXLPkNCgBJ-chvvJfO8538N'
+          },
+          body: jsonEncode(body));
+      log('Response status: ${res.statusCode}');
+      log('Response body: ${res.body}');
+    } catch (e) {
+      log('\nsendPushNotificationE: $e');
+    }
   }
 
   static Future<bool> userExists() async {
@@ -138,12 +223,12 @@ class APIs {
 
   // for sending message
   static Future<void> sendMessage(
-      ChatUser chatUser, String msg, Type type) async {
+      ChatUser chatUser, String msg, my.Type type) async {
     //message sending time (also used as id)
     final time = DateTime.now().millisecondsSinceEpoch.toString();
 
     //message to send
-    final Message message = Message(
+    final my.Message message = my.Message(
       toId: chatUser.id,
       msg: msg,
       read: '',
@@ -155,11 +240,12 @@ class APIs {
 
     final ref = fireStore
         .collection('chats/${getConversationID(chatUser.id!)}/messages/');
-    await ref.doc(time).set(message.toJson());
+    await ref.doc(time).set(message.toJson()).then((value) =>
+        sendPushNotification(chatUser, type == my.Type.text ? msg : 'image'));
   }
 
   //update read status of message
-  static Future<void> updateMessageReadStatus(Message message) async {
+  static Future<void> updateMessageReadStatus(my.Message message) async {
     fireStore
         .collection('chats/${getConversationID(message.fromId!)}/messages/')
         .doc(message.sent)
@@ -194,7 +280,7 @@ class APIs {
 
     //updating image in firestore database
     final imageUrl = await ref.getDownloadURL();
-    await sendMessage(chatUser, imageUrl, Type.image);
+    await sendMessage(chatUser, imageUrl, my.Type.image);
   }
 
   // for getting specific user info

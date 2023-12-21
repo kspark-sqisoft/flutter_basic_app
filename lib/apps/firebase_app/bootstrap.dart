@@ -1,19 +1,27 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intl/date_symbol_data_local.dart';
+import 'package:flutter_notification_channel/flutter_notification_channel.dart';
+import 'package:flutter_notification_channel/notification_importance.dart';
 import 'package:intl/intl.dart';
 import 'package:logging/logging.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 import '../../firebase_options.dart';
+import 'features/api/apis.dart';
 import 'firebase_app.dart' as firebase;
 
 Future<void> bootstrap() async {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+    log('androidInfo.version.sdkInt:${androidInfo.version.sdkInt}');
+
     //상단바, 하단바 없애기, 화면 로테이션이 가능한 풀스크린 앱
     //enter full-screen
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
@@ -53,8 +61,23 @@ Future<void> bootstrap() async {
   });
 }
 
+@pragma('vm:entry-point')
+Future<void> _firebasemessagingBackgroundHandler(RemoteMessage message) async {
+  RemoteNotification? notification = message.notification;
+  log('remoteNotification - title:${notification?.title} body:${notification?.body}');
+}
+
 void _initializeFirebase() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FirebaseMessaging.onBackgroundMessage(_firebasemessagingBackgroundHandler);
+  await APIs.initLocalNotification();
+
+  var result = await FlutterNotificationChannel.registerNotificationChannel(
+      description: 'For Showing Message Notification',
+      id: 'chats',
+      importance: NotificationImportance.IMPORTANCE_HIGH,
+      name: 'Chats');
+  log('\nNotification Channel Result: $result');
 }
