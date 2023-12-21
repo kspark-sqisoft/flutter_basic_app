@@ -64,7 +64,7 @@ Future<void> bootstrap() async {
 @pragma('vm:entry-point')
 Future<void> _firebasemessagingBackgroundHandler(RemoteMessage message) async {
   RemoteNotification? notification = message.notification;
-  log('remoteNotification - title:${notification?.title} body:${notification?.body}');
+  log('onBackgroundMessage remoteNotification - title:${notification?.title} body:${notification?.body}');
 }
 
 void _initializeFirebase() async {
@@ -72,6 +72,7 @@ void _initializeFirebase() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   FirebaseMessaging.onBackgroundMessage(_firebasemessagingBackgroundHandler);
+  await APIs.setupInteractedMessage();
   await APIs.initLocalNotification();
 
   var result = await FlutterNotificationChannel.registerNotificationChannel(

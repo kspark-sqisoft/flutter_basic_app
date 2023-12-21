@@ -101,6 +101,32 @@ class APIs {
     */
   }
 
+  static String? initTitle;
+  static String? initBody;
+
+  static Future<void> setupInteractedMessage() async {
+    //꺼짐 상태에서 열었다.
+    RemoteMessage? initialMessage =
+        await FirebaseMessaging.instance.getInitialMessage();
+    if (initialMessage != null) {
+      _handleInitialMessage(initialMessage);
+    }
+    //백그라운드에서 알림을 눌러서 들어온 경우
+    FirebaseMessaging.onMessageOpenedApp.listen(_handleOnMessageOppendApp);
+  }
+
+  static void _handleInitialMessage(RemoteMessage message) {
+    RemoteNotification? notification = message.notification;
+    log('Open App from Terminated notification - title:${notification?.title} body:${notification?.body}');
+    initTitle = notification?.title;
+    initBody = notification?.body;
+  }
+
+  static void _handleOnMessageOppendApp(RemoteMessage message) {
+    RemoteNotification? notification = message.notification;
+    log('onMessageOpenedApp notification - title:${notification?.title} body:${notification?.body}');
+  }
+
   // for sending push notification
   static Future<void> sendPushNotification(
       ChatUser chatUser, String msg) async {

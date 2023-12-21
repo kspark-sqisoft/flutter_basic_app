@@ -25,6 +25,14 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
 
   @override
   void initState() {
+    //꺼짐 상태에서 들어온 메시지 테스트
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      if (APIs.initTitle != null && APIs.initBody != null) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(
+                'initTitle:${APIs.initTitle}, initBody:${APIs.initBody}')));
+      }
+    });
     _init();
     super.initState();
   }
