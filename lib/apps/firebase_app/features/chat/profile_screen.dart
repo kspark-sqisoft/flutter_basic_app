@@ -42,25 +42,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               await APIs.updateActiveStatus(false);
 
-              await APIs.auth.signOut().then(
-                (value) async {
-                  await GoogleSignIn().signOut();
-                  if (!context.mounted) return;
-                  //remove progress dialog
+              //sign out from app
+              await APIs.auth.signOut().then((value) async {
+                await GoogleSignIn().signOut().then((value) {
+                  //for hiding progress dialog
+                  Navigator.pop(context);
+
+                  //for moving to home screen
                   Navigator.pop(context);
 
                   APIs.auth = FirebaseAuth.instance;
 
-                  //move home screen
-                  Navigator.pop(context);
-
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const LoginScreen(),
-                      ));
-                },
-              );
+                  //replacing home screen with login screen
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (_) => const LoginScreen()));
+                });
+              });
             },
             icon: const Icon(Icons.logout),
             label: const Text('Logout'),
