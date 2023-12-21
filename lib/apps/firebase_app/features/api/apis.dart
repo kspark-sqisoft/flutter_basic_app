@@ -76,7 +76,7 @@ class APIs {
     await messaging.getToken().then((t) {
       if (t != null) {
         me = me.copyWith(pushToken: t);
-        log('Push Token: $t');
+        log('me Token: ${me.pushToken}');
       }
     });
 
