@@ -18,6 +18,7 @@ import 'models/message.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key, required this.chatUser});
+  //상대방
   final ChatUser chatUser;
 
   @override
@@ -113,6 +114,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               physics: const BouncingScrollPhysics(),
                               itemBuilder: (context, index) => MessageCard(
                                 message: _messages[index],
+                                chatUser: widget.chatUser,
                               ),
                             );
                           } else {

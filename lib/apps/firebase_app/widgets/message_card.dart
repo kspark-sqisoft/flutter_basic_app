@@ -1,14 +1,17 @@
 import 'dart:developer';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../features/api/apis.dart';
+import '../features/chat/models/chat_user.dart';
 import '../features/chat/models/message.dart';
 import '../firebase_app.dart';
 import '../helper/my_date_util.dart';
 
 class MessageCard extends StatefulWidget {
-  const MessageCard({super.key, required this.message});
+  const MessageCard({super.key, required this.message, required this.chatUser});
+  final ChatUser chatUser;
   final Message message;
 
   @override
@@ -34,6 +37,28 @@ class _MessageCardState extends State<MessageCard> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
+        Column(
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(15)),
+              child: CachedNetworkImage(
+                width: mq.height * .045,
+                height: mq.height * .045,
+                fit: BoxFit.cover,
+                imageUrl: widget.chatUser.image!,
+                placeholder: (context, url) =>
+                    const CircularProgressIndicator(),
+                errorWidget: (context, url, error) => const CircleAvatar(
+                  child: Icon(Icons.error),
+                ),
+              ),
+            ),
+            Text(
+              '${widget.message.fromName}',
+              style: const TextStyle(fontSize: 13),
+            ),
+          ],
+        ),
         Flexible(
           child: Container(
             padding: EdgeInsets.all(mq.width * .04),
@@ -56,17 +81,10 @@ class _MessageCardState extends State<MessageCard> {
         ),
         Padding(
           padding: EdgeInsets.only(right: mq.width * .04),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(
-              '${widget.message.fromName}',
-              style: const TextStyle(fontSize: 13),
-            ),
-            Text(
-              MyDateUtil.getFormattedTime(time: widget.message.sent!),
-              style: const TextStyle(fontSize: 12, color: Colors.black54),
-            )
-          ]),
+          child: Text(
+            MyDateUtil.getFormattedTime(time: widget.message.sent!),
+            style: const TextStyle(fontSize: 12, color: Colors.black54),
+          ),
         ),
       ],
     );
