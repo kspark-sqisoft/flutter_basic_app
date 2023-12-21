@@ -84,10 +84,26 @@ class _MessageCardState extends State<MessageCard> {
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30),
                     )),
-                child: Text(
-                  '${widget.message.msg}',
-                  style: const TextStyle(fontSize: 15, color: Colors.black87),
-                ),
+                child: widget.message.type == Type.text
+                    ?
+                    //show text
+                    Text(
+                        '${widget.message.msg}',
+                        style: const TextStyle(
+                            fontSize: 15, color: Colors.black87),
+                      )
+                    :
+                    //show image
+                    ClipRRect(
+                        borderRadius: BorderRadius.circular(mq.height * .03),
+                        child: CachedNetworkImage(
+                          imageUrl: widget.message.msg!,
+                          errorWidget: (context, url, error) => const Icon(
+                            Icons.image,
+                            size: 70,
+                          ),
+                        ),
+                      ),
               ),
             ],
           ),
@@ -145,10 +161,25 @@ class _MessageCardState extends State<MessageCard> {
                   bottomLeft: Radius.circular(30),
                   //bottomRight: Radius.circular(30),
                 )),
-            child: Text(
-              '${widget.message.msg}',
-              style: const TextStyle(fontSize: 15, color: Colors.black87),
-            ),
+            child: widget.message.type == Type.text
+                ?
+                //show text
+                Text(
+                    '${widget.message.msg}',
+                    style: const TextStyle(fontSize: 15, color: Colors.black87),
+                  )
+                :
+                //show image
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(mq.height * .03),
+                    child: CachedNetworkImage(
+                      imageUrl: widget.message.msg!,
+                      errorWidget: (context, url, error) => const Icon(
+                        Icons.image,
+                        size: 70,
+                      ),
+                    ),
+                  ),
           ),
         ),
       ],

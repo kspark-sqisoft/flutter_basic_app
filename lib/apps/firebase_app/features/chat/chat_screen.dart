@@ -8,6 +8,7 @@ import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import '../../firebase_app.dart';
@@ -29,6 +30,7 @@ class _ChatScreenState extends State<ChatScreen> {
   List<Message> _messages = [];
   final _textController = TextEditingController();
   bool _showEmoji = false;
+  bool _isUploading = false;
   @override
   void initState() {
     super.initState();
@@ -83,30 +85,6 @@ class _ChatScreenState extends State<ChatScreen> {
                           } else {
                             _messages = [];
                           }
-
-                          /*
-                          _messages.clear();
-                          _messages.add(
-                            Message(
-                              toId: 'xyz',
-                              msg: 'Hii',
-                              read: '',
-                              type: Type.text,
-                              fromId: APIs.currentUser.uid,
-                              sent: '12:00 AM',
-                            ),
-                          );
-                          _messages.add(
-                            Message(
-                              toId: APIs.currentUser.uid,
-                              msg: 'Hello',
-                              read: '',
-                              type: Type.text,
-                              fromId: 'xyz',
-                              sent: '12:05 AM',
-                            ),
-                          );
-                          */
                           if (_messages.isNotEmpty) {
                             return ListView.builder(
                               itemCount: _messages.length,
@@ -129,7 +107,17 @@ class _ChatScreenState extends State<ChatScreen> {
                     },
                   ),
                 ),
+                //progress indicator for showing uploading
+                if (_isUploading)
+                  const Align(
+                      alignment: Alignment.centerRight,
+                      child: Padding(
+                          padding:
+                              EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                          child: CircularProgressIndicator(strokeWidth: 2))),
+                //chat input filed
                 _chatInput(),
+                //show emojis on keyboard emoji button click & vice versa
                 if (_showEmoji)
                   SizedBox(height: mq.height * .35, child: _emojiPicker())
               ],
@@ -257,7 +245,21 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   //pick image from gallery button
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      final ImagePicker picker = ImagePicker();
+
+                      // Picking multiple images
+                      final List<XFile> images =
+                          await picker.pickMultiImage(imageQuality: 70);
+
+                      // uploading & sending image one by one
+                      for (var i in images) {
+                        log('Image Path: ${i.path}');
+                        setState(() => _isUploading = true);
+                        await APIs.sendChatImage(widget.chatUser, File(i.path));
+                        setState(() => _isUploading = false);
+                      }
+                    },
                     icon: const Icon(
                       Icons.image,
                       color: Colors.blueAccent,
@@ -266,7 +268,21 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   //take image from camera button
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      final ImagePicker picker = ImagePicker();
+
+                      // Pick an image
+                      final XFile? image = await picker.pickImage(
+                          source: ImageSource.camera, imageQuality: 70);
+                      if (image != null) {
+                        log('Image Path: ${image.path}');
+                        setState(() => _isUploading = true);
+
+                        await APIs.sendChatImage(
+                            widget.chatUser, File(image.path));
+                        setState(() => _isUploading = false);
+                      }
+                    },
                     icon: const Icon(
                       Icons.camera_alt_rounded,
                       color: Colors.blueAccent,
