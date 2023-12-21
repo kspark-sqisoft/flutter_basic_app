@@ -47,7 +47,9 @@ class _LoginScreenState extends State<LoginScreen> {
         log('\nlogged in AdditionalUserInfo:${user.additionalUserInfo}');
 
         if (await APIs.userExists()) {
+          await APIs.updateActiveStatus(true);
           if (!mounted) return;
+
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(

@@ -25,7 +25,14 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
 
   @override
   void initState() {
-    APIs.getSelfInfo();
+    _init();
+    super.initState();
+  }
+
+  Future<void> _init() async {
+    await APIs.getSelfInfo();
+
+    await APIs.updateActiveStatus(true);
 
     //for updating user active status according to lifecycle events
     //resume -- active or online
@@ -44,7 +51,6 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
 
       return Future.value(message);
     });
-    super.initState();
   }
 
   @override

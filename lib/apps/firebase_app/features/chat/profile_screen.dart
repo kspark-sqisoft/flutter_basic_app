@@ -51,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   //for moving to home screen
                   Navigator.pop(context);
 
-                  APIs.auth = FirebaseAuth.instance;
+                  //APIs.auth = FirebaseAuth.instance;
 
                   //replacing home screen with login screen
                   Navigator.pushReplacement(context,
