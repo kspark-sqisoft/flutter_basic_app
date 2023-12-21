@@ -35,12 +35,7 @@ class _ChatScreenState extends State<ChatScreen> {
   bool _isUploading = false;
   @override
   void initState() {
-    _init();
     super.initState();
-  }
-
-  Future<void> _init() async {
-    await APIs.updateActiveStatus(true);
   }
 
   @override
