@@ -75,6 +75,7 @@ class APIs {
 
     await messaging.getToken().then((t) {
       if (t != null) {
+        log('getFirebaseMessagingToken me.pushToken:${me.pushToken}');
         me = me.copyWith(pushToken: t);
         log('me Token: ${me.pushToken}');
       }
@@ -294,6 +295,7 @@ class APIs {
 
   // update online or last active status of user
   static Future<void> updateActiveStatus(bool isOnline) async {
+    log('updateActiveStatus me.pushToken:${me.pushToken}');
     fireStore.collection('users').doc(currentUser.uid).update({
       'is_online': isOnline,
       'last_active': DateTime.now().millisecondsSinceEpoch.toString(),
