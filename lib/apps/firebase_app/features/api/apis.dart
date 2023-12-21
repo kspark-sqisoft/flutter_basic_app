@@ -140,7 +140,7 @@ class APIs {
         .then((user) async {
       if (user.exists) {
         me = ChatUser.fromJson(user.data()!);
-        getFirebaseMessagingToken();
+        await getFirebaseMessagingToken();
         await APIs.updateActiveStatus(true);
         log('me:$me');
       } else {
