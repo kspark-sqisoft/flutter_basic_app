@@ -72,7 +72,9 @@ class _MessageCardState extends State<MessageCard> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(mq.width * .04),
+                padding: EdgeInsets.all(widget.message.type == Type.image
+                    ? mq.width * .03
+                    : mq.width * .04),
                 margin: EdgeInsets.symmetric(
                     horizontal: mq.width * .01, vertical: mq.height * .005),
                 decoration: BoxDecoration(
@@ -153,7 +155,9 @@ class _MessageCardState extends State<MessageCard> {
         ),
         Flexible(
           child: Container(
-            padding: EdgeInsets.all(mq.width * .04),
+            padding: EdgeInsets.all(widget.message.type == Type.image
+                ? mq.width * .03
+                : mq.width * .04),
             margin: EdgeInsets.symmetric(
                 horizontal: mq.width * .01, vertical: mq.height * .01),
             decoration: BoxDecoration(
