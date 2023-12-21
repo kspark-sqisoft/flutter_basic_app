@@ -32,8 +32,6 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
   Future<void> _init() async {
     await APIs.getSelfInfo();
 
-    await APIs.updateActiveStatus(true);
-
     //for updating user active status according to lifecycle events
     //resume -- active or online
     //pause  -- inactive or offline

@@ -17,6 +17,7 @@ import '../../widgets/message_card.dart';
 import '../api/apis.dart';
 import 'models/chat_user.dart';
 import 'models/message.dart';
+import 'view_profile_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key, required this.chatUser});
@@ -34,7 +35,12 @@ class _ChatScreenState extends State<ChatScreen> {
   bool _isUploading = false;
   @override
   void initState() {
+    _init();
     super.initState();
+  }
+
+  Future<void> _init() async {
+    await APIs.updateActiveStatus(true);
   }
 
   @override
@@ -132,7 +138,12 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Widget _appBar() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (_) => ViewProfileScreen(user: widget.chatUser)));
+      },
       child: StreamBuilder(
         stream: APIs.getUserInfo(widget.chatUser),
         builder: (context, snapshot) {
