@@ -8,6 +8,7 @@ import '../features/chat/models/chat_user.dart';
 import '../features/chat/models/message.dart';
 import '../firebase_app.dart';
 import '../helper/my_date_util.dart';
+import 'dialogs/profile_dialog.dart';
 
 class ChatUserCard extends StatefulWidget {
   const ChatUserCard({super.key, required this.chatUser});
@@ -52,17 +53,24 @@ class _ChatUserCardState extends State<ChatUserCard> {
             }
 
             return ListTile(
-              leading: ClipRRect(
-                borderRadius: BorderRadius.circular(mq.height * .3),
-                child: CachedNetworkImage(
-                  width: mq.height * .055,
-                  height: mq.height * .055,
-                  fit: BoxFit.cover,
-                  imageUrl: widget.chatUser.image!,
-                  placeholder: (context, url) =>
-                      const CircularProgressIndicator(),
-                  errorWidget: (context, url, error) => const CircleAvatar(
-                    child: Icon(Icons.error),
+              leading: InkWell(
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (_) => ProfileDialog(user: widget.chatUser));
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(mq.height * .3),
+                  child: CachedNetworkImage(
+                    width: mq.height * .055,
+                    height: mq.height * .055,
+                    fit: BoxFit.cover,
+                    imageUrl: widget.chatUser.image!,
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => const CircleAvatar(
+                      child: Icon(Icons.error),
+                    ),
                   ),
                 ),
               ),
