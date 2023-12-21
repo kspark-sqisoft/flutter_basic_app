@@ -55,7 +55,7 @@ class _MessageCardState extends State<MessageCard> {
             ),
             Text(
               '${widget.message.fromName}',
-              style: const TextStyle(fontSize: 13),
+              style: const TextStyle(fontSize: 12),
             ),
           ],
         ),
