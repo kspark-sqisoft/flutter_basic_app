@@ -21,6 +21,8 @@ class APIs {
   static FlutterLocalNotificationsPlugin localNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
+  static Stream<User?> get authStateChange => auth.authStateChanges();
+
   //initialization flutter local notification
   static initLocalNotification() async {
     AndroidInitializationSettings initSettingsAndroid =

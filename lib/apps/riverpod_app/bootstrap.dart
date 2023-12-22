@@ -2,8 +2,14 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:logging/logging.dart';
+import 'package:media_kit/media_kit.dart';
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'riverpod_app.dart';
 
@@ -14,9 +20,21 @@ Future<void> bootstrap() async {
       debugPrint(
           '${rec.loggerName}>${rec.level.name}: ${rec.time}: ${rec.message}');
     });
+
+    MediaKit.ensureInitialized();
+    await dotenv.load(fileName: '.env');
+
+    await Hive.initFlutter();
+    await Hive.openBox('todos');
+
+    final prefs = await SharedPreferences.getInstance();
+
     runApp(
-      const ProviderScope(
-        child: RiverpodApp(),
+      ProviderScope(
+        overrides: [
+          sharedPreferencesProvider.overrideWithValue(prefs),
+        ],
+        child: const RiverpodApp(),
       ),
     );
     FlutterError.onError = (FlutterErrorDetails details) {
