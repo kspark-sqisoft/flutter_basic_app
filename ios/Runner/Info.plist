@@ -4,6 +4,7 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<!-- 앱 이름 변경 -->
 	<key>CFBundleDisplayName</key>
 	<string>We Chat</string>
 	<key>CFBundleExecutable</key>

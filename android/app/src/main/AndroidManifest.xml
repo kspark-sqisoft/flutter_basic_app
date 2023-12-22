@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Push 메시지 수신을 위한 권한을 받도록 하자 -->
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
+    <!-- 앱 이름 변경 android:label -->
     <application
         android:label="We Chat"
         android:name="${applicationName}"
