@@ -25,7 +25,7 @@ class _ScaffoldWithNavBarStateFullShellState
             label: 'Weather',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.photo),
+            icon: Icon(Icons.video_label),
             label: 'Media',
           ),
           BottomNavigationBarItem(

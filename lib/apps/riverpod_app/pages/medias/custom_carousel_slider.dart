@@ -8,6 +8,7 @@ import 'package:mime/mime.dart';
 
 import 'package:collection/collection.dart';
 
+import '../../riverpod_app.dart';
 import 'media_kit_video_player.dart';
 
 /*
@@ -58,7 +59,6 @@ class _CustomCarouselSliderState extends ConsumerState<CustomCarouselSlider> {
   Widget build(BuildContext context) {
     print('build-------------------- $_dynamicInterval');
 
-    /*
     ref.listen(changeRouteProvider, (p, n) {
       if (n.routeType == ChangeRouteType.going && n.routeName == '/medias') {
         setState(() {
@@ -68,8 +68,6 @@ class _CustomCarouselSliderState extends ConsumerState<CustomCarouselSlider> {
         _carouselController.animateToPage(_current);
       }
     });
-
-    */
 
     return Stack(
       children: [
