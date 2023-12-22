@@ -64,7 +64,7 @@ Future<void> bootstrap() async {
 @pragma('vm:entry-point')
 Future<void> _firebasemessagingBackgroundHandler(RemoteMessage message) async {
   RemoteNotification? notification = message.notification;
-  log('onBackgroundMessage remoteNotification - title:${notification?.title} body:${notification?.body}');
+  log('onBackgroundMessage remoteNotification - title:${notification?.title} body:${notification?.body} - data:${message.data}');
 }
 
 void _initializeFirebase() async {

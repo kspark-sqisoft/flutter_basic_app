@@ -117,14 +117,14 @@ class APIs {
 
   static void _handleInitialMessage(RemoteMessage message) {
     RemoteNotification? notification = message.notification;
-    log('Open App from Terminated notification - title:${notification?.title} body:${notification?.body}');
+    log('Open App from Terminated notification - title:${notification?.title} body:${notification?.body} - data:${message.data}');
     initTitle = notification?.title;
     initBody = notification?.body;
   }
 
   static void _handleOnMessageOppendApp(RemoteMessage message) {
     RemoteNotification? notification = message.notification;
-    log('onMessageOpenedApp notification - title:${notification?.title} body:${notification?.body}');
+    log('onMessageOpenedApp notification - title:${notification?.title} body:${notification?.body} - data:${message.data}');
   }
 
   // for sending push notification
