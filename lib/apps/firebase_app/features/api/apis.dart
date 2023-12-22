@@ -130,6 +130,7 @@ class APIs {
   // for sending push notification
   static Future<void> sendPushNotification(
       ChatUser chatUser, String msg) async {
+    //to 보내고 싶은 사람 pushToken
     try {
       final body = {
         "to": chatUser.pushToken,
@@ -138,10 +139,11 @@ class APIs {
           "body": msg,
           "android_channel_id": "chats"
         },
-        // "data": {
-        //   "some_data": "User ID: ${me.id}",
-        // },
+        "data": {
+          "some_data": "User ID: ${me.id}",
+        },
       };
+      log('sendPushNotification:$body');
 
       var res = await post(Uri.parse('https://fcm.googleapis.com/fcm/send'),
           headers: {
