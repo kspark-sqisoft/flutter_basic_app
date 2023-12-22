@@ -6,7 +6,7 @@
     <!-- Push 메시지 수신을 위한 권한을 받도록 하자 -->
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
     <application
-        android:label="flutter_basic_app"
+        android:label="We Chat"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_rauncher">
         <!--Push 메시지의 중요도가 높다고 등록해 주어야 Push를 정상적으로 수신하는 것이 가능하다. -->

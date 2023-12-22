@@ -80,6 +80,7 @@ class APIs {
         log('me Token: ${me.pushToken}');
       }
     });
+    //포그라운드는 알림 받을 안뜸(상태바에)-로컬 노티피케이션으로 띄울수 있다.
     /*
     //for handling foreground messages
     FirebaseMessaging.onMessage.listen(
@@ -140,7 +141,7 @@ class APIs {
           "android_channel_id": "chats"
         },
         "data": {
-          "some_data": "User ID: ${me.id}",
+          "some_data": "User(me:sender) ID: ${me.id}",
         },
       };
       log('sendPushNotification:$body');
