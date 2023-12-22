@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDhG2MJR211HKrmRz74sQyx7dqkxxYpv2A',
-    appId: '1:937792262665:android:33da03933a4f73fecdded8',
+    appId: '1:937792262665:android:59485682c86dc4b2cdded8',
     messagingSenderId: '937792262665',
     projectId: 'fir-app-10500',
     storageBucket: 'fir-app-10500.appspot.com',
@@ -59,14 +59,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDTjAW4Er2ZbjF7wjy2H8DBHzXaXatclfw',
-    appId: '1:937792262665:ios:d2ac472d57e20c97cdded8',
+    appId: '1:937792262665:ios:f82fab6e3e1b0415cdded8',
     messagingSenderId: '937792262665',
     projectId: 'fir-app-10500',
     storageBucket: 'fir-app-10500.appspot.com',
-    androidClientId:
-        '937792262665-1opv61iksbv8sv0stc5cejllagmdj3od.apps.googleusercontent.com',
-    iosClientId:
-        '937792262665-ptbnumcha53in5jvitruqc53g9sv8lc7.apps.googleusercontent.com',
-    iosBundleId: 'com.noa99kee.flutterBasicApp',
+    androidClientId: '937792262665-1opv61iksbv8sv0stc5cejllagmdj3od.apps.googleusercontent.com',
+    iosClientId: '937792262665-vcqacf9lrvbicqg48akjapi0cmnp19ol.apps.googleusercontent.com',
+    iosBundleId: 'com.sqisoft.wechat',
   );
 }
