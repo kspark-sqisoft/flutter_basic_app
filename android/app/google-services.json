@@ -64,42 +64,6 @@
           ]
         }
       }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:937792262665:android:59485682c86dc4b2cdded8",
-        "android_client_info": {
-          "package_name": "com.sqisoft.wechat"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "937792262665-lidqf4hutjevap3la9b17rk84mujadi7.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDhG2MJR211HKrmRz74sQyx7dqkxxYpv2A"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "937792262665-lidqf4hutjevap3la9b17rk84mujadi7.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "937792262665-9iv27qd8jcc45td8hcothsifvt8f6q44.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.noa99kee.flutterbasicapp"
-              }
-            }
-          ]
-        }
-      }
     }
   ],
   "configuration_version": "1"
