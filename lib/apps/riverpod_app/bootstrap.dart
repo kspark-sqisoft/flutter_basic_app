@@ -11,6 +11,8 @@ import 'package:media_kit/media_kit.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'pages/todos/repositories/hive_todo_repository.dart';
+import 'pages/todos/repositories/todo_repository_provider.dart';
 import 'riverpod_app.dart';
 
 Future<void> bootstrap() async {
@@ -33,6 +35,7 @@ Future<void> bootstrap() async {
       ProviderScope(
         overrides: [
           sharedPreferencesProvider.overrideWithValue(prefs),
+          todoRepositoryProvider.overrideWithValue(HiveTodoRepository())
         ],
         child: const RiverpodApp(),
       ),
