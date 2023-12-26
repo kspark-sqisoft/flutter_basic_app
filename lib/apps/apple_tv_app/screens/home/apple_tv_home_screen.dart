@@ -114,7 +114,7 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
                           width: 30,
                           height: 30,
                           decoration: BoxDecoration(
-                            color: Colors.grey.withOpacity(.5),
+                            color: Colors.black.withOpacity(.5),
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -145,7 +145,7 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 12,
+                                    fontSize: 11,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
