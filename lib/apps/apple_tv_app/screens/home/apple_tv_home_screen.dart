@@ -60,15 +60,16 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
         physics: const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
-            floating: true,
+            floating: false,
             pinned: true,
-            snap: true,
-            stretch: true,
+            snap: false, //floating true 일때만 적용
+            stretch: false,
             stretchTriggerOffset: 150,
             onStretchTrigger: () async {
               log('onStretchTrigger');
             },
             centerTitle: false,
+            backgroundColor: Colors.black.withOpacity(.8),
             title: _isSliverAppBarExpanded
                 ? null
                 : const Text(
@@ -78,31 +79,84 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
                         color: Colors.white,
                         fontSize: 28),
                   ),
-            expandedHeight: 400,
+            expandedHeight: 510,
             collapsedHeight: 60,
             flexibleSpace: FlexibleSpaceBar(
-                stretchModes: const [
-                  StretchMode.fadeTitle,
-                  StretchMode.zoomBackground,
-                  StretchMode.blurBackground
-                ],
-                expandedTitleScale: 1,
-                titlePadding: EdgeInsets.zero,
-                background: Image.asset(
-                  'assets/images/samples/movies/oppenheimer.jpg',
-                  fit: BoxFit.cover,
-                ),
-                centerTitle: true,
-                title: Padding(
-                  padding: const EdgeInsets.all(18),
-                  child: _isSliverAppBarExpanded
-                      ? const Text(
-                          '홈',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.black),
-                        )
-                      : null,
-                )),
+              stretchModes: const [
+                StretchMode.fadeTitle,
+                StretchMode.zoomBackground,
+                StretchMode.blurBackground
+              ],
+              expandedTitleScale: 1,
+              titlePadding: EdgeInsets.zero,
+              background: Image.asset(
+                'assets/images/samples/movies/oppenheimer.jpg',
+                fit: BoxFit.cover,
+              ),
+              centerTitle: true,
+              title: Padding(
+                padding: const EdgeInsets.all(18),
+                child: _isSliverAppBarExpanded
+                    ? const Text(
+                        '홈',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.white),
+                      )
+                    : null,
+              ),
+            ),
+            actions: _isSliverAppBarExpanded
+                ? null
+                : [
+                    Row(
+                      children: [
+                        Container(
+                          width: 30,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.withOpacity(.5),
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            onPressed: () {},
+                            padding: EdgeInsets.zero,
+                            icon: const Icon(
+                              Icons.add,
+                              size: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: const BoxDecoration(
+                            color: Colors.grey,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Center(
+                            child: TextButton(
+                              onPressed: () {},
+                              child: const Text(
+                                'KP',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                      ],
+                    )
+                  ],
           ),
           const SliverPadding(
             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -222,7 +276,7 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
           ),
           SliverToBoxAdapter(
             child: Container(
-              height: 400,
+              height: 800,
               color: Colors.lightBlue,
             ),
           )
