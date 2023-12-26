@@ -30,6 +30,7 @@ class AppleTVHomeScreen extends StatelessWidget {
             onStretchTrigger: () async {
               log('onStretchTrigger');
             },
+            centerTitle: false,
             title: const Text(
               '홈',
               style:
