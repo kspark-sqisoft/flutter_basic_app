@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-List<String> _movies = [
+List<String> _upNextMovies = [
   'oppenheimer.jpg',
   'Emancipation.jpeg',
   'foundation.jpg',
@@ -11,9 +11,9 @@ List<String> _movies = [
   'TedLasso.jpg',
   'The-Last-Thing-He-Told-Me-EPKTV.png',
 ];
-List<String> _movies2 = [
-  'Silo.jpg',
-  'TedLasso.jpg',
+List<String> _toChartMovies = [
+  'The_Buccaneers.jpg',
+  'Silo2.jpg',
   'Emancipation.jpeg',
   'oppenheimer.jpg',
   'foundation.jpg',
@@ -199,7 +199,7 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0))),
                         child: Image.asset(
-                          'assets/images/samples/movies/${_movies[index]}',
+                          'assets/images/samples/movies/${_upNextMovies[index]}',
                           fit: BoxFit.cover,
                           width: 200,
                           height: 130,
@@ -243,7 +243,7 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.0))),
                             child: Image.asset(
-                              'assets/images/samples/movies/${_movies2[index]}',
+                              'assets/images/samples/movies/${_toChartMovies[index]}',
                               fit: BoxFit.cover,
                               width: 180,
                               height: 100,
@@ -266,7 +266,7 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
                                 SizedBox(
                                   width: 160,
                                   child: Text(
-                                    _movies[index].split('.').first,
+                                    _upNextMovies[index].split('.').first,
                                     maxLines: 2,
                                   ),
                                 ),
@@ -280,6 +280,75 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
                           ],
                         )
                       ],
+                    );
+                  },
+                ),
+              ),
+            ),
+          ),
+          const SliverPadding(
+            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            sliver: SliverToBoxAdapter(
+              child: Text(
+                'Explore Challels & Apps',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+            sliver: SliverToBoxAdapter(
+              child: SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 7,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  itemBuilder: (context, index) {
+                    return Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: ClipPath(
+                        clipper: ShapeBorderClipper(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        child: Stack(
+                          //fit: StackFit.expand,
+                          children: [
+                            Image.asset(
+                              'assets/images/samples/movies/${_toChartMovies[index]}',
+                              fit: BoxFit.cover,
+                              width: 130,
+                              height: 200,
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                width: 130,
+                                height: 70,
+                                color: Colors.black.withOpacity(.8),
+                                child: const Center(
+                                  child: SizedBox(
+                                    width: 60,
+                                    height: 60,
+                                    child: ClipRRect(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(60)),
+                                      child: Image(
+                                        fit: BoxFit.contain,
+                                        image: AssetImage(
+                                            'assets/images/apple/apple-tv-hd-logo2.png'),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                     );
                   },
                 ),
