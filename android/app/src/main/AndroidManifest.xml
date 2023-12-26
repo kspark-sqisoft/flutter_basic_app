@@ -15,7 +15,7 @@
     <application
         android:label="We Chat"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_rauncher">
+        android:icon="@mipmap/ic_launcher">
         <!--Push 메시지의 중요도가 높다고 등록해 주어야 Push를 정상적으로 수신하는 것이 가능하다. -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"

@@ -26,7 +26,7 @@ class APIs {
   //initialization flutter local notification
   static initLocalNotification() async {
     AndroidInitializationSettings initSettingsAndroid =
-        const AndroidInitializationSettings('@mipmap/ic_rauncher');
+        const AndroidInitializationSettings('@mipmap/ic_launcher');
     DarwinInitializationSettings initSettingsIOS =
         const DarwinInitializationSettings(
       requestSoundPermission: false,
