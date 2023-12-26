@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 List<String> _movies = [
@@ -17,26 +19,45 @@ class AppleTVHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
         slivers: [
-          const SliverAppBar(
+          SliverAppBar(
             floating: true,
-            pinned: false,
+            pinned: true,
             snap: true,
             stretch: true,
-            title: Text(
+            stretchTriggerOffset: 150,
+            onStretchTrigger: () async {
+              log('onStretchTrigger');
+            },
+            title: const Text(
               '홈',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              height: 500,
-              color: Colors.red,
-              child: Image.asset(
-                'assets/images/samples/movies/oppenheimer.jpg',
-                fit: BoxFit.cover,
-              ),
-            ),
+            expandedHeight: 400,
+            collapsedHeight: 60,
+            flexibleSpace: FlexibleSpaceBar(
+                stretchModes: const [
+                  StretchMode.fadeTitle,
+                  StretchMode.zoomBackground,
+                  StretchMode.blurBackground
+                ],
+                expandedTitleScale: 1,
+                titlePadding: EdgeInsets.zero,
+                background: Image.asset(
+                  'assets/images/samples/movies/oppenheimer.jpg',
+                  fit: BoxFit.cover,
+                ),
+                centerTitle: true,
+                title: const Padding(
+                  padding: EdgeInsets.all(18),
+                  child: Text(
+                    '홈',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black),
+                  ),
+                )),
           ),
           const SliverPadding(
             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -153,6 +174,12 @@ class AppleTVHomeScreen extends StatelessWidget {
                   },
                 ),
               ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              height: 400,
+              color: Colors.lightBlue,
             ),
           )
         ],
