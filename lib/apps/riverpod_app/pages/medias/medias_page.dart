@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../../providers/theme_provider.dart';
 import 'custom_carousel_slider.dart';
@@ -12,6 +16,11 @@ class MediasPage extends ConsumerStatefulWidget {
 }
 
 class _MediasPageState extends ConsumerState<MediasPage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

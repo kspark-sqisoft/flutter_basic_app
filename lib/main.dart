@@ -1,4 +1,4 @@
-import 'apps/firebase_app/bootstrap.dart';
+import 'apps/riverpod_app/bootstrap.dart';
 
 /// ###정적 분석
 /// 터미널 =>flutter analyze
