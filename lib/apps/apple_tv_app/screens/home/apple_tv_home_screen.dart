@@ -29,7 +29,7 @@ class AppleTVHomeScreen extends StatefulWidget {
 }
 
 class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
-  static const kExpandedHeight = 200.0;
+  static const kExpandedHeight = 510.0;
   late ScrollController _scrollController;
 
   bool get _isSliverAppBarExpanded {
@@ -70,15 +70,7 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
             },
             centerTitle: false,
             backgroundColor: Colors.black.withOpacity(.8),
-            title: _isSliverAppBarExpanded
-                ? null
-                : const Text(
-                    '홈',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 28),
-                  ),
+
             expandedHeight: 510,
             collapsedHeight: 60,
             flexibleSpace: FlexibleSpaceBar(
@@ -89,9 +81,81 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
               ],
               expandedTitleScale: 1,
               titlePadding: EdgeInsets.zero,
-              background: Image.asset(
-                'assets/images/samples/movies/oppenheimer.jpg',
-                fit: BoxFit.cover,
+              background: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Image.asset(
+                    'assets/images/samples/movies/oppenheimer.jpg',
+                    fit: BoxFit.cover,
+                  ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            '홈',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize: 28),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                width: 30,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(.5),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: IconButton(
+                                  onPressed: () {},
+                                  padding: EdgeInsets.zero,
+                                  icon: const Icon(
+                                    Icons.add,
+                                    size: 20,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                width: 40,
+                                height: 40,
+                                decoration: const BoxDecoration(
+                                  color: Colors.grey,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Center(
+                                  child: TextButton(
+                                    onPressed: () {},
+                                    child: const Text(
+                                      'KP',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
               ),
               centerTitle: true,
               title: Padding(
@@ -105,58 +169,6 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
                     : null,
               ),
             ),
-            actions: _isSliverAppBarExpanded
-                ? null
-                : [
-                    Row(
-                      children: [
-                        Container(
-                          width: 30,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(.5),
-                            shape: BoxShape.circle,
-                          ),
-                          child: IconButton(
-                            onPressed: () {},
-                            padding: EdgeInsets.zero,
-                            icon: const Icon(
-                              Icons.add,
-                              size: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          width: 40,
-                          height: 40,
-                          decoration: const BoxDecoration(
-                            color: Colors.grey,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Center(
-                            child: TextButton(
-                              onPressed: () {},
-                              child: const Text(
-                                'KP',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                      ],
-                    )
-                  ],
           ),
           const SliverPadding(
             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
