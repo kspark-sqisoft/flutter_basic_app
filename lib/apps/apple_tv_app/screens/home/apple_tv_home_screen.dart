@@ -11,14 +11,52 @@ List<String> _movies = [
   'TedLasso.jpg',
   'The-Last-Thing-He-Told-Me-EPKTV.png',
 ];
+List<String> _movies2 = [
+  'Silo.jpg',
+  'TedLasso.jpg',
+  'Emancipation.jpeg',
+  'oppenheimer.jpg',
+  'foundation.jpg',
+  'Invasion.jpg',
+  'The-Last-Thing-He-Told-Me-EPKTV.png',
+];
 
-class AppleTVHomeScreen extends StatelessWidget {
+class AppleTVHomeScreen extends StatefulWidget {
   const AppleTVHomeScreen({super.key});
+
+  @override
+  State<AppleTVHomeScreen> createState() => _AppleTVHomeScreenState();
+}
+
+class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
+  static const kExpandedHeight = 200.0;
+  late ScrollController _scrollController;
+
+  bool get _isSliverAppBarExpanded {
+    return _scrollController.hasClients &&
+        _scrollController.offset > kExpandedHeight - kToolbarHeight;
+  }
+
+  @override
+  void initState() {
+    _scrollController = ScrollController()
+      ..addListener(() {
+        setState(() {});
+      });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
+        controller: _scrollController,
         physics: const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
@@ -31,11 +69,15 @@ class AppleTVHomeScreen extends StatelessWidget {
               log('onStretchTrigger');
             },
             centerTitle: false,
-            title: const Text(
-              '홈',
-              style:
-                  TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-            ),
+            title: _isSliverAppBarExpanded
+                ? null
+                : const Text(
+                    '홈',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 28),
+                  ),
             expandedHeight: 400,
             collapsedHeight: 60,
             flexibleSpace: FlexibleSpaceBar(
@@ -51,13 +93,15 @@ class AppleTVHomeScreen extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
                 centerTitle: true,
-                title: const Padding(
-                  padding: EdgeInsets.all(18),
-                  child: Text(
-                    '홈',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black),
-                  ),
+                title: Padding(
+                  padding: const EdgeInsets.all(18),
+                  child: _isSliverAppBarExpanded
+                      ? const Text(
+                          '홈',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.black),
+                        )
+                      : null,
                 )),
           ),
           const SliverPadding(
@@ -120,7 +164,6 @@ class AppleTVHomeScreen extends StatelessWidget {
                   itemCount: 7,
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   itemBuilder: (context, index) {
-                    _movies.shuffle();
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -134,7 +177,7 @@ class AppleTVHomeScreen extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.0))),
                             child: Image.asset(
-                              'assets/images/samples/movies/${_movies[index]}',
+                              'assets/images/samples/movies/${_movies2[index]}',
                               fit: BoxFit.cover,
                               width: 180,
                               height: 100,
