@@ -20,6 +20,9 @@ class AppleTVApp extends ConsumerWidget {
           PointerDeviceKind.unknown,
         },
       ),
+      darkTheme: ThemeData.dark(),
+      theme: ThemeData.light(),
+      themeMode: ThemeMode.dark,
       routerConfig: ref.watch(statefulShellRouterProvider),
     );
   }
