@@ -18,9 +18,6 @@ import 'firebase_app.dart' as firebase;
 Future<void> bootstrap() async {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
-    //DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-    //AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-    //log('androidInfo.version.sdkInt:${androidInfo.version.sdkInt}');
 
     //상단바, 하단바 없애기, 화면 로테이션이 가능한 풀스크린 앱
     //enter full-screen
