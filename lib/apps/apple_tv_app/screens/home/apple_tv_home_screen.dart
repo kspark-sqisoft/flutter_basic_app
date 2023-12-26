@@ -286,12 +286,6 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
               ),
             ),
           ),
-          SliverToBoxAdapter(
-            child: Container(
-              height: 800,
-              color: Colors.lightBlue,
-            ),
-          )
         ],
       ),
     );
