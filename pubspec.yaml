@@ -88,6 +88,7 @@ dependencies:
   scrolls_to_top: ^2.1.1
   bulleted_list: ^0.0.1+0.1a
   permission_handler: ^11.1.0
+  font_awesome_flutter: ^10.6.0
   
 
 dev_dependencies:
@@ -109,10 +110,11 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
   change_app_package_name: ^1.1.0
 
+#flutter pub run flutter_launcher_icons
 flutter_icons:
   android: "ic_launcher"
   ios: true
-  image_path: "assets/images/chat/chat.png"
+  image_path: "assets/images/apple/apple-logo.png"
   min_sdk_android: 24
   remove_alpha_ios: true
 
@@ -135,6 +137,9 @@ flutter:
     - assets/images/
     - assets/images/etc/
     - assets/images/chat/
+    - assets/images/apple/
+    - assets/images/samples/
+    - assets/images/samples/movies/
     - assets/google_fonts/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -151,6 +156,10 @@ flutter:
     - family: FlexIcons
       fonts:
         - asset: assets/fonts/FlexIcons.ttf
+    - family: CustomIcons
+      fonts:
+        - asset: assets/fonts/CustomIcons.ttf
+    
   # fonts:
   #   - family: Schyler
   #     fonts:
