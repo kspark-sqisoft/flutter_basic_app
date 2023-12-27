@@ -46,7 +46,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
             height: 570,
             autoPlay: true,
             viewportFraction: 1,
-            autoPlayInterval: const Duration(seconds: 20),
+            autoPlayInterval: Duration(seconds: _dynamicInterval),
             onPageChanged: (index, reasen) {
               print('reason:$reasen');
               setState(() {
