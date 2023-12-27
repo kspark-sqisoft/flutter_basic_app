@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
+import 'custom_carousel_slider.dart';
+
 List<String> _upNextMovies = [
   'oppenheimer.jpg',
   'Emancipation.jpeg',
@@ -82,12 +84,14 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
               expandedTitleScale: 1,
               titlePadding: EdgeInsets.zero,
               background: Stack(
-                fit: StackFit.expand,
                 children: [
+                  /*
                   Image.asset(
                     'assets/images/samples/movies/oppenheimer.jpg',
                     fit: BoxFit.cover,
                   ),
+                  */
+                  const CustomCarouselSlider(),
                   Align(
                     alignment: Alignment.topCenter,
                     child: Padding(

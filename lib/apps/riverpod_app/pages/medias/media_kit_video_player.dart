@@ -10,8 +10,10 @@ class MediaKitVideoPlayer extends ConsumerStatefulWidget {
   const MediaKitVideoPlayer({
     super.key,
     required this.path,
+    this.fit = BoxFit.contain,
   });
   final String path;
+  final BoxFit fit;
 
   @override
   ConsumerState<MediaKitVideoPlayer> createState() =>
@@ -53,6 +55,7 @@ class _MediaKitVideoPlayerState extends ConsumerState<MediaKitVideoPlayer> {
     return Video(
         controller: controller,
         controls: NoVideoControls,
+        fit: widget.fit,
         fill: currentTheme is LightTheme ? Colors.white : Colors.black);
   }
 }
