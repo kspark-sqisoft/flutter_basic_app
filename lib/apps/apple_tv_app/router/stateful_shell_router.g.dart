@@ -7,7 +7,7 @@ part of 'stateful_shell_router.dart';
 // **************************************************************************
 
 String _$statefulShellRouterHash() =>
-    r'b4c2bc144b27970218a962c91f974365433bdd0f';
+    r'5e11036c5b986cbda678f9d7a8ed00834d02dfbc';
 
 /// See also [statefulShellRouter].
 @ProviderFor(statefulShellRouter)
