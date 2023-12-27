@@ -29,7 +29,7 @@ class AppleTVHomeScreen extends StatefulWidget {
 }
 
 class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
-  static const kExpandedHeight = 510.0;
+  static const kExpandedHeight = 310.0;
   late ScrollController _scrollController;
 
   bool get _isSliverAppBarExpanded {
@@ -68,9 +68,9 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
             onStretchTrigger: () async {
               log('onStretchTrigger');
             },
-            centerTitle: false,
+            centerTitle: true,
+            title: _isSliverAppBarExpanded ? const Text('홈') : null,
             backgroundColor: Colors.black.withOpacity(.8),
-
             expandedHeight: 510,
             collapsedHeight: 60,
             flexibleSpace: FlexibleSpaceBar(
@@ -156,17 +156,6 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
                     ),
                   )
                 ],
-              ),
-              centerTitle: true,
-              title: Padding(
-                padding: const EdgeInsets.all(18),
-                child: _isSliverAppBarExpanded
-                    ? const Text(
-                        '홈',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white),
-                      )
-                    : null,
               ),
             ),
           ),
@@ -331,11 +320,11 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
                                 color: Colors.black.withOpacity(.8),
                                 child: const Center(
                                   child: SizedBox(
-                                    width: 60,
-                                    height: 60,
+                                    width: 50,
+                                    height: 50,
                                     child: ClipRRect(
                                       borderRadius:
-                                          BorderRadius.all(Radius.circular(60)),
+                                          BorderRadius.all(Radius.circular(50)),
                                       child: Image(
                                         fit: BoxFit.contain,
                                         image: AssetImage(
@@ -355,6 +344,9 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
               ),
             ),
           ),
+          SliverToBoxAdapter(
+            child: Container(height: 500),
+          )
         ],
       ),
     );

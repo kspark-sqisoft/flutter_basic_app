@@ -156,6 +156,7 @@ flutter:
     - family: FlexIcons
       fonts:
         - asset: assets/fonts/FlexIcons.ttf
+  # https://www.fluttericon.com/ 커스텀 아이콘 만들기
     - family: CustomIcons
       fonts:
         - asset: assets/fonts/CustomIcons.ttf
