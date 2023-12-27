@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:mime/mime.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../riverpod_app/pages/medias/media_kit_video_player.dart';
 
@@ -95,46 +96,15 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
             }
           },
         ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: _medias.mapIndexed((index, entry) {
-                return GestureDetector(
-                  onTap: () => _carouselController.animateToPage(index),
-                  child: Stack(
-                    children: [
-                      Container(
-                        width: 12.0,
-                        height: 12.0,
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 4.0),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color:
-                                (Theme.of(context).brightness == Brightness.dark
-                                    ? Colors.white.withOpacity(0.5)
-                                    : Colors.black.withOpacity(0.3))),
-                      ),
-                      Container(
-                        width: 12.0,
-                        height: 12.0,
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 4.0),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: (Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Colors.lightGreen
-                                    : Colors.lightBlue)
-                                .withOpacity(_currentIndex == index ? 1 : 0)),
-                      ),
-                    ],
-                  ),
-                );
-              }).toList(),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 16.0),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: AnimatedSmoothIndicator(
+              activeIndex: _currentIndex,
+              count: _medias.length,
+              effect: const WormEffect(),
+              onDotClicked: (index) => _carouselController.animateToPage(index),
             ),
           ),
         )
