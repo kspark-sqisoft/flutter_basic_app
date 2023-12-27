@@ -23,7 +23,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
     'https://www.91-cdn.com/hub/wp-content/uploads/2023/09/iphone-15-production-india.jpg',
     'https://www.pexels.com/download/video/3756003/'
   ];
-  List<int> intervals = [10, 20, 25, 10, 25];
+  List<int> intervals = [5, 20, 25, 5, 25];
 
   int _currentIndex = 0;
   late int _dynamicInterval;
@@ -96,6 +96,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
             }
           },
         ),
+        /*
         Padding(
           padding: const EdgeInsets.only(bottom: 16.0),
           child: Align(
@@ -107,8 +108,87 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
               onDotClicked: (index) => _carouselController.animateToPage(index),
             ),
           ),
+        ),
+        */
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: _medias.mapIndexed((index, entry) {
+                return ProgressDot(
+                  carouselController: _carouselController,
+                  index: index,
+                  currentIndex: _currentIndex,
+                  duration: intervals[index],
+                );
+              }).toList(),
+            ),
+          ),
         )
       ],
+    );
+  }
+}
+
+class ProgressDot extends StatelessWidget {
+  const ProgressDot({
+    super.key,
+    required this.index,
+    required this.currentIndex,
+    required this.carouselController,
+    required this.duration,
+  });
+  final int index;
+  final int currentIndex;
+  final CarouselController carouselController;
+  final int duration;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        print('Dot tap');
+        carouselController.animateToPage(index);
+      },
+      child: Stack(
+        children: [
+          //배경
+          Container(
+            width: index == currentIndex ? 30 : 16,
+            height: 16.0,
+            margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                color: Colors.grey.withOpacity(.8),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(8),
+                ),
+              ),
+            ),
+          ),
+          //위
+          AnimatedContainer(
+            duration: Duration(seconds: index == currentIndex ? duration : 0),
+            width: index == currentIndex ? 30 : 16,
+            height: 16.0,
+            margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                color: index == currentIndex
+                    ? Colors.white
+                    : Colors.white.withOpacity(0),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(8),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
