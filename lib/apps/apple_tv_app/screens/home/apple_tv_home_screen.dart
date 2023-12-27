@@ -71,11 +71,18 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
               log('onStretchTrigger');
             },
             centerTitle: true,
-            title: _isSliverAppBarExpanded ? const Text('홈') : null,
+
             backgroundColor: Colors.black.withOpacity(.8),
             expandedHeight: 510,
             collapsedHeight: 60,
             flexibleSpace: FlexibleSpaceBar(
+              centerTitle: true,
+              title: _isSliverAppBarExpanded
+                  ? const Padding(
+                      padding: EdgeInsets.only(bottom: 16.0),
+                      child: Text('홈'),
+                    )
+                  : null,
               stretchModes: const [
                 StretchMode.fadeTitle,
                 StretchMode.zoomBackground,
@@ -96,7 +103,7 @@ class _AppleTVHomeScreenState extends State<AppleTVHomeScreen> {
                     alignment: Alignment.topCenter,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 30),
+                          horizontal: 20, vertical: 50),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
