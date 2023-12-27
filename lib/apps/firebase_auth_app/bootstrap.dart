@@ -14,7 +14,7 @@ Future<void> bootstrap() async {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
     setPathUrlStrategy();
-    _initializeFirebase();
+    await _initializeFirebase();
     runApp(
       const ProviderScope(child: FirebaseAuthApp()),
     );
@@ -41,7 +41,7 @@ Future<void> bootstrap() async {
   });
 }
 
-void _initializeFirebase() async {
+Future<void> _initializeFirebase() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

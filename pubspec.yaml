@@ -90,6 +90,7 @@ dependencies:
   permission_handler: ^11.1.0
   font_awesome_flutter: ^10.6.0
   url_strategy: ^0.2.0
+  validators: ^3.0.0
   
   
 
