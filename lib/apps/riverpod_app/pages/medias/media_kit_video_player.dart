@@ -53,9 +53,11 @@ class _MediaKitVideoPlayerState extends ConsumerState<MediaKitVideoPlayer> {
 
     final currentTheme = ref.watch(themeProvider);
     return Video(
-        controller: controller,
-        controls: NoVideoControls,
-        fit: widget.fit,
-        fill: currentTheme is LightTheme ? Colors.white : Colors.black);
+      controller: controller,
+      controls: NoVideoControls,
+      fit: widget.fit,
+      fill: Colors.black,
+      //fill: currentTheme is LightTheme ? Colors.white : Colors.black,
+    );
   }
 }

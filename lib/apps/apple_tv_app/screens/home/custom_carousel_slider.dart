@@ -40,7 +40,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
       itemCount: _medias.length,
       itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
         final path = _medias[itemIndex];
-
+        //TODO 문제 있음 mimeType
         final mimeType = lookupMimeType(path);
         print('mimeType:$mimeType');
         if (mimeType == null) {
