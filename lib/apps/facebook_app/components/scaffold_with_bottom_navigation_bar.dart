@@ -19,7 +19,7 @@ class ScaffoldWithBottomNavigationBar extends StatelessWidget {
       bottomNavigationBar: ValueListenableBuilder(
         valueListenable: hideBottomNavbar.visible,
         builder: (context, value, child) => AnimatedContainer(
-          duration: const Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 300),
           height: value ? kBottomNavigationBarHeight : 0.0,
           child: Wrap(children: [
             BottomNavigationBar(
