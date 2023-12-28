@@ -12,6 +12,7 @@ class FacebookApp extends ConsumerWidget {
       title: 'Facebook App',
       debugShowCheckedModeBanner: false,
       routerConfig: ref.watch(appRouterProvider),
+      theme: ThemeData(useMaterial3: false),
     );
   }
 }
