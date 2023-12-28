@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../components/scaffold_with_bottom_navigation_bar.dart';
+
 final users = ['', 'Metallica', '정수봉', '김대열', '성민창', 'iJustine'];
 
 class HomeScreen extends StatelessWidget {
@@ -10,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
+      controller: hideBottomNavbar.controller,
       slivers: [
         SliverAppBar(
           floating: true,
