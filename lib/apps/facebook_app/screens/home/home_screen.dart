@@ -252,216 +252,608 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         //content1
-        SliverToBoxAdapter(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      const CircleAvatar(
-                        radius: 18,
-                        backgroundColor: Colors.blue,
-                        backgroundImage:
-                            AssetImage('assets/images/facebook/user3.jpg'),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            '김대열',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 11),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            children: [
-                              const Text(
-                                '회원님을 위한 추천 · 36분 · ',
-                                maxLines: 2,
-                                style: TextStyle(fontSize: 11),
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          sliver: SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        const CircleAvatar(
+                          radius: 18,
+                          backgroundColor: Colors.blue,
+                          backgroundImage:
+                              AssetImage('assets/images/facebook/user3.jpg'),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              '김대열',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 11),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              children: [
+                                const Text(
+                                  '회원님을 위한 추천 · 36분 · ',
+                                  maxLines: 2,
+                                  style: TextStyle(fontSize: 11),
+                                ),
+                                FaIcon(
+                                  FontAwesomeIcons.earthAmericas,
+                                  size: 16,
+                                  color: Colors.grey[500],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Text(
+                          '···',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const FaIcon(
+                              FontAwesomeIcons.xmark,
+                              color: Colors.grey,
+                            ))
+                      ],
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                const Text(
+                  '소원을 빌면 복이 온다는 ㄷㄷ',
+                  maxLines: 2,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                StaggeredGrid.count(
+                  crossAxisCount: 4,
+                  mainAxisSpacing: 4,
+                  crossAxisSpacing: 4,
+                  children: const [
+                    StaggeredGridTile.count(
+                      crossAxisCellCount: 2,
+                      mainAxisCellCount: 2,
+                      child: Tile(index: 0),
+                    ),
+                    StaggeredGridTile.count(
+                      crossAxisCellCount: 2,
+                      mainAxisCellCount: 1,
+                      child: Tile(index: 1),
+                    ),
+                    StaggeredGridTile.count(
+                      crossAxisCellCount: 1,
+                      mainAxisCellCount: 1,
+                      child: Tile(index: 2),
+                    ),
+                    StaggeredGridTile.count(
+                      crossAxisCellCount: 1,
+                      mainAxisCellCount: 1,
+                      child: Tile(index: 3),
+                    ),
+                  ],
+                ),
+                //좋아요 ...
+                const SizedBox(
+                  height: 10,
+                ),
+                const Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 13,
+                              child: FaIcon(
+                                FontAwesomeIcons.thumbsUp,
+                                color: Colors.white,
+                                size: 15,
                               ),
-                              FaIcon(
-                                FontAwesomeIcons.earthAmericas,
-                                size: 16,
-                                color: Colors.grey[500],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Text(
-                        '···',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: const FaIcon(
-                            FontAwesomeIcons.xmark,
-                            color: Colors.grey,
-                          ))
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              const Text(
-                '소원을 빌면 복이 온다는 ㄷㄷ',
-                maxLines: 2,
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              StaggeredGrid.count(
-                crossAxisCount: 4,
-                mainAxisSpacing: 4,
-                crossAxisSpacing: 4,
-                children: const [
-                  StaggeredGridTile.count(
-                    crossAxisCellCount: 2,
-                    mainAxisCellCount: 2,
-                    child: Tile(index: 0),
-                  ),
-                  StaggeredGridTile.count(
-                    crossAxisCellCount: 2,
-                    mainAxisCellCount: 1,
-                    child: Tile(index: 1),
-                  ),
-                  StaggeredGridTile.count(
-                    crossAxisCellCount: 1,
-                    mainAxisCellCount: 1,
-                    child: Tile(index: 2),
-                  ),
-                  StaggeredGridTile.count(
-                    crossAxisCellCount: 1,
-                    mainAxisCellCount: 1,
-                    child: Tile(index: 3),
-                  ),
-                ],
-              ),
-            ],
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('1개'),
+                          ],
+                        ),
+                        Text('공유 1회')
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        //좋아요
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.thumbsUp,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('좋아요'),
+                          ],
+                        ),
+                        //댓글
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.comment,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('댓글'),
+                          ],
+                        ),
+                        //복사
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.copy,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('복사'),
+                          ],
+                        ),
+                        //공유하기
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.share,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('공유하기'),
+                          ],
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
-
-        //content1
-        SliverToBoxAdapter(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      const CircleAvatar(
-                        radius: 18,
-                        backgroundColor: Colors.blue,
-                        backgroundImage:
-                            AssetImage('assets/images/facebook/user3.jpg'),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            '정수봉',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 11),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            children: [
-                              const Text(
-                                '회원님을 위한 추천 · 36분 · ',
-                                maxLines: 2,
-                                style: TextStyle(fontSize: 11),
-                              ),
-                              FaIcon(
-                                FontAwesomeIcons.earthAmericas,
-                                size: 16,
-                                color: Colors.grey[500],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Text(
-                        '···',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: const FaIcon(
-                            FontAwesomeIcons.xmark,
-                            color: Colors.grey,
-                          ))
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              const Text(
-                '이겨라(짝) 이겨라(짝)\n연기력 오지는 레전드 장면...',
-                maxLines: 2,
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              StaggeredGrid.count(
-                crossAxisCount: 4,
-                mainAxisSpacing: 4,
-                crossAxisSpacing: 4,
-                children: const [
-                  StaggeredGridTile.count(
-                    crossAxisCellCount: 1,
-                    mainAxisCellCount: 1,
-                    child: Tile2(index: 1),
-                  ),
-                  StaggeredGridTile.count(
-                    crossAxisCellCount: 1,
-                    mainAxisCellCount: 1,
-                    child: Tile2(index: 2),
-                  ),
-                  StaggeredGridTile.count(
-                    crossAxisCellCount: 2,
-                    mainAxisCellCount: 2,
-                    child: Tile2(index: 3),
-                  ),
-                  StaggeredGridTile.count(
-                    crossAxisCellCount: 2,
-                    mainAxisCellCount: 1,
-                    child: Tile2(index: 0),
-                  ),
-                ],
-              ),
-            ],
+        const SliverToBoxAdapter(
+          child: Divider(
+            thickness: 8,
           ),
-        )
+        ),
+        //content2
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          sliver: SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        const CircleAvatar(
+                          radius: 18,
+                          backgroundColor: Colors.blue,
+                          backgroundImage:
+                              AssetImage('assets/images/facebook/user3.jpg'),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              '정수봉',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 11),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              children: [
+                                const Text(
+                                  '회원님을 위한 추천 · 36분 · ',
+                                  maxLines: 2,
+                                  style: TextStyle(fontSize: 11),
+                                ),
+                                FaIcon(
+                                  FontAwesomeIcons.earthAmericas,
+                                  size: 16,
+                                  color: Colors.grey[500],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Text(
+                          '···',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const FaIcon(
+                              FontAwesomeIcons.xmark,
+                              color: Colors.grey,
+                            ))
+                      ],
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                const Text(
+                  '이겨라(짝) 이겨라(짝)\n연기력 오지는 레전드 장면...',
+                  maxLines: 2,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                StaggeredGrid.count(
+                  crossAxisCount: 4,
+                  mainAxisSpacing: 4,
+                  crossAxisSpacing: 4,
+                  children: const [
+                    StaggeredGridTile.count(
+                      crossAxisCellCount: 1,
+                      mainAxisCellCount: 1,
+                      child: Tile2(index: 1),
+                    ),
+                    StaggeredGridTile.count(
+                      crossAxisCellCount: 1,
+                      mainAxisCellCount: 1,
+                      child: Tile2(index: 2),
+                    ),
+                    StaggeredGridTile.count(
+                      crossAxisCellCount: 2,
+                      mainAxisCellCount: 2,
+                      child: Tile2(index: 3),
+                    ),
+                    StaggeredGridTile.count(
+                      crossAxisCellCount: 2,
+                      mainAxisCellCount: 1,
+                      child: Tile2(index: 0),
+                    ),
+                  ],
+                ),
+                //좋아요 ...
+                const SizedBox(
+                  height: 10,
+                ),
+                const Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 13,
+                              child: FaIcon(
+                                FontAwesomeIcons.thumbsUp,
+                                color: Colors.white,
+                                size: 15,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('1개'),
+                          ],
+                        ),
+                        Text('공유 1회')
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        //좋아요
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.thumbsUp,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('좋아요'),
+                          ],
+                        ),
+                        //댓글
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.comment,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('댓글'),
+                          ],
+                        ),
+                        //복사
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.copy,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('복사'),
+                          ],
+                        ),
+                        //공유하기
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.share,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('공유하기'),
+                          ],
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SliverToBoxAdapter(
+          child: Divider(
+            thickness: 8,
+          ),
+        ),
+        //content3
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          sliver: SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        const CircleAvatar(
+                          radius: 18,
+                          backgroundColor: Colors.blue,
+                          backgroundImage:
+                              AssetImage('assets/images/facebook/user3.jpg'),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              '윤보환',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 11),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              children: [
+                                const Text(
+                                  '회원님을 위한 추천 · 36분 · ',
+                                  maxLines: 2,
+                                  style: TextStyle(fontSize: 11),
+                                ),
+                                FaIcon(
+                                  FontAwesomeIcons.earthAmericas,
+                                  size: 16,
+                                  color: Colors.grey[500],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Text(
+                          '···',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const FaIcon(
+                              FontAwesomeIcons.xmark,
+                              color: Colors.grey,
+                            ))
+                      ],
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                const Text(
+                  '연말 연시 따뜻한 감성',
+                  maxLines: 2,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                StaggeredGrid.count(
+                  crossAxisCount: 4,
+                  mainAxisSpacing: 4,
+                  crossAxisSpacing: 4,
+                  children: const [
+                    StaggeredGridTile.count(
+                      crossAxisCellCount: 2,
+                      mainAxisCellCount: 2,
+                      child: Tile3(index: 0),
+                    ),
+                    StaggeredGridTile.count(
+                      crossAxisCellCount: 2,
+                      mainAxisCellCount: 2,
+                      child: Tile3(index: 1),
+                    ),
+                  ],
+                ),
+                //좋아요 ...
+                const SizedBox(
+                  height: 10,
+                ),
+                const Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 13,
+                              child: FaIcon(
+                                FontAwesomeIcons.thumbsUp,
+                                color: Colors.white,
+                                size: 15,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('1개'),
+                          ],
+                        ),
+                        Text('공유 1회')
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        //좋아요
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.thumbsUp,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('좋아요'),
+                          ],
+                        ),
+                        //댓글
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.comment,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('댓글'),
+                          ],
+                        ),
+                        //복사
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.copy,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('복사'),
+                          ],
+                        ),
+                        //공유하기
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.share,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('공유하기'),
+                          ],
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -488,6 +880,19 @@ class Tile2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       'assets/images/facebook/content$index.jpg',
+      fit: BoxFit.cover,
+    );
+  }
+}
+
+class Tile3 extends StatelessWidget {
+  const Tile3({super.key, required this.index});
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      'assets/images/facebook/contentA$index.jpg',
       fit: BoxFit.cover,
     );
   }
