@@ -16,12 +16,13 @@ class HomeScreen extends StatelessWidget {
       slivers: [
         SliverAppBar(
           floating: true,
-          backgroundColor: Colors.white,
           centerTitle: false,
           title: Text(
             'facebook',
             style: TextStyle(
-              color: Colors.blue[600],
+              color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.blue[600]
+                  : Colors.white,
               fontSize: 25,
               fontWeight: FontWeight.bold,
             ),
