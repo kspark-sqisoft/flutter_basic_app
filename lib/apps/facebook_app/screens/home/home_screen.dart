@@ -31,7 +31,9 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(2.0),
               child: PopupMenuButton(
-                offset: const Offset(60, 54),
+                constraints:
+                    const BoxConstraints.expand(width: 140, height: 170),
+                offset: const Offset(50, 54),
                 icon: CircleAvatar(
                   maxRadius: 18,
                   backgroundColor: Colors.grey[300],
@@ -49,6 +51,7 @@ class HomeScreen extends StatelessWidget {
                 itemBuilder: (context) {
                   return <PopupMenuEntry>[
                     const PopupMenuItem(
+                      height: 26,
                       child: Row(
                         children: [
                           FaIcon(
@@ -67,6 +70,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     const PopupMenuDivider(),
                     const PopupMenuItem(
+                      height: 26,
                       child: Row(
                         children: [
                           FaIcon(FontAwesomeIcons.bookOpen, size: 20),
@@ -82,6 +86,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     const PopupMenuDivider(),
                     const PopupMenuItem(
+                      height: 26,
                       child: Row(
                         children: [
                           FaIcon(
@@ -100,6 +105,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     const PopupMenuDivider(),
                     const PopupMenuItem(
+                      height: 26,
                       child: Row(
                         children: [
                           FaIcon(
