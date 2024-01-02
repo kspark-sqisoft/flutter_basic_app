@@ -1,6 +1,10 @@
+import 'dart:developer';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../components/scaffold_with_bottom_navigation_bar.dart';
 import '../chat/chat_screen.dart';
@@ -15,11 +19,10 @@ class HomeScreen extends StatelessWidget {
     return GestureDetector(
       onHorizontalDragUpdate: (details) {
         if (details.delta.direction > 0) {
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const ChatScreen(),
-          ));
+          context.go('/home/chat');
         }
       },
+      onVerticalDragUpdate: (details) {},
       child: CustomScrollView(
         controller: hideBottomNavbar.controller,
         slivers: [

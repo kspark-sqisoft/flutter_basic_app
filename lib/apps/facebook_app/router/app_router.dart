@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../riverpod_app/router/router_state_full_shell_provider.dart';
 import '../screens/chat/chat_screen.dart';
 import '../screens/menu/menu_screen.dart';
 import '../screens/notification/notification_screen.dart';
@@ -15,6 +16,7 @@ part 'app_router.g.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');
+
 final GlobalKey<NavigatorState> _sectionHomeNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'sectionHomeNav');
 final GlobalKey<NavigatorState> _sectionVideoNavigatorKey =
@@ -32,12 +34,9 @@ final GlobalKey<NavigatorState> _sectionMenuNavigatorKey =
 GoRouter appRouter(AppRouterRef ref) {
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
+    debugLogDiagnostics: true,
     initialLocation: '/home',
     routes: <RouteBase>[
-      GoRoute(
-        path: '/chat',
-        builder: (context, state) => const ChatScreen(),
-      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
             ScaffoldWithBottomNavigationBar(
@@ -48,9 +47,14 @@ GoRouter appRouter(AppRouterRef ref) {
             navigatorKey: _sectionHomeNavigatorKey,
             routes: <RouteBase>[
               GoRoute(
-                path: '/home',
-                builder: (context, state) => const HomeScreen(),
-              )
+                  path: '/home',
+                  builder: (context, state) => const HomeScreen(),
+                  routes: [
+                    GoRoute(
+                      path: 'chat',
+                      builder: (context, state) => const ChatScreen(),
+                    )
+                  ])
             ],
           ),
           StatefulShellBranch(
