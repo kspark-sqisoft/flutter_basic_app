@@ -14,9 +14,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onHorizontalDragUpdate: (details) {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => const ChatScreen(),
-        ));
+        if (details.delta.direction > 0) {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const ChatScreen(),
+          ));
+        }
       },
       child: CustomScrollView(
         controller: hideBottomNavbar.controller,
