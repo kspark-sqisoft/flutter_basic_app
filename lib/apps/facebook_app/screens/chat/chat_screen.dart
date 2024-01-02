@@ -22,13 +22,17 @@ class ChatScreen extends StatelessWidget {
         onVerticalDragUpdate: (details) {},
         child: CustomScrollView(
           slivers: [
-            const SliverAppBar(
+            SliverAppBar(
               floating: true,
               centerTitle: true,
-              title: Text(
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back, color: Colors.black),
+                onPressed: () => context.go('/home'),
+              ),
+              title: const Text(
                 '채팅',
               ),
-              actions: [
+              actions: const [
                 Row(
                   children: [
                     FaIcon(
