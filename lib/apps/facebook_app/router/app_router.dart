@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../screens/chat/chat_screen.dart';
 import '../screens/menu/menu_screen.dart';
 import '../screens/notification/notification_screen.dart';
 import '../screens/profile/profile_screen.dart';
@@ -33,6 +34,10 @@ GoRouter appRouter(AppRouterRef ref) {
     navigatorKey: _rootNavigatorKey,
     initialLocation: '/home',
     routes: <RouteBase>[
+      GoRoute(
+        path: 'chat',
+        builder: (context, state) => const ChatScreen(),
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
             ScaffoldWithBottomNavigationBar(
