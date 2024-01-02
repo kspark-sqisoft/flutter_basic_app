@@ -20,54 +20,64 @@ class ScaffoldWithBottomNavigationBar extends StatelessWidget {
         valueListenable: hideBottomNavbar.visible,
         builder: (context, value, child) => AnimatedContainer(
           duration: const Duration(milliseconds: 300),
-          height: value ? kBottomNavigationBarHeight : 0.0,
-          child: Wrap(children: [
-            BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: FaIcon(FontAwesomeIcons.house),
-                  label: '홈',
-                ),
-                BottomNavigationBarItem(
-                  icon: FaIcon(FontAwesomeIcons.youtube),
-                  label: '동영상',
-                ),
-                BottomNavigationBarItem(
-                  icon: FaIcon(FontAwesomeIcons.userGroup),
-                  label: '친구',
-                ),
-                BottomNavigationBarItem(
-                  icon: FaIcon(FontAwesomeIcons.user),
-                  label: '프로필',
-                ),
-                BottomNavigationBarItem(
-                  icon: badges.Badge(
-                    badgeContent: Text(
-                      '1',
-                      style: TextStyle(color: Colors.white),
+          height: value ? kBottomNavigationBarHeight + 20 : 0.0,
+          child: Wrap(
+            children: [
+              SizedBox(
+                height: kBottomNavigationBarHeight + 20,
+                child: BottomNavigationBar(
+                  type: BottomNavigationBarType.fixed,
+                  items: const <BottomNavigationBarItem>[
+                    BottomNavigationBarItem(
+                      icon: FaIcon(
+                        FontAwesomeIcons.house,
+                      ),
+                      label: '홈',
                     ),
-                    child: FaIcon(FontAwesomeIcons.bell),
+                    BottomNavigationBarItem(
+                      icon: FaIcon(FontAwesomeIcons.youtube),
+                      label: '동영상',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: FaIcon(FontAwesomeIcons.userGroup),
+                      label: '친구',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: FaIcon(FontAwesomeIcons.user),
+                      label: '프로필',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: badges.Badge(
+                        badgeContent: Text(
+                          '1',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        child: FaIcon(FontAwesomeIcons.bell),
+                      ),
+                      label: '알림',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: FaIcon(FontAwesomeIcons.bars),
+                      label: '메뉴',
+                    ),
+                  ],
+                  selectedLabelStyle: const TextStyle(
+                    overflow: TextOverflow.visible,
                   ),
-                  label: '알림',
+                  selectedItemColor: Colors.lightBlue,
+                  unselectedItemColor: Colors.grey,
+                  currentIndex: navigationShell.currentIndex,
+                  iconSize: 24,
+                  selectedFontSize: 12,
+                  unselectedFontSize: 12,
+                  onTap: (int index) {
+                    navigationShell.goBranch(index,
+                        initialLocation: index == navigationShell.currentIndex);
+                  },
                 ),
-                BottomNavigationBarItem(
-                  icon: FaIcon(FontAwesomeIcons.bars),
-                  label: '메뉴',
-                ),
-              ],
-              selectedLabelStyle: const TextStyle(
-                overflow: TextOverflow.visible,
               ),
-              selectedItemColor: Colors.lightBlue,
-              unselectedItemColor: Colors.grey,
-              currentIndex: navigationShell.currentIndex,
-              onTap: (int index) {
-                navigationShell.goBranch(index,
-                    initialLocation: index == navigationShell.currentIndex);
-              },
-            )
-          ]),
+            ],
+          ),
         ),
       ),
     );
