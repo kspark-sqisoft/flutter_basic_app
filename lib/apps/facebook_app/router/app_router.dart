@@ -35,7 +35,7 @@ GoRouter appRouter(AppRouterRef ref) {
     initialLocation: '/home',
     routes: <RouteBase>[
       GoRoute(
-        path: 'chat',
+        path: '/chat',
         builder: (context, state) => const ChatScreen(),
       ),
       StatefulShellRoute.indexedStack(
