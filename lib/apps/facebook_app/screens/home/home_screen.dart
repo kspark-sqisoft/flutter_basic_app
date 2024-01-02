@@ -21,10 +21,9 @@ class HomeScreen extends StatelessWidget {
         if (details.primaryVelocity == null) return;
         if (details.primaryVelocity! < 0) {
           // drag from right to left
+          context.push('/chat');
         } else {
           // drag from left to right
-
-          context.push('/chat');
         }
       },
       child: CustomScrollView(

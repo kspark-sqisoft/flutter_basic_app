@@ -18,9 +18,9 @@ class ChatScreen extends StatelessWidget {
           if (details.primaryVelocity == null) return;
           if (details.primaryVelocity! < 0) {
             // drag from right to left
-            context.go('/home');
           } else {
             // drag from left to right
+            context.go('/home');
           }
         },
         child: CustomScrollView(
