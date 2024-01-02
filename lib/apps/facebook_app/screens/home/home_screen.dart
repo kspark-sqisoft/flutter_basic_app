@@ -9,7 +9,7 @@ import 'package:go_router/go_router.dart';
 import '../../components/scaffold_with_bottom_navigation_bar.dart';
 import '../chat/chat_screen.dart';
 
-final users = ['', 'Metallica', '정수봉', '김대열', '성민창', 'iJustine'];
+final users = ['박기순', 'Metallica', '정수봉', '김대열', '성민창', 'iJustine'];
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

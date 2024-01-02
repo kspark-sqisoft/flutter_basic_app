@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_localizations: 
+  flutter_localizations:
     sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
@@ -93,7 +93,6 @@ dependencies:
   validators: ^3.0.0
   badges: ^3.1.2
   
-  
 
 dev_dependencies:
   flutter_test:
@@ -121,7 +120,6 @@ flutter_icons:
   image_path: "assets/images/apple/apple-logo.png"
   min_sdk_android: 24
   remove_alpha_ios: true
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -161,11 +159,11 @@ flutter:
     - family: FlexIcons
       fonts:
         - asset: assets/fonts/FlexIcons.ttf
-  # https://www.fluttericon.com/ 커스텀 아이콘 만들기
+    # https://www.fluttericon.com/ 커스텀 아이콘 만들기
     - family: CustomIcons
       fonts:
         - asset: assets/fonts/CustomIcons.ttf
-    
+
   # fonts:
   #   - family: Schyler
   #     fonts:
