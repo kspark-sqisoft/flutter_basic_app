@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -24,7 +26,9 @@ class ScaffoldWithBottomNavigationBar extends StatelessWidget {
           child: Wrap(
             children: [
               SizedBox(
-                height: kBottomNavigationBarHeight + 20,
+                height: Platform.isIOS
+                    ? kBottomNavigationBarHeight + 20 + 12
+                    : kBottomNavigationBarHeight + 20,
                 child: BottomNavigationBar(
                   type: BottomNavigationBarType.fixed,
                   items: const <BottomNavigationBarItem>[
