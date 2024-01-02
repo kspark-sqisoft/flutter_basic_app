@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
     return GestureDetector(
       onHorizontalDragUpdate: (details) {
         if (details.delta.direction > 0) {
-          context.go('/home/chat');
+          context.go('/chat');
         }
       },
       onVerticalDragUpdate: (details) {},

@@ -12,110 +12,111 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onHorizontalDragUpdate: (details) {
-        if (details.delta.direction <= 0) {
-          if (context.canPop()) {
-            context.pop();
+    return Scaffold(
+      body: GestureDetector(
+        onHorizontalDragUpdate: (details) {
+          if (details.delta.direction <= 0) {
+            context.go('/home');
           }
-        }
-      },
-      onVerticalDragUpdate: (details) {},
-      child: CustomScrollView(
-        slivers: [
-          const SliverAppBar(
-            floating: true,
-            centerTitle: true,
-            title: Text(
-              '채팅',
+        },
+        onVerticalDragUpdate: (details) {},
+        child: CustomScrollView(
+          slivers: [
+            const SliverAppBar(
+              floating: true,
+              centerTitle: true,
+              title: Text(
+                '채팅',
+              ),
+              actions: [
+                Row(
+                  children: [
+                    FaIcon(
+                      FontAwesomeIcons.gear,
+                      size: 20,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    FaIcon(
+                      FontAwesomeIcons.penToSquare,
+                      size: 20,
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                  ],
+                )
+              ],
             ),
-            actions: [
-              Row(
-                children: [
-                  FaIcon(
-                    FontAwesomeIcons.gear,
-                    size: 20,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  FaIcon(
-                    FontAwesomeIcons.penToSquare,
-                    size: 20,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                ],
-              )
-            ],
-          ),
-          SliverPadding(
-            padding:
-                const EdgeInsets.only(left: 20, right: 20, top: 0, bottom: 0),
-            sliver: SliverToBoxAdapter(
-              child: Container(
-                height: 40,
-                padding: const EdgeInsets.only(left: 20, right: 20, bottom: 0),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    color: Colors.grey[200]),
-                child: const Center(
-                  child: TextField(
-                    style: TextStyle(fontSize: 13),
-                    decoration: InputDecoration(
-                      isDense: true,
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.only(top: 5),
-                        child: FaIcon(
-                          FontAwesomeIcons.magnifyingGlass,
-                          size: 16,
+            SliverPadding(
+              padding:
+                  const EdgeInsets.only(left: 20, right: 20, top: 0, bottom: 0),
+              sliver: SliverToBoxAdapter(
+                child: Container(
+                  height: 40,
+                  padding:
+                      const EdgeInsets.only(left: 20, right: 20, bottom: 0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      color: Colors.grey[200]),
+                  child: const Center(
+                    child: TextField(
+                      style: TextStyle(fontSize: 13),
+                      decoration: InputDecoration(
+                        isDense: true,
+                        prefixIcon: Padding(
+                          padding: EdgeInsets.only(top: 5),
+                          child: FaIcon(
+                            FontAwesomeIcons.magnifyingGlass,
+                            size: 16,
+                          ),
                         ),
+                        prefixIconConstraints: BoxConstraints(
+                          minWidth: 25,
+                          minHeight: 25,
+                        ),
+                        border: InputBorder.none,
+                        hintText: '검색',
                       ),
-                      prefixIconConstraints: BoxConstraints(
-                        minWidth: 25,
-                        minHeight: 25,
-                      ),
-                      border: InputBorder.none,
-                      hintText: '검색',
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 90,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: users.length,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 24,
-                        child: CircleAvatar(
-                          radius: 22,
-                          backgroundColor: Colors.blue,
-                          backgroundImage: AssetImage(
-                              'assets/images/facebook/user$index.jpg'),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 90,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: users.length,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: 24,
+                          child: CircleAvatar(
+                            radius: 22,
+                            backgroundColor: Colors.blue,
+                            backgroundImage: AssetImage(
+                                'assets/images/facebook/user$index.jpg'),
+                          ),
                         ),
-                      ),
-                      Text(
-                        users[index],
-                        style: const TextStyle(fontSize: 11),
-                      ),
-                    ],
+                        Text(
+                          users[index],
+                          style: const TextStyle(fontSize: 11),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
