@@ -26,6 +26,7 @@ class ChatScreen extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
+              pinned: true,
               floating: true,
               centerTitle: true,
               leading: IconButton(
