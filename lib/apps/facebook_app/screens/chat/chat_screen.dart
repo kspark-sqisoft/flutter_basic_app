@@ -14,12 +14,15 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GestureDetector(
-        onHorizontalDragUpdate: (details) {
-          if (details.delta.direction <= 0) {
+        onHorizontalDragEnd: (details) {
+          if (details.primaryVelocity == null) return;
+          if (details.primaryVelocity! < 0) {
+            // drag from right to left
             context.go('/home');
+          } else {
+            // drag from left to right
           }
         },
-        onVerticalDragUpdate: (details) {},
         child: CustomScrollView(
           slivers: [
             SliverAppBar(

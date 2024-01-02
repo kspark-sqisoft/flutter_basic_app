@@ -17,12 +17,16 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onHorizontalDragUpdate: (details) {
-        if (details.delta.direction > 0) {
-          context.go('/chat');
+      onHorizontalDragEnd: (details) {
+        if (details.primaryVelocity == null) return;
+        if (details.primaryVelocity! < 0) {
+          // drag from right to left
+        } else {
+          // drag from left to right
+
+          context.push('/chat');
         }
       },
-      onVerticalDragUpdate: (details) {},
       child: CustomScrollView(
         controller: hideBottomNavbar.controller,
         slivers: [
