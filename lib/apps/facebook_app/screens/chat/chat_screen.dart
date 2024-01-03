@@ -266,7 +266,7 @@ class MailBox extends StatelessWidget {
               ),
               CustomSlidableAction(
                 onPressed: (BuildContext context) {},
-                backgroundColor: Colors.pinkAccent,
+                backgroundColor: const Color(0xFFBA93DF),
                 foregroundColor: Colors.black,
                 child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
