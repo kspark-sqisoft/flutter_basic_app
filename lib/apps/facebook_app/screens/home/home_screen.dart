@@ -173,20 +173,24 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             sliver: SliverToBoxAdapter(
               child: Row(
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     backgroundImage:
                         AssetImage('assets/images/facebook/profile.jpg'),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
-                  Text('무슨 생각을 하고 계신가요?'),
-                  Expanded(
+                  GestureDetector(
+                      onTap: () {
+                        context.push('/newfeed');
+                      },
+                      child: const Text('무슨 생각을 하고 계신가요?')),
+                  const Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [

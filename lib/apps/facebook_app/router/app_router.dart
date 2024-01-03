@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../screens/chat/chat_screen.dart';
+import '../screens/home/new_feed_screen.dart';
 import '../screens/menu/menu_screen.dart';
 import '../screens/notification/notification_screen.dart';
 import '../screens/profile/profile_screen.dart';
@@ -39,6 +40,19 @@ GoRouter appRouter(AppRouterRef ref) {
       GoRoute(
         path: '/chat',
         builder: (context, state) => const ChatScreen(),
+      ),
+      GoRoute(
+        path: '/newfeed',
+        pageBuilder: (context, state) => CustomTransitionPage(
+          child: const NewFeedScreen(),
+          transitionDuration: const Duration(milliseconds: 200),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              SlideTransition(
+            position: animation.drive(
+                Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)),
+            child: child,
+          ),
+        ),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
