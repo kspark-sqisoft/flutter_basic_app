@@ -244,6 +244,9 @@ class MailBox extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       FaIcon(FontAwesomeIcons.inbox),
+                      SizedBox(
+                        height: 4,
+                      ),
                       Text(
                         '더 보기',
                         style: TextStyle(fontSize: 11),
@@ -258,6 +261,9 @@ class MailBox extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       FaIcon(FontAwesomeIcons.bellSlash),
+                      SizedBox(
+                        height: 4,
+                      ),
                       Text(
                         '알림 해제',
                         style: TextStyle(fontSize: 11),
@@ -272,6 +278,9 @@ class MailBox extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       FaIcon(FontAwesomeIcons.boxArchive),
+                      SizedBox(
+                        height: 4,
+                      ),
                       Text(
                         '보관',
                         style: TextStyle(fontSize: 11),
