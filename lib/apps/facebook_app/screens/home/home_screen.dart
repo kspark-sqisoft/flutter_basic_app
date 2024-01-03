@@ -223,75 +223,79 @@ class HomeScreen extends StatelessWidget {
                     //first
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: Card(
-                        elevation: 2.0,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0)),
-                        child: SizedBox(
-                          width: 100,
-                          height: 170,
-                          child: ClipPath(
-                            clipper: ShapeBorderClipper(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0))),
-                            child: Stack(
-                              //fit: StackFit.expand,
-                              children: [
-                                Image.asset(
-                                  'assets/images/facebook/profile.jpg',
-                                  fit: BoxFit.cover,
-                                  width: 130,
-                                  height: 200,
-                                ),
-                                Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Stack(
-                                    children: [
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: [
-                                          Container(
-                                            width: 100,
-                                            height: 60,
-                                            color: Colors.white,
-                                            child: const Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                children: [
-                                                  Text(
-                                                    '스토리 만들기',
-                                                    style:
-                                                        TextStyle(fontSize: 12),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  )
-                                                ]),
-                                          )
-                                        ],
-                                      ),
-                                      const Positioned(
-                                        top: 80,
-                                        left: 30,
-                                        child: CircleAvatar(
-                                          backgroundColor: Colors.white,
-                                          radius: 22,
-                                          child: CircleAvatar(
-                                            radius: 20,
-                                            backgroundColor: Colors.blue,
-                                            child: FaIcon(
-                                              FontAwesomeIcons.plus,
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: Card(
+                          elevation: 2.0,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16.0)),
+                          child: SizedBox(
+                            width: 100,
+                            height: 170,
+                            child: ClipPath(
+                              clipper: ShapeBorderClipper(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(10.0))),
+                              child: Stack(
+                                //fit: StackFit.expand,
+                                children: [
+                                  Image.asset(
+                                    'assets/images/facebook/profile.jpg',
+                                    fit: BoxFit.cover,
+                                    width: 130,
+                                    height: 200,
+                                  ),
+                                  Align(
+                                    alignment: Alignment.bottomCenter,
+                                    child: Stack(
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            Container(
+                                              width: 100,
+                                              height: 60,
                                               color: Colors.white,
-                                              size: 20,
+                                              child: const Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  children: [
+                                                    Text(
+                                                      '스토리 만들기',
+                                                      style: TextStyle(
+                                                          fontSize: 12),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 5,
+                                                    )
+                                                  ]),
+                                            )
+                                          ],
+                                        ),
+                                        const Positioned(
+                                          top: 80,
+                                          left: 30,
+                                          child: CircleAvatar(
+                                            backgroundColor: Colors.white,
+                                            radius: 22,
+                                            child: CircleAvatar(
+                                              radius: 20,
+                                              backgroundColor: Colors.blue,
+                                              child: FaIcon(
+                                                FontAwesomeIcons.plus,
+                                                color: Colors.white,
+                                                size: 20,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -300,51 +304,60 @@ class HomeScreen extends StatelessWidget {
                   } else {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: Card(
-                        elevation: 2.0,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0)),
-                        child: SizedBox(
-                          width: 100,
-                          height: 170,
-                          child: ClipPath(
-                            clipper: ShapeBorderClipper(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0))),
-                            child: Stack(
-                              children: [
-                                Image.asset(
-                                  'assets/images/facebook/story$index.jpg',
-                                  fit: BoxFit.cover,
-                                  width: 130,
-                                  height: 200,
-                                ),
-                                Positioned(
-                                  top: 5,
-                                  left: 5,
-                                  child: CircleAvatar(
-                                    backgroundColor: Colors.white,
-                                    radius: 20,
-                                    child: CircleAvatar(
-                                      radius: 18,
-                                      backgroundColor: Colors.blue,
-                                      backgroundImage: AssetImage(
-                                          'assets/images/facebook/user$index.jpg'),
+                      child: GestureDetector(
+                        onTap: () {
+                          context.push('/story/$index');
+                        },
+                        child: Hero(
+                          tag: 'hero$index',
+                          child: Card(
+                            elevation: 2.0,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16.0)),
+                            child: SizedBox(
+                              width: 100,
+                              height: 170,
+                              child: ClipPath(
+                                clipper: ShapeBorderClipper(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0))),
+                                child: Stack(
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/facebook/story$index.jpg',
+                                      fit: BoxFit.cover,
+                                      width: 130,
+                                      height: 200,
                                     ),
-                                  ),
-                                ),
-                                Positioned(
-                                  bottom: 0,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: Text(
-                                      users[index],
-                                      style:
-                                          const TextStyle(color: Colors.white),
+                                    Positioned(
+                                      top: 5,
+                                      left: 5,
+                                      child: CircleAvatar(
+                                        backgroundColor: Colors.white,
+                                        radius: 20,
+                                        child: CircleAvatar(
+                                          radius: 18,
+                                          backgroundColor: Colors.blue,
+                                          backgroundImage: AssetImage(
+                                              'assets/images/facebook/user$index.jpg'),
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    Positioned(
+                                      bottom: 0,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: Text(
+                                          users[index],
+                                          style: const TextStyle(
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
                           ),
                         ),

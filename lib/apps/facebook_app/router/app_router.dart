@@ -10,6 +10,7 @@ import '../screens/profile/profile_screen.dart';
 import '../components/scaffold_with_bottom_navigation_bar.dart';
 import '../screens/friend/friend_screen.dart';
 import '../screens/home/home_screen.dart';
+import '../screens/story/story_screen.dart';
 import '../screens/video/video_screen.dart';
 
 part 'app_router.g.dart';
@@ -53,6 +54,14 @@ GoRouter appRouter(AppRouterRef ref) {
             child: child,
           ),
         ),
+      ),
+      GoRoute(
+        path: '/story/:id',
+        builder: (context, state) => HeroControllerScope(
+            controller: MaterialApp.createMaterialHeroController(),
+            child: StoryScreen(
+              index: int.parse(state.pathParameters['id']!),
+            )),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>

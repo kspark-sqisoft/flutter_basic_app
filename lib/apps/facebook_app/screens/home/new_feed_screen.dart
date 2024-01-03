@@ -222,7 +222,7 @@ class _NewFeedScreenState extends State<NewFeedScreen> {
               final isAtBottom = state.isAtBottom;
               final isAtTop = state.isAtTop;
               final isCollapsed = state.isCollapsed;
-              log('build isExpanded:$isExpanded isAtBottom:$isAtBottom isAtTop:$isAtTop isCollapsed:$isCollapsed');
+              //log('build isExpanded:$isExpanded isAtBottom:$isAtBottom isAtTop:$isAtTop isCollapsed:$isCollapsed');
 
               return SizedBox(
                 height: MediaQuery.of(context).size.height * 0.7,
