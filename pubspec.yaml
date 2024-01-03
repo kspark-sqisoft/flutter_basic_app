@@ -92,6 +92,8 @@ dependencies:
   url_strategy: ^0.2.0
   validators: ^3.0.0
   badges: ^3.1.2
+  flutter_slidable: ^3.0.1
+  
   
 
 dev_dependencies:
