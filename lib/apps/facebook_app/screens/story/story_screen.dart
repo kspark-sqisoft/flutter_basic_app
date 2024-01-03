@@ -16,11 +16,9 @@ class StoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Hero(
       tag: 'hero$index',
-      child: const SafeArea(
-        child: CubePageView(
-          transformStyle: CubeTransformStyle.outside,
-          children: [Story0(), Story1(), Story2()],
-        ),
+      child: const CubePageView(
+        transformStyle: CubeTransformStyle.outside,
+        children: [Story0(), Story1(), Story2()],
       ),
     );
   }
@@ -45,32 +43,35 @@ class Story0 extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.topRight,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const FaIcon(
-                    FontAwesomeIcons.ellipsis,
-                    color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const FaIcon(
+                      FontAwesomeIcons.ellipsis,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    context.pop();
-                  },
-                  icon: const FaIcon(
-                    FontAwesomeIcons.xmark,
-                    color: Colors.white,
+                  IconButton(
+                    onPressed: () {
+                      context.pop();
+                    },
+                    icon: const FaIcon(
+                      FontAwesomeIcons.xmark,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Align(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(32.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -120,32 +121,35 @@ class Story1 extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.topRight,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const FaIcon(
-                    FontAwesomeIcons.ellipsis,
-                    color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const FaIcon(
+                      FontAwesomeIcons.ellipsis,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    context.pop();
-                  },
-                  icon: const FaIcon(
-                    FontAwesomeIcons.xmark,
-                    color: Colors.white,
+                  IconButton(
+                    onPressed: () {
+                      context.pop();
+                    },
+                    icon: const FaIcon(
+                      FontAwesomeIcons.xmark,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Align(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(32.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -195,32 +199,35 @@ class Story2 extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.topRight,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const FaIcon(
-                    FontAwesomeIcons.ellipsis,
-                    color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const FaIcon(
+                      FontAwesomeIcons.ellipsis,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    context.pop();
-                  },
-                  icon: const FaIcon(
-                    FontAwesomeIcons.xmark,
-                    color: Colors.white,
+                  IconButton(
+                    onPressed: () {
+                      context.pop();
+                    },
+                    icon: const FaIcon(
+                      FontAwesomeIcons.xmark,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Align(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(32.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
