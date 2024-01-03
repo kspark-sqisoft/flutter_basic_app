@@ -39,7 +39,19 @@ class _ChatScreenState extends State<ChatScreen>
   void initState() {
     _tabController =
         TabController(vsync: this, length: 2, animationDuration: Duration.zero);
+    _tabController.addListener(() {
+      log('_tabController.index : ${_tabController.index}');
+      setState(() {
+        _currentTabIndex = _tabController.index;
+      });
+    });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   @override
@@ -141,8 +153,9 @@ class _ChatScreenState extends State<ChatScreen>
                           child: CircleAvatar(
                             radius: 22,
                             backgroundColor: Colors.blue,
-                            backgroundImage: AssetImage(
-                                'assets/images/facebook/user$index.jpg'),
+                            backgroundImage: AssetImage(index == 0
+                                ? 'assets/images/facebook/profile.jpg'
+                                : 'assets/images/facebook/user$index.jpg'),
                           ),
                         ),
                         Text(
@@ -296,8 +309,9 @@ class MailBox extends StatelessWidget {
               child: CircleAvatar(
                 radius: 18,
                 backgroundColor: Colors.blue,
-                backgroundImage:
-                    AssetImage('assets/images/facebook/user${index % 6}.jpg'),
+                backgroundImage: AssetImage(index % 6 == 0
+                    ? 'assets/images/facebook/profile.jpg'
+                    : 'assets/images/facebook/user${index % 6}.jpg'),
               ),
             ),
             title: Text(users[index % 6]),
@@ -330,13 +344,45 @@ class Community extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      physics: const NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.zero,
-      itemCount: 20,
-      itemBuilder: (context, index) => const ListTile(
-        title: Text('Md. Samim Sarkar'),
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text('그룹의 다른 채팅'),
+        Expanded(
+          child: ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            padding: EdgeInsets.zero,
+            itemCount: 6,
+            itemBuilder: (context, index) => ListTile(
+              leading: CircleAvatar(
+                backgroundColor: Colors.grey[200],
+                radius: 20,
+                child: CircleAvatar(
+                  radius: 18,
+                  backgroundColor: Colors.grey[200],
+                  child: const FaIcon(
+                    FontAwesomeIcons.message,
+                    size: 18,
+                  ),
+                ),
+              ),
+              title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      users[index % 6],
+                    ),
+                    Text(
+                      chats[index % 6],
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontSize: 13),
+                    ),
+                  ]),
+            ),
+          ),
+        )
+      ],
     );
   }
 }
