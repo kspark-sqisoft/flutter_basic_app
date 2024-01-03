@@ -31,6 +31,7 @@ class _NewFeedScreenState extends State<NewFeedScreen> {
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        scrolledUnderElevation: 0,
         centerTitle: true,
         leading: IconButton(
           icon: const FaIcon(FontAwesomeIcons.xmark),
@@ -48,6 +49,7 @@ class _NewFeedScreenState extends State<NewFeedScreen> {
         backdropColor: Colors.transparent,
         color: Colors.white,
         extendBody: true,
+        closeOnBackdropTap: true,
         listener: (state) {
           //log('state:$state');
         },

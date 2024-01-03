@@ -32,6 +32,7 @@ class HomeScreen extends StatelessWidget {
           SliverAppBar(
             floating: true,
             centerTitle: false,
+            scrolledUnderElevation: 0,
             title: Text(
               'facebook',
               style: TextStyle(
