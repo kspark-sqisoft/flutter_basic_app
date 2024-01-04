@@ -55,7 +55,7 @@ class _StoryScreenState extends State<StoryScreen> {
               ),
               slideTransform: const CubeTransform(),
               slideIndicator: CircularSlideIndicator(
-                padding: const EdgeInsets.only(bottom: 62),
+                padding: const EdgeInsets.only(bottom: 80),
                 indicatorBorderColor: Colors.black,
               ),
               enableAutoSlider: true,
@@ -79,13 +79,9 @@ class Story extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Image.asset(
-              'assets/images/facebook/content$index.jpg',
-              fit: BoxFit.cover,
-            ),
+          Image.asset(
+            'assets/images/facebook/content$index.jpg',
+            fit: BoxFit.cover,
           ),
           Align(
             alignment: Alignment.topRight,
@@ -143,7 +139,67 @@ class Story extends StatelessWidget {
             ),
           ),
           Align(
-            child: ElevatedButton(onPressed: () {}, child: const Text('next')),
+            alignment: Alignment.bottomLeft,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        hintText: '메시지 보내기 ...',
+                        hintStyle: const TextStyle(fontSize: 14),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: const BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        filled: true,
+                        contentPadding: const EdgeInsets.all(4),
+                        fillColor: Colors.white,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Colors.red,
+                        child: FaIcon(
+                          FontAwesomeIcons.heart,
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Colors.blue,
+                        child: FaIcon(
+                          FontAwesomeIcons.thumbsUp,
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Colors.yellow,
+                        child: FaIcon(
+                          FontAwesomeIcons.faceSmileBeam,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
           )
         ],
       ),
