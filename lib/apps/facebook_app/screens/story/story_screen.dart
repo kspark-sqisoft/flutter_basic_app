@@ -46,6 +46,7 @@ class _StoryScreenState extends State<StoryScreen> {
         body: Container(
           color: Theme.of(context).appBarTheme.backgroundColor,
           child: SafeArea(
+            bottom: false,
             child: CarouselSlider.builder(
               unlimitedMode: true,
               controller: _sliderController,
