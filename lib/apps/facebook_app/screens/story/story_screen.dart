@@ -40,13 +40,13 @@ class _StoryScreenState extends State<StoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: 'hero${widget.index}',
-      child: Scaffold(
-        body: Container(
-          color: Theme.of(context).appBarTheme.backgroundColor,
-          child: SafeArea(
-            bottom: false,
+    return Scaffold(
+      body: Container(
+        color: Theme.of(context).appBarTheme.backgroundColor,
+        child: SafeArea(
+          bottom: false,
+          child: Hero(
+            tag: 'hero${widget.index}',
             child: CarouselSlider.builder(
               unlimitedMode: true,
               controller: _sliderController,
@@ -142,7 +142,8 @@ class Story extends StatelessWidget {
           Align(
             alignment: Alignment.bottomLeft,
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24),
               child: Row(
                 children: [
                   Expanded(
@@ -151,6 +152,7 @@ class Story extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: '메시지 보내기 ...',
                         hintStyle: const TextStyle(fontSize: 14),
+                        isDense: true,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
                           borderSide: const BorderSide(
@@ -159,7 +161,7 @@ class Story extends StatelessWidget {
                           ),
                         ),
                         filled: true,
-                        contentPadding: const EdgeInsets.all(4),
+                        contentPadding: const EdgeInsets.all(8),
                         fillColor: Colors.white,
                       ),
                     ),
