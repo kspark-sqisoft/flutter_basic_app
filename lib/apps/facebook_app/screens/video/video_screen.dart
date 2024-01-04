@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../riverpod_app/pages/medias/media_kit_video_player.dart';
+
 class VideoScreen extends StatefulWidget {
   const VideoScreen({super.key});
 
@@ -91,8 +93,9 @@ class _VideoScreenState extends State<VideoScreen> {
         ),
         SliverToBoxAdapter(
           child: Container(
-            height: 1500,
-            color: Colors.white,
+            child: const MediaKitVideoPlayer(
+              path: 'https://www.pexels.com/download/video/5752729/',
+            ),
           ),
         )
       ],
