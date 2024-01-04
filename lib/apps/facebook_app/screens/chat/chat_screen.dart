@@ -178,36 +178,38 @@ class _ChatScreenState extends State<ChatScreen>
                     dividerColor: Colors.transparent,
                     tabs: [
                       ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: _currentTabIndex == 0
-                                ? Colors.blue.withOpacity(0.1)
-                                : Colors.transparent,
-                            elevation: 0,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _currentTabIndex = 0;
-                            });
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: _currentTabIndex == 0
+                              ? Colors.blue.withOpacity(0.1)
+                              : Colors.transparent,
+                          elevation: 0,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _currentTabIndex = 0;
+                          });
 
-                            _tabController.animateTo(_currentTabIndex,
-                                duration: Duration.zero);
-                          },
-                          child: const Text('받은 메시지함')),
+                          _tabController.animateTo(_currentTabIndex,
+                              duration: Duration.zero);
+                        },
+                        child: const Text('받은 메시지함'),
+                      ),
                       ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: _currentTabIndex == 1
-                                ? Colors.blue.withOpacity(0.1)
-                                : Colors.transparent,
-                            elevation: 0,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _currentTabIndex = 1;
-                            });
-                            _tabController.animateTo(_currentTabIndex,
-                                duration: Duration.zero);
-                          },
-                          child: const Text('커뮤니티')),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: _currentTabIndex == 1
+                              ? Colors.blue.withOpacity(0.1)
+                              : Colors.transparent,
+                          elevation: 0,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _currentTabIndex = 1;
+                          });
+                          _tabController.animateTo(_currentTabIndex,
+                              duration: Duration.zero);
+                        },
+                        child: const Text('커뮤니티'),
+                      ),
                     ],
                   ),
                   Expanded(
