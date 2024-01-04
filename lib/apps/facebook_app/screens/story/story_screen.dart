@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -40,22 +42,27 @@ class _StoryScreenState extends State<StoryScreen> {
   Widget build(BuildContext context) {
     return Hero(
       tag: 'hero${widget.index}',
-      child: SafeArea(
-        child: CarouselSlider.builder(
-          unlimitedMode: true,
-          controller: _sliderController,
-          itemCount: 3,
-          slideBuilder: (index) => Story(
-            index: index,
+      child: Scaffold(
+        body: Container(
+          color: Theme.of(context).appBarTheme.backgroundColor,
+          child: SafeArea(
+            child: CarouselSlider.builder(
+              unlimitedMode: true,
+              controller: _sliderController,
+              itemCount: 3,
+              slideBuilder: (index) => Story(
+                index: index,
+              ),
+              slideTransform: const CubeTransform(),
+              slideIndicator: CircularSlideIndicator(
+                padding: const EdgeInsets.only(bottom: 62),
+                indicatorBorderColor: Colors.black,
+              ),
+              enableAutoSlider: true,
+              autoSliderDelay: const Duration(seconds: 2),
+              autoSliderTransitionTime: const Duration(milliseconds: 500),
+            ),
           ),
-          slideTransform: const CubeTransform(),
-          slideIndicator: CircularSlideIndicator(
-            padding: const EdgeInsets.only(bottom: 62),
-            indicatorBorderColor: Colors.black,
-          ),
-          enableAutoSlider: true,
-          autoSliderDelay: const Duration(seconds: 2),
-          autoSliderTransitionTime: const Duration(milliseconds: 500),
         ),
       ),
     );
