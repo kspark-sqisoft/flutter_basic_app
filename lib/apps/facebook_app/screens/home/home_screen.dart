@@ -733,6 +733,9 @@ class HomeScreen extends StatelessWidget {
                                       },
                                     );
                                   },
+                                  style: TextButton.styleFrom(
+                                      padding: EdgeInsets.zero,
+                                      minimumSize: const Size(40, 40)),
                                   child: const Text(
                                     '···',
                                     style: TextStyle(
@@ -951,6 +954,9 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 TextButton(
                                   onPressed: () {},
+                                  style: TextButton.styleFrom(
+                                      padding: EdgeInsets.zero,
+                                      minimumSize: const Size(40, 40)),
                                   child: const Text(
                                     '···',
                                     style: TextStyle(
@@ -1169,6 +1175,9 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 TextButton(
                                   onPressed: () {},
+                                  style: TextButton.styleFrom(
+                                      padding: EdgeInsets.zero,
+                                      minimumSize: const Size(40, 40)),
                                   child: const Text(
                                     '···',
                                     style: TextStyle(

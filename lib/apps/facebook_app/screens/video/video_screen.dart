@@ -91,15 +91,189 @@ class _VideoScreenState extends State<VideoScreen> {
             thickness: 8,
           ),
         ),
-        const SliverToBoxAdapter(
-          child: SizedBox(
-            height: 570,
-            child: MediaKitVideoPlayer(
-              path: 'https://www.pexels.com/download/video/5752729/',
-              fit: BoxFit.cover,
-            ),
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: 26,
+                          child: CircleAvatar(
+                            radius: 24,
+                            backgroundColor: Colors.blue,
+                            backgroundImage: AssetImage(
+                                'assets/images/facebook/profile.jpg'),
+                          ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'VieLax',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text('2023년 12월 17일'),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        TextButton(
+                          onPressed: () {},
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            minimumSize: const Size(40, 40),
+                          ),
+                          child: const Text(
+                            '···',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const FaIcon(
+                            FontAwesomeIcons.xmark,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
+                child: Text(
+                    'Going to the sea to catch fish looks very interesting'),
+              ),
+              const SizedBox(
+                height: 570,
+                child: MediaKitVideoPlayer(
+                  path: 'https://www.pexels.com/download/video/5752729/',
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 13,
+                              child: FaIcon(
+                                FontAwesomeIcons.thumbsUp,
+                                color: Colors.white,
+                                size: 15,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('3,220개'),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text('댓글 52개'),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('공유 144회'),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('조회 12.9만회'),
+                          ],
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        //좋아요
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.thumbsUp,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('좋아요'),
+                          ],
+                        ),
+                        //댓글
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.comment,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('댓글'),
+                          ],
+                        ),
+                        //복사
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.copy,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('복사'),
+                          ],
+                        ),
+                        //공유하기
+                        Row(
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.share,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text('공유하기'),
+                          ],
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
-        )
+        ),
+        const SliverToBoxAdapter(
+          child: Divider(
+            thickness: 8,
+          ),
+        ),
       ],
     );
   }
