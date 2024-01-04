@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -16,6 +17,20 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var brightness = MediaQuery.of(context).platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
+    log('isDarkMode:$isDarkMode');
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: isDarkMode
+          ? Colors.black
+          : Colors.white, // set Status bar color in Android devices
+      statusBarIconBrightness: isDarkMode
+          ? Brightness.light
+          : Brightness.dark, // set Status bar icons color in Android devices
+      statusBarBrightness: isDarkMode
+          ? Brightness.light
+          : Brightness.dark, // set Status bar icon color in iOS
+    ));
     return GestureDetector(
       onHorizontalDragEnd: (details) {
         if (details.primaryVelocity == null) return;

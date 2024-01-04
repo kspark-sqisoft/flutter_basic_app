@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,6 +21,7 @@ class FacebookApp extends ConsumerWidget {
       title: 'Facebook App',
       debugShowCheckedModeBanner: false,
       routerConfig: ref.watch(appRouterProvider),
+      themeMode: ThemeMode.light,
       theme: ThemeData.light(useMaterial3: true),
     );
   }
