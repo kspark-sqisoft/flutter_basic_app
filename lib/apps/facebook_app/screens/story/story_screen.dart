@@ -59,7 +59,7 @@ class _StoryScreenState extends State<StoryScreen> {
                 indicatorBorderColor: Colors.black,
               ),
               enableAutoSlider: true,
-              autoSliderDelay: const Duration(seconds: 2),
+              autoSliderDelay: const Duration(seconds: 5),
               autoSliderTransitionTime: const Duration(milliseconds: 500),
             ),
           ),
