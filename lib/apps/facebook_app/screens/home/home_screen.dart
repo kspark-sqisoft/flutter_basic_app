@@ -29,8 +29,15 @@ class HomeScreen extends StatelessWidget {
           : Brightness.dark, // set Status bar icons color in Android devices
       statusBarBrightness: isDarkMode
           ? Brightness.light
-          : Brightness.dark, // set Status bar icon color in iOS
+          : Brightness.dark, // set Status bar icon color in iOS //적용 안됨
     ));
+    //ios 적용됨
+    if (isDarkMode) {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+    } else {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+    }
+
     return GestureDetector(
       onHorizontalDragEnd: (details) {
         if (details.primaryVelocity == null) return;
