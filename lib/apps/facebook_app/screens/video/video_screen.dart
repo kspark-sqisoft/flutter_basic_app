@@ -91,10 +91,12 @@ class _VideoScreenState extends State<VideoScreen> {
             thickness: 8,
           ),
         ),
-        SliverToBoxAdapter(
-          child: Container(
-            child: const MediaKitVideoPlayer(
+        const SliverToBoxAdapter(
+          child: SizedBox(
+            height: 570,
+            child: MediaKitVideoPlayer(
               path: 'https://www.pexels.com/download/video/5752729/',
+              fit: BoxFit.cover,
             ),
           ),
         )
