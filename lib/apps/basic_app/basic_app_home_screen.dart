@@ -18,6 +18,7 @@ import 'features/jsonparsing/json_parsing_screen.dart';
 import 'features/layoutbuilder/layoutbuilder_screen.dart';
 import 'features/lifecycle/lifecycle2_screen.dart';
 import 'features/lifecycle/lifecycle_screen.dart';
+import 'features/matrix4/matrix4_screen.dart';
 import 'features/painter/painter_screen.dart';
 import 'features/rxdart/rxdart_screen.dart';
 import 'features/serialization/serialization_screen.dart';
@@ -399,6 +400,19 @@ class BasicAppHomeScreen extends StatelessWidget {
                         ));
                       },
                       child: const Text('Painter'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const Matrix4Screen();
+                          },
+                        ));
+                      },
+                      child: const Text('Matrix4'),
                     ),
                   ),
                 ],
