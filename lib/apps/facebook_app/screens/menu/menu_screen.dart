@@ -82,9 +82,12 @@ class _MenuScreenState extends State<MenuScreen> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
             elevation: 1,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
               child: Container(
                 color: Colors.white,
                 child: Padding(
@@ -186,6 +189,9 @@ class _MenuScreenState extends State<MenuScreen> {
             crossAxisCount: 2, mainAxisExtent: 100),
         itemBuilder: (context, index) => Card(
             elevation: 1,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Container(
@@ -253,22 +259,27 @@ class _MenuScreenState extends State<MenuScreen> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Card(
-                            child: Container(
-                              width: double.infinity,
-                              height: 70,
-                              decoration: const BoxDecoration(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Container(
+                                width: double.infinity,
+                                height: 70,
+                                decoration: const BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              child: const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Row(children: [
-                                  FaIcon(FontAwesomeIcons.arrowsToEye),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text('고객 센터')
-                                ]),
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(16.0),
+                                  child: Row(children: [
+                                    FaIcon(FontAwesomeIcons.arrowsToEye),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text('고객 센터')
+                                  ]),
+                                ),
                               ),
                             ),
                           ),
@@ -276,22 +287,27 @@ class _MenuScreenState extends State<MenuScreen> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Card(
-                            child: Container(
-                              width: double.infinity,
-                              height: 70,
-                              decoration: const BoxDecoration(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Container(
+                                width: double.infinity,
+                                height: 70,
+                                decoration: const BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              child: const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Row(children: [
-                                  FaIcon(FontAwesomeIcons.envelopeOpenText),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text('지원 관련 메시지함')
-                                ]),
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(16.0),
+                                  child: Row(children: [
+                                    FaIcon(FontAwesomeIcons.envelopeOpenText),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text('지원 관련 메시지함')
+                                  ]),
+                                ),
                               ),
                             ),
                           ),
@@ -299,22 +315,28 @@ class _MenuScreenState extends State<MenuScreen> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Card(
-                            child: Container(
-                              width: double.infinity,
-                              height: 70,
-                              decoration: const BoxDecoration(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Container(
+                                width: double.infinity,
+                                height: 70,
+                                decoration: const BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              child: const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Row(children: [
-                                  FaIcon(FontAwesomeIcons.triangleExclamation),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text('문제 신고')
-                                ]),
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(16.0),
+                                  child: Row(children: [
+                                    FaIcon(
+                                        FontAwesomeIcons.triangleExclamation),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text('문제 신고')
+                                  ]),
+                                ),
                               ),
                             ),
                           ),
@@ -322,22 +344,27 @@ class _MenuScreenState extends State<MenuScreen> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Card(
-                            child: Container(
-                              width: double.infinity,
-                              height: 70,
-                              decoration: const BoxDecoration(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Container(
+                                width: double.infinity,
+                                height: 70,
+                                decoration: const BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              child: const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Row(children: [
-                                  FaIcon(FontAwesomeIcons.userShield),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text('안전')
-                                ]),
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(16.0),
+                                  child: Row(children: [
+                                    FaIcon(FontAwesomeIcons.userShield),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text('안전')
+                                  ]),
+                                ),
                               ),
                             ),
                           ),
@@ -369,22 +396,27 @@ class _MenuScreenState extends State<MenuScreen> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Card(
-                            child: Container(
-                              width: double.infinity,
-                              height: 70,
-                              decoration: const BoxDecoration(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Container(
+                                width: double.infinity,
+                                height: 70,
+                                decoration: const BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              child: const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Row(children: [
-                                  FaIcon(FontAwesomeIcons.user),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text('설정')
-                                ]),
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(16.0),
+                                  child: Row(children: [
+                                    FaIcon(FontAwesomeIcons.user),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text('설정')
+                                  ]),
+                                ),
                               ),
                             ),
                           ),
@@ -392,22 +424,27 @@ class _MenuScreenState extends State<MenuScreen> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Card(
-                            child: Container(
-                              width: double.infinity,
-                              height: 70,
-                              decoration: const BoxDecoration(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Container(
+                                width: double.infinity,
+                                height: 70,
+                                decoration: const BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              child: const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Row(children: [
-                                  FaIcon(FontAwesomeIcons.idCard),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text('기기 요청')
-                                ]),
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(16.0),
+                                  child: Row(children: [
+                                    FaIcon(FontAwesomeIcons.idCard),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text('기기 요청')
+                                  ]),
+                                ),
                               ),
                             ),
                           ),
@@ -415,22 +452,27 @@ class _MenuScreenState extends State<MenuScreen> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Card(
-                            child: Container(
-                              width: double.infinity,
-                              height: 70,
-                              decoration: const BoxDecoration(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Container(
+                                width: double.infinity,
+                                height: 70,
+                                decoration: const BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              child: const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Row(children: [
-                                  FaIcon(FontAwesomeIcons.rectangleAd),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text('최근 광고 활동')
-                                ]),
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(16.0),
+                                  child: Row(children: [
+                                    FaIcon(FontAwesomeIcons.rectangleAd),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text('최근 광고 활동')
+                                  ]),
+                                ),
                               ),
                             ),
                           ),
@@ -700,10 +742,10 @@ class _MenuScreenState extends State<MenuScreen> {
                             children: [
                               Card(
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(16),
                                 ),
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(16),
                                   child: Container(
                                     color: Colors.white,
                                     width:
@@ -730,10 +772,10 @@ class _MenuScreenState extends State<MenuScreen> {
                               ),
                               Card(
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(16),
                                 ),
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(16),
                                   child: Container(
                                     color: Colors.white,
                                     width:
@@ -764,10 +806,10 @@ class _MenuScreenState extends State<MenuScreen> {
                               ),
                               Card(
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(16),
                                 ),
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(16),
                                   child: Container(
                                     color: Colors.white,
                                     width:
