@@ -45,6 +45,7 @@ GoRouter appRouter(AppRouterRef ref) {
       GoRoute(
         path: '/newfeed',
         pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
           child: const NewFeedScreen(),
           transitionDuration: const Duration(milliseconds: 200),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
