@@ -206,7 +206,7 @@ class FriendScreen extends StatelessWidget {
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }
