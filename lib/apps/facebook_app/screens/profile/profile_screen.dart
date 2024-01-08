@@ -29,9 +29,10 @@ class ProfileScreen extends StatelessWidget {
                 radius: 10,
                 backgroundColor: Colors.red,
                 child: Center(
-                  child: Text(
-                    '1',
-                    style: TextStyle(color: Colors.white),
+                  child: FaIcon(
+                    FontAwesomeIcons.one,
+                    size: 11,
+                    color: Colors.white,
                   ),
                 ),
               ),
