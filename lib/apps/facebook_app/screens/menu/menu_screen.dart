@@ -250,6 +250,8 @@ class _MenuScreenState extends State<MenuScreen> {
                     }
                   },
                   title: Text(e),
+                  //collapsedShape: RoundedRectangleBorder(
+                  //    side: BorderSide(color: Colors.grey[400]!)),
                   children: [
                     const SizedBox(
                       height: 10,
@@ -387,6 +389,8 @@ class _MenuScreenState extends State<MenuScreen> {
                     }
                   },
                   title: Text(e),
+                  //collapsedShape: RoundedRectangleBorder(
+                  //    side: BorderSide(color: Colors.grey[400]!)),
                   children: [
                     const SizedBox(
                       height: 10,
@@ -495,6 +499,8 @@ class _MenuScreenState extends State<MenuScreen> {
                     }
                   },
                   title: Text(e),
+                  //collapsedShape: RoundedRectangleBorder(
+                  //    side: BorderSide(color: Colors.grey[400]!)),
                   children: [
                     const SizedBox(
                       height: 10,
@@ -661,6 +667,8 @@ class _MenuScreenState extends State<MenuScreen> {
                     }
                   },
                   title: Text(e),
+                  //collapsedShape: RoundedRectangleBorder(
+                  //    side: BorderSide(color: Colors.grey[400]!)),
                   children: [
                     const SizedBox(
                       height: 10,
