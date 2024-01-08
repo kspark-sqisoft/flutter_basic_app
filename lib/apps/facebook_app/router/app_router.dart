@@ -64,23 +64,9 @@ GoRouter appRouter(AppRouterRef ref) {
             )),
       ),
       StatefulShellRoute.indexedStack(
-        /*
         builder: (context, state, navigationShell) =>
             ScaffoldWithBottomNavigationBar(
           navigationShell: navigationShell,
-        ),
-        */
-        pageBuilder: (context, state, navigationShell) => CustomTransitionPage(
-          child: ScaffoldWithBottomNavigationBar(
-            navigationShell: navigationShell,
-          ),
-          transitionDuration: const Duration(milliseconds: 200),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-              SlideTransition(
-            position: animation.drive(
-                Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero)),
-            child: child,
-          ),
         ),
         branches: <StatefulShellBranch>[
           StatefulShellBranch(
@@ -132,9 +118,18 @@ GoRouter appRouter(AppRouterRef ref) {
             navigatorKey: _sectionMenuNavigatorKey,
             routes: <RouteBase>[
               GoRoute(
-                path: '/menu',
-                builder: (context, state) => const MenuScreen(),
-              )
+                  path: '/menu',
+                  pageBuilder: (context, state) => CustomTransitionPage(
+                        child: const MenuScreen(),
+                        transitionDuration: const Duration(milliseconds: 200),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) =>
+                                SlideTransition(
+                          position: animation.drive(Tween<Offset>(
+                              begin: const Offset(0, 1), end: Offset.zero)),
+                          child: child,
+                        ),
+                      ))
             ],
           ),
         ],
