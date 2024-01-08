@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:collection/collection.dart';
 import '../home/home_screen.dart';
 
 final List<IconData> meIcons = [
@@ -230,113 +230,121 @@ class _MenuScreenState extends State<MenuScreen> {
       ),
       SliverToBoxAdapter(
         child: Column(children: [
-          ...moreTitles
-              .map(
-                (e) => ExpansionTile(
-                  title: Text(e),
-                  children: [
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Card(
-                            child: Container(
-                              width: double.infinity,
-                              height: 70,
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              child: const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Row(children: [
-                                  FaIcon(FontAwesomeIcons.arrowsToEye),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text('고객 센터')
-                                ]),
-                              ),
+          ...moreTitles.mapIndexed(
+            (index, e) {
+              final GlobalKey expansionTileKey = GlobalKey();
+              return ExpansionTile(
+                key: expansionTileKey,
+                onExpansionChanged: (value) {
+                  if (value) {
+                    _scrollToSelectedContent(
+                        expansionTileKey: expansionTileKey);
+                  }
+                },
+                title: Text(e),
+                children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Card(
+                          child: Container(
+                            width: double.infinity,
+                            height: 70,
+                            decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: const Padding(
+                              padding: EdgeInsets.all(16.0),
+                              child: Row(children: [
+                                FaIcon(FontAwesomeIcons.arrowsToEye),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text('고객 센터')
+                              ]),
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Card(
-                            child: Container(
-                              width: double.infinity,
-                              height: 70,
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              child: const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Row(children: [
-                                  FaIcon(FontAwesomeIcons.envelopeOpenText),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text('지원 관련 메시지함')
-                                ]),
-                              ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Card(
+                          child: Container(
+                            width: double.infinity,
+                            height: 70,
+                            decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: const Padding(
+                              padding: EdgeInsets.all(16.0),
+                              child: Row(children: [
+                                FaIcon(FontAwesomeIcons.envelopeOpenText),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text('지원 관련 메시지함')
+                              ]),
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Card(
-                            child: Container(
-                              width: double.infinity,
-                              height: 70,
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              child: const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Row(children: [
-                                  FaIcon(FontAwesomeIcons.triangleExclamation),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text('문제 신고')
-                                ]),
-                              ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Card(
+                          child: Container(
+                            width: double.infinity,
+                            height: 70,
+                            decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: const Padding(
+                              padding: EdgeInsets.all(16.0),
+                              child: Row(children: [
+                                FaIcon(FontAwesomeIcons.triangleExclamation),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text('문제 신고')
+                              ]),
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Card(
-                            child: Container(
-                              width: double.infinity,
-                              height: 70,
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              child: const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Row(children: [
-                                  FaIcon(FontAwesomeIcons.userShield),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text('안전')
-                                ]),
-                              ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Card(
+                          child: Container(
+                            width: double.infinity,
+                            height: 70,
+                            decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: const Padding(
+                              padding: EdgeInsets.all(16.0),
+                              child: Row(children: [
+                                FaIcon(FontAwesomeIcons.userShield),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text('안전')
+                              ]),
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              )
-              .toList()
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      )
+                    ],
+                  )
+                ],
+              );
+            },
+          ).toList()
         ]),
       ),
       SliverPadding(
@@ -357,5 +365,15 @@ class _MenuScreenState extends State<MenuScreen> {
         ),
       ),
     ]);
+  }
+
+  void _scrollToSelectedContent({required GlobalKey expansionTileKey}) {
+    final keyContext = expansionTileKey.currentContext;
+    if (keyContext != null) {
+      Future.delayed(const Duration(milliseconds: 200)).then((value) {
+        Scrollable.ensureVisible(keyContext,
+            duration: const Duration(milliseconds: 200));
+      });
+    }
   }
 }
