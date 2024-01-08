@@ -126,7 +126,7 @@ GoRouter appRouter(AppRouterRef ref) {
                             (context, animation, secondaryAnimation, child) =>
                                 SlideTransition(
                           position: animation.drive(Tween<Offset>(
-                              begin: const Offset(0, 1), end: Offset.zero)),
+                              begin: const Offset(1, 0), end: Offset.zero)),
                           child: child,
                         ),
                       ))
