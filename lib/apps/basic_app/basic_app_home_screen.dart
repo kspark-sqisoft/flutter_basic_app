@@ -27,6 +27,7 @@ import 'features/tab/tab_controller_screen.dart';
 import 'features/tab/tab_page_selector_screen.dart';
 import 'features/theme/theme_screen.dart';
 import 'features/vscode/vscode_screen.dart';
+import 'features/widgets/widgets_screen.dart';
 
 class BasicAppHomeScreen extends StatelessWidget {
   const BasicAppHomeScreen({super.key, required this.controller});
@@ -413,6 +414,19 @@ class BasicAppHomeScreen extends StatelessWidget {
                         ));
                       },
                       child: const Text('Matrix4'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const WidgetsScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('Widgets'),
                     ),
                   ),
                 ],

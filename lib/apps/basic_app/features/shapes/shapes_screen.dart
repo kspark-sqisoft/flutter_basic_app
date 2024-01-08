@@ -591,9 +591,6 @@ class ShapesScreen extends StatelessWidget {
                     const SizedBox(
                       width: 10,
                     ),
-                    const SizedBox(
-                      width: 10,
-                    ),
                     const Code('''
                     SizedBox(
                       width: 100,
@@ -608,7 +605,178 @@ class ShapesScreen extends StatelessWidget {
                     )
 ''')
                   ],
-                )
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                //test
+                Row(
+                  children: [
+                    Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: SizedBox(
+                        width: 250,
+                        height: 400,
+                        child: Column(
+                          children: [
+                            Image.network(
+                              "https://picsum.photos/300/400?random=20",
+                              fit: BoxFit.cover,
+                              width: 250,
+                              height: 300,
+                            ),
+                            Expanded(
+                              child: Container(
+                                color: Colors.white,
+                                child: const Center(
+                                  child: Text(
+                                    'Keesoon Park',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const Code('''
+                    Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: SizedBox(
+                        width: 250,
+                        height: 400,
+                        child: Column(
+                          children: [
+                            Image.network(
+                              "https://picsum.photos/300/400?random=20",
+                              fit: BoxFit.cover,
+                              width: 250,
+                              height: 300,
+                            ),
+                            Expanded(
+                              child: Container(
+                                color: Colors.white,
+                                child: const Center(
+                                  child: Text(
+                                    'Keesoon Park',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+''')
+                  ],
+                ),
+                //test end
+                const SizedBox(
+                  height: 20,
+                ),
+                //test
+                Row(
+                  children: [
+                    Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(200),
+                      ),
+                      child: CircleAvatar(
+                        radius: 200,
+                        backgroundColor: Colors.white,
+                        child: Column(
+                          children: [
+                            Image.network(
+                              "https://picsum.photos/400/400?random=20",
+                              fit: BoxFit.cover,
+                              width: 400,
+                              height: 300,
+                            ),
+                            Expanded(
+                              child: Container(
+                                color: Colors.white,
+                                child: const Center(
+                                  child: Text(
+                                    'Keesoon Park',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const Code('''
+                    Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(200),
+                      ),
+                      child: CircleAvatar(
+                        radius: 200,
+                        backgroundColor: Colors.white,
+                        child: Column(
+                          children: [
+                            Image.network(
+                              "https://picsum.photos/400/400?random=20",
+                              fit: BoxFit.cover,
+                              width: 400,
+                              height: 300,
+                            ),
+                            Expanded(
+                              child: Container(
+                                color: Colors.white,
+                                child: const Center(
+                                  child: Text(
+                                    'Keesoon Park',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+''')
+                  ],
+                ),
+                //test end
+                const SizedBox(
+                  height: 20,
+                ),
               ],
             ),
           ),
