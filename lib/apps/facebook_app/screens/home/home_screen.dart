@@ -251,14 +251,11 @@ class HomeScreen extends StatelessWidget {
                           elevation: 2.0,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16.0)),
-                          child: SizedBox(
-                            width: 100,
-                            height: 170,
-                            child: ClipPath(
-                              clipper: ShapeBorderClipper(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(10.0))),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16.0),
+                            child: SizedBox(
+                              width: 100,
+                              height: 170,
                               child: Stack(
                                 //fit: StackFit.expand,
                                 children: [
@@ -336,14 +333,11 @@ class HomeScreen extends StatelessWidget {
                             elevation: 2.0,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16.0)),
-                            child: SizedBox(
-                              width: 100,
-                              height: 170,
-                              child: ClipPath(
-                                clipper: ShapeBorderClipper(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0))),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(16.0),
+                              child: SizedBox(
+                                width: 100,
+                                height: 170,
                                 child: Stack(
                                   children: [
                                     Image.asset(

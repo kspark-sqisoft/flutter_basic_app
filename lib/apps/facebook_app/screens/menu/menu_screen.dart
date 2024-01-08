@@ -83,62 +83,62 @@ class _MenuScreenState extends State<MenuScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Card(
             elevation: 1,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Container(
                 color: Colors.white,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Row(
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 26,
-                            child: CircleAvatar(
-                              radius: 24,
-                              backgroundColor: Colors.blue,
-                              backgroundImage: AssetImage(
-                                  'assets/images/facebook/profile.jpg'),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Colors.white,
+                              radius: 26,
+                              child: CircleAvatar(
+                                radius: 24,
+                                backgroundColor: Colors.blue,
+                                backgroundImage: AssetImage(
+                                    'assets/images/facebook/profile.jpg'),
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            '박기순',
-                          ),
-                        ],
-                      ),
-                      CircleAvatar(
-                        radius: 20,
-                        backgroundColor: Colors.grey[200],
-                        child: const FaIcon(FontAwesomeIcons.chevronDown),
-                      )
-                    ],
-                  ),
-                  const Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 24,
-                        backgroundColor: Colors.transparent,
-                        child: CircleAvatar(
-                          radius: 20,
-                          backgroundColor: Colors.grey,
-                          child: FaIcon(FontAwesomeIcons.plus),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              '박기순',
+                            ),
+                          ],
                         ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text('다른 프로필 만들기')
-                    ],
-                  )
-                ]),
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundColor: Colors.grey[200],
+                          child: const FaIcon(FontAwesomeIcons.chevronDown),
+                        )
+                      ],
+                    ),
+                    const Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 24,
+                          backgroundColor: Colors.transparent,
+                          child: CircleAvatar(
+                            radius: 20,
+                            backgroundColor: Colors.grey,
+                            child: FaIcon(FontAwesomeIcons.plus),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text('다른 프로필 만들기')
+                      ],
+                    )
+                  ]),
+                ),
               ),
             ),
           ),
@@ -184,33 +184,33 @@ class _MenuScreenState extends State<MenuScreen> {
         itemCount: meIcons.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, mainAxisExtent: 100),
-        itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.all(1.0),
-          child: Card(
-              child: Container(
-            decoration: BoxDecoration(
+        itemBuilder: (context, index) => Card(
+            elevation: 1,
+            child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.white,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  FaIcon(
-                    meIcons[index],
-                    color: Colors.lightBlue,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FaIcon(
+                        meIcons[index],
+                        color: Colors.lightBlue,
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(meTitles[index]),
+                    ],
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(meTitles[index]),
-                ],
+                ),
               ),
-            ),
-          )),
-        ),
+            )),
       ),
       SliverPadding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -465,29 +465,27 @@ class _MenuScreenState extends State<MenuScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16.0),
                             ),
-                            child: Container(
-                              color: Colors.white,
-                              height: 280,
-                              child: ClipPath(
-                                  clipper: ShapeBorderClipper(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16.0),
-                                    ),
-                                  ),
-                                  child: Stack(
-                                    children: [
-                                      Column(
-                                        children: [
-                                          Image.asset(
-                                            'assets/images/facebook/ballons.jpg',
-                                            fit: BoxFit.cover,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                2,
-                                            height: 150,
-                                          ),
-                                          const Column(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(16.0),
+                              child: Container(
+                                color: Colors.white,
+                                height: 290,
+                                child: Stack(
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Image.asset(
+                                          'assets/images/facebook/ballons.jpg',
+                                          fit: BoxFit.cover,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              2,
+                                          height: 150,
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
@@ -505,28 +503,30 @@ class _MenuScreenState extends State<MenuScreen> {
                                                   '구독하여 인증 배지 등 다양한 혜택을 이용해보세요.'),
                                             ],
                                           ),
-                                        ],
-                                      ),
-                                      Positioned(
-                                        top: 120,
-                                        left: 10,
-                                        child: Card(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(24.0),
-                                          ),
-                                          child: const CircleAvatar(
-                                            radius: 24,
-                                            backgroundColor: Colors.white,
-                                            child: FaIcon(
-                                              FontAwesomeIcons.faceGrinStars,
-                                              color: Colors.lightBlue,
-                                            ),
+                                        ),
+                                      ],
+                                    ),
+                                    Positioned(
+                                      top: 120,
+                                      left: 10,
+                                      child: Card(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(24.0),
+                                        ),
+                                        child: const CircleAvatar(
+                                          radius: 24,
+                                          backgroundColor: Colors.white,
+                                          child: FaIcon(
+                                            FontAwesomeIcons.faceGrinStars,
+                                            color: Colors.lightBlue,
                                           ),
                                         ),
-                                      )
-                                    ],
-                                  )),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -536,15 +536,11 @@ class _MenuScreenState extends State<MenuScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16.0),
                             ),
-                            child: Container(
-                              color: Colors.white,
-                              height: 280,
-                              child: ClipPath(
-                                clipper: ShapeBorderClipper(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16.0),
-                                  ),
-                                ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(16.0),
+                              child: Container(
+                                color: Colors.white,
+                                height: 290,
                                 child: Stack(
                                   children: [
                                     Column(
@@ -558,23 +554,26 @@ class _MenuScreenState extends State<MenuScreen> {
                                               2,
                                           height: 150,
                                         ),
-                                        const Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              height: 40,
-                                            ),
-                                            Text(
-                                              'Meta Verified',
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 16,
+                                        const Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              SizedBox(
+                                                height: 40,
                                               ),
-                                            ),
-                                            Text(
-                                                '구독하여 인증 배지 등 다양한 혜택을 이용해보세요.'),
-                                          ],
+                                              Text(
+                                                'Meta Verified',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+                                              Text(
+                                                  '구독하여 인증 배지 등 다양한 혜택을 이용해보세요.'),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -632,29 +631,27 @@ class _MenuScreenState extends State<MenuScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16.0),
                             ),
-                            child: Container(
-                              color: Colors.white,
-                              height: 280,
-                              child: ClipPath(
-                                  clipper: ShapeBorderClipper(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16.0),
-                                    ),
-                                  ),
-                                  child: Stack(
-                                    children: [
-                                      Column(
-                                        children: [
-                                          Image.asset(
-                                            'assets/images/facebook/meta_products.jpg',
-                                            fit: BoxFit.cover,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                2,
-                                            height: 150,
-                                          ),
-                                          const Column(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(16.0),
+                              child: Container(
+                                color: Colors.white,
+                                height: 290,
+                                child: Stack(
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Image.asset(
+                                          'assets/images/facebook/meta_products.jpg',
+                                          fit: BoxFit.cover,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              2,
+                                          height: 150,
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
@@ -671,28 +668,30 @@ class _MenuScreenState extends State<MenuScreen> {
                                               Text('이제 Meta Quest 3를 이용해 보세요!'),
                                             ],
                                           ),
-                                        ],
-                                      ),
-                                      Positioned(
-                                        top: 120,
-                                        left: 10,
-                                        child: Card(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(24.0),
-                                          ),
-                                          child: const CircleAvatar(
-                                            radius: 24,
-                                            backgroundColor: Colors.white,
-                                            child: FaIcon(
-                                              FontAwesomeIcons.meta,
-                                              color: Colors.lightBlue,
-                                            ),
+                                        ),
+                                      ],
+                                    ),
+                                    Positioned(
+                                      top: 120,
+                                      left: 10,
+                                      child: Card(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(24.0),
+                                        ),
+                                        child: const CircleAvatar(
+                                          radius: 24,
+                                          backgroundColor: Colors.white,
+                                          child: FaIcon(
+                                            FontAwesomeIcons.meta,
+                                            color: Colors.lightBlue,
                                           ),
                                         ),
-                                      )
-                                    ],
-                                  )),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -701,76 +700,99 @@ class _MenuScreenState extends State<MenuScreen> {
                             children: [
                               Card(
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
-                                child: Container(
-                                  color: Colors.white,
-                                  width: MediaQuery.of(context).size.width / 2,
-                                  height: 82,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/facebook/sparkar.png',
-                                        fit: BoxFit.cover,
-                                        width: 50,
-                                        height: 50,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Container(
+                                    color: Colors.white,
+                                    width:
+                                        MediaQuery.of(context).size.width / 2,
+                                    height: 92,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/facebook/sparkar.png',
+                                            fit: BoxFit.cover,
+                                            width: 50,
+                                            height: 50,
+                                          ),
+                                          const Text('Spark AR'),
+                                        ],
                                       ),
-                                      const Text('Spark AR'),
-                                    ],
+                                    ),
                                   ),
                                 ),
                               ),
                               Card(
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
-                                child: Container(
-                                  color: Colors.white,
-                                  width: MediaQuery.of(context).size.width / 2,
-                                  height: 82,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 5),
-                                        child: Image.asset(
-                                          'assets/images/facebook/threads.png',
-                                          fit: BoxFit.cover,
-                                          width: 40,
-                                          height: 40,
-                                        ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Container(
+                                    color: Colors.white,
+                                    width:
+                                        MediaQuery.of(context).size.width / 2,
+                                    height: 92,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 5),
+                                            child: Image.asset(
+                                              'assets/images/facebook/threads.png',
+                                              fit: BoxFit.cover,
+                                              width: 40,
+                                              height: 40,
+                                            ),
+                                          ),
+                                          const Text('Threads'),
+                                        ],
                                       ),
-                                      const Text('Threads'),
-                                    ],
+                                    ),
                                   ),
                                 ),
                               ),
                               Card(
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
-                                child: Container(
-                                  color: Colors.white,
-                                  width: MediaQuery.of(context).size.width / 2,
-                                  height: 82,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 5),
-                                        child: Image.asset(
-                                          'assets/images/facebook/whatsapp.png',
-                                          fit: BoxFit.cover,
-                                          width: 40,
-                                          height: 40,
-                                        ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Container(
+                                    color: Colors.white,
+                                    width:
+                                        MediaQuery.of(context).size.width / 2,
+                                    height: 92,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 5),
+                                            child: Image.asset(
+                                              'assets/images/facebook/whatsapp.png',
+                                              fit: BoxFit.cover,
+                                              width: 40,
+                                              height: 40,
+                                            ),
+                                          ),
+                                          const Text('WhatsApp'),
+                                        ],
                                       ),
-                                      const Text('WhatsApp'),
-                                    ],
+                                    ),
                                   ),
                                 ),
                               ),
