@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_mask/widget_mask.dart';
 
 import '../../../../core/widgets/code.dart';
 
@@ -12,12 +13,12 @@ class WidgetsScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Widgets'),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
           child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Row(
+            const Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 MyAnimatedIcon(),
@@ -33,10 +34,10 @@ AnimatedIcon(
 ''')
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            Row(
+            const Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(width: 300, height: 500, child: MyStepper()),
@@ -95,10 +96,10 @@ Stepper(
 ''')
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            Row(
+            const Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
@@ -122,6 +123,101 @@ CupertinoSlidingSegmentedControl(
         });
       },
     );
+''')
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.lightBlue,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Material(
+                    color: Colors.transparent, //중요
+                    child: InkWell(
+                      splashColor: Colors.red,
+                      borderRadius: BorderRadius.circular(10), //중요
+                      onTap: () {},
+                      child: const SizedBox(
+                        width: 200,
+                        height: 200,
+                        child: Center(child: Text('InkWell')),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                const Code('''
+Container(
+                  decoration: BoxDecoration(
+                    color: Colors.lightBlue,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Material(
+                    color: Colors.transparent, //중요
+                    child: InkWell(
+                      splashColor: Colors.red,
+                      borderRadius: BorderRadius.circular(10), //중요
+                      onTap: () {},
+                      child: const SizedBox(
+                        width: 200,
+                        height: 200,
+                        child: Center(child: Text('InkWell')),
+                      ),
+                    ),
+                  ),
+                )
+''')
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            const Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(
+                  children: [
+                    MaskImage(
+                      isOpen: true,
+                      imgPath: 'assets/images/facebook/user4.jpg',
+                    ),
+                    MaskImage(
+                      isOpen: false,
+                      imgPath: 'assets/images/facebook/user5.jpg',
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Code('''
+WidgetMask(
+          blendMode: BlendMode.srcIn,
+          childSaveLayer: true,
+          mask: Image.asset(
+            widget.imgPath,
+            width: 400,
+            height: 400,
+            fit: BoxFit.cover,
+          ),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 1000),
+            curve: Curves.fastEaseInToSlowEaseOut,
+            width: _isOpen ? 400 : 0,
+            height: 400,
+            child: Container(
+              color: Colors.white,
+            ),
+          ),
+        )
 ''')
               ],
             )
@@ -268,6 +364,66 @@ class _MyCupertinoSlidingSegmentedControlState
           _slidingIndex = value;
         });
       },
+    );
+  }
+}
+
+class MaskImage extends StatefulWidget {
+  const MaskImage({
+    super.key,
+    required this.imgPath,
+    this.isOpen = false,
+  });
+  final String imgPath;
+  final bool isOpen;
+
+  @override
+  State<MaskImage> createState() => _MaskImageState();
+}
+
+class _MaskImageState extends State<MaskImage> {
+  bool _isOpen = false;
+
+  @override
+  void initState() {
+    _isOpen = widget.isOpen;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _isOpen = !_isOpen;
+        });
+      },
+      child: Stack(children: [
+        Container(
+          width: 400,
+          height: 400,
+          color: Colors.red.withOpacity(0),
+        ),
+        WidgetMask(
+          blendMode: BlendMode.srcIn,
+          childSaveLayer: true,
+          mask: Image.asset(
+            widget.imgPath,
+            width: 400,
+            height: 400,
+            fit: BoxFit.cover,
+          ),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 1000),
+            curve: Curves.fastEaseInToSlowEaseOut,
+            width: _isOpen ? 400 : 0,
+            height: 400,
+            child: Container(
+              color: Colors.white,
+            ),
+          ),
+        )
+      ]),
     );
   }
 }

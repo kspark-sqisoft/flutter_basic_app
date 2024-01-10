@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../core/theme_controller/theme_controller.dart';
 import 'features/animation/animation_screen.dart';
+import 'features/animation/expand_menu_screen.dart';
+import 'features/animation/expanded_hover_screen.dart';
+import 'features/animation/expanding_flex_cards_screen.dart';
 import 'features/constrainedbox/constrained_box_screen.dart';
 import 'features/customscrollview/customscrollview_screen.dart';
 import 'features/dart/dart_screen.dart';
@@ -18,6 +21,9 @@ import 'features/jsonparsing/json_parsing_screen.dart';
 import 'features/layoutbuilder/layoutbuilder_screen.dart';
 import 'features/lifecycle/lifecycle2_screen.dart';
 import 'features/lifecycle/lifecycle_screen.dart';
+import 'features/matrix4/book_flip_screen.dart';
+import 'features/matrix4/flip_pannel_screen.dart';
+import 'features/matrix4/folding_cards_screen.dart';
 import 'features/matrix4/matrix4_screen.dart';
 import 'features/painter/painter_screen.dart';
 import 'features/rxdart/rxdart_screen.dart';
@@ -396,6 +402,45 @@ class BasicAppHomeScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
+                            return const ExpandMenuScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('ExpandMenu'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const ExpandingFlexCardsScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('ExpandingFlexCards'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const ExpandedHoverScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('ExpandedHover'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
                             return const PainterScreen();
                           },
                         ));
@@ -414,6 +459,45 @@ class BasicAppHomeScreen extends StatelessWidget {
                         ));
                       },
                       child: const Text('Matrix4'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const BookFlipScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('BookFlip'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const FoldingCardsScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('FoldingCards'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const FlipPannelScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('FlipPannel'),
                     ),
                   ),
                   Padding(
