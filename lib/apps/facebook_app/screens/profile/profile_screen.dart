@@ -355,8 +355,8 @@ class ProfileScreen extends StatelessWidget {
                       Expanded(
                         child: Image.asset(
                           'assets/images/facebook/friend$index.jpg',
-                          fit: BoxFit.fitWidth,
-                          width: 150,
+                          fit: BoxFit.cover,
+                          width: MediaQuery.of(context).size.width / 3,
                           height: 100,
                         ),
                       ),

@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,6 +21,14 @@ class FacebookApp extends ConsumerWidget {
     return MaterialApp.router(
       title: 'Facebook App',
       debugShowCheckedModeBanner: false,
+      scrollBehavior: const MaterialScrollBehavior().copyWith(
+        dragDevices: <PointerDeviceKind>{
+          PointerDeviceKind.mouse,
+          PointerDeviceKind.touch,
+          PointerDeviceKind.stylus,
+          PointerDeviceKind.unknown,
+        },
+      ),
       routerConfig: ref.watch(appRouterProvider),
       themeMode: ThemeMode.light,
       theme: ThemeData.light(useMaterial3: true),

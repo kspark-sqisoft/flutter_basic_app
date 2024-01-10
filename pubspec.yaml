@@ -100,6 +100,7 @@ dependencies:
   flutter_folding_card: ^1.1.0
   flip_panel_plus: ^1.0.0+3
   widget_mask: ^1.0.0+0
+  circular_reveal_animation: ^2.0.1
   
 
 dev_dependencies:

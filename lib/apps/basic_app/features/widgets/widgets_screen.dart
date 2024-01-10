@@ -1,11 +1,33 @@
+import 'package:circular_reveal_animation/circular_reveal_animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_mask/widget_mask.dart';
 
 import '../../../../core/widgets/code.dart';
 
-class WidgetsScreen extends StatelessWidget {
+class WidgetsScreen extends StatefulWidget {
   const WidgetsScreen({super.key});
+
+  @override
+  State<WidgetsScreen> createState() => _WidgetsScreenState();
+}
+
+class _WidgetsScreenState extends State<WidgetsScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
+  late Animation<double> animation;
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
+    animation = CurvedAnimation(
+      parent: animationController,
+      curve: Curves.easeIn,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,37 +36,37 @@ class WidgetsScreen extends StatelessWidget {
         title: const Text('Widgets'),
       ),
       body: SingleChildScrollView(
-          child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                MyAnimatedIcon(),
-                SizedBox(
-                  width: 20,
-                ),
-                Code('''
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              const Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  MyAnimatedIcon(),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Code('''
 AnimatedIcon(
         icon: AnimatedIcons.play_pause,
         progress: _controller,
         size: 100,
       )
 ''')
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(width: 300, height: 500, child: MyStepper()),
-                SizedBox(
-                  width: 20,
-                ),
-                Code('''
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(width: 300, height: 500, child: MyStepper()),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Code('''
 Stepper(
       steps: [
         Step(
@@ -94,22 +116,22 @@ Stepper(
       },
     );
 ''')
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                    width: 300,
-                    height: 100,
-                    child: MyCupertinoSlidingSegmentedControl()),
-                SizedBox(
-                  width: 20,
-                ),
-                Code('''
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                      width: 300,
+                      height: 100,
+                      child: MyCupertinoSlidingSegmentedControl()),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Code('''
 CupertinoSlidingSegmentedControl(
       children: const {
         0: Text('Text 0'),
@@ -124,37 +146,37 @@ CupertinoSlidingSegmentedControl(
       },
     );
 ''')
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.lightBlue,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Material(
-                    color: Colors.transparent, //중요
-                    child: InkWell(
-                      splashColor: Colors.red,
-                      borderRadius: BorderRadius.circular(10), //중요
-                      onTap: () {},
-                      child: const SizedBox(
-                        width: 200,
-                        height: 200,
-                        child: Center(child: Text('InkWell')),
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.lightBlue,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Material(
+                      color: Colors.transparent, //중요
+                      child: InkWell(
+                        splashColor: Colors.red,
+                        borderRadius: BorderRadius.circular(10), //중요
+                        onTap: () {},
+                        child: const SizedBox(
+                          width: 200,
+                          height: 200,
+                          child: Center(child: Text('InkWell')),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                const Code('''
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  const Code('''
 Container(
                   decoration: BoxDecoration(
                     color: Colors.lightBlue,
@@ -175,30 +197,30 @@ Container(
                   ),
                 )
 ''')
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Stack(
-                  children: [
-                    MaskImage(
-                      isOpen: true,
-                      imgPath: 'assets/images/facebook/user4.jpg',
-                    ),
-                    MaskImage(
-                      isOpen: false,
-                      imgPath: 'assets/images/facebook/user5.jpg',
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Code('''
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Stack(
+                    children: [
+                      MaskImage(
+                        isOpen: true,
+                        imgPath: 'assets/images/facebook/user4.jpg',
+                      ),
+                      MaskImage(
+                        isOpen: false,
+                        imgPath: 'assets/images/facebook/user5.jpg',
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Code('''
 WidgetMask(
           blendMode: BlendMode.srcIn,
           childSaveLayer: true,
@@ -219,11 +241,92 @@ WidgetMask(
           ),
         )
 ''')
-              ],
-            )
-          ],
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CircleMaskImage(
+                    imgPath: 'assets/images/facebook/friend0.jpg',
+                    isOpen: true,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Code('''
+WidgetMask(
+          blendMode: BlendMode.srcIn,
+          childSaveLayer: true,
+          mask: SizedBox(
+            width: 400,
+            height: 400,
+            child: Image.asset(
+              widget.imgPath,
+              fit: BoxFit.none,
+              scale: 2.4,
+            ),
+          ),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 1000),
+            curve: Curves.fastEaseInToSlowEaseOut,
+            width: _isOpen ? 400 : 0,
+            height: _isOpen ? 400 : 0,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(400)),
+            ),
+          ),
+        )
+'''),
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      if (animationController.status ==
+                              AnimationStatus.forward ||
+                          animationController.status ==
+                              AnimationStatus.completed) {
+                        animationController.reverse();
+                      } else {
+                        animationController.forward();
+                      }
+                    },
+                    child: CircularRevealAnimation(
+                        animation: animation,
+                        minRadius: 40,
+                        child: CircleAvatar(
+                          radius: 200,
+                          child: ClipRRect(
+                            child: Image.asset(
+                              'assets/images/facebook/friend0.jpg',
+                              width: 400,
+                              height: 400,
+                            ),
+                          ),
+                        )),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  const Code('''
+
+'''),
+                ],
+              ),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }
@@ -422,7 +525,72 @@ class _MaskImageState extends State<MaskImage> {
               color: Colors.white,
             ),
           ),
-        )
+        ),
+      ]),
+    );
+  }
+}
+
+class CircleMaskImage extends StatefulWidget {
+  const CircleMaskImage({
+    super.key,
+    required this.imgPath,
+    this.isOpen = false,
+  });
+  final String imgPath;
+  final bool isOpen;
+
+  @override
+  State<CircleMaskImage> createState() => _CircleMaskImageState();
+}
+
+class _CircleMaskImageState extends State<CircleMaskImage> {
+  bool _isOpen = false;
+
+  @override
+  void initState() {
+    _isOpen = widget.isOpen;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _isOpen = !_isOpen;
+        });
+      },
+      child: Stack(alignment: Alignment.center, children: [
+        Container(
+          width: 400,
+          height: 400,
+          color: Colors.red.withOpacity(0),
+        ),
+        WidgetMask(
+          blendMode: BlendMode.srcIn,
+          childSaveLayer: true,
+          mask: SizedBox(
+            width: 400,
+            height: 400,
+            child: Image.asset(
+              widget.imgPath,
+              fit: BoxFit.none,
+              scale: 2.4,
+            ),
+          ),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 1000),
+            curve: Curves.fastEaseInToSlowEaseOut,
+            width: _isOpen ? 400 : 0,
+            height: _isOpen ? 400 : 0,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(400)),
+            ),
+          ),
+        ),
       ]),
     );
   }
