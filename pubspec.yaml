@@ -101,6 +101,7 @@ dependencies:
   flip_panel_plus: ^1.0.0+3
   widget_mask: ^1.0.0+0
   circular_reveal_animation: ^2.0.1
+  printing: ^5.11.1
   
 
 dev_dependencies:
