@@ -1,14 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'clean_architecture_app_home_screen.dart';
+import 'routes/app_routes.dart';
 
 class CleanArchitectureApp extends StatelessWidget {
   const CleanArchitectureApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'CleanArchitecture App',
       debugShowCheckedModeBanner: false,
       scrollBehavior: const MaterialScrollBehavior().copyWith(
@@ -19,7 +19,7 @@ class CleanArchitectureApp extends StatelessWidget {
           PointerDeviceKind.unknown,
         },
       ),
-      home: const CleanArchitectureAppHomeScreen(),
+      routerConfig: AppRouter.router,
     );
   }
 }
