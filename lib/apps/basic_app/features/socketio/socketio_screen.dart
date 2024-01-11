@@ -13,8 +13,11 @@ class SocketIOScreen extends StatefulWidget {
 class _SocketIOScreenState extends State<SocketIOScreen> {
   Socket? socket;
   void connect() {
-    socket = io('http://localhost:8080/io/history',
-        OptionBuilder().setTransports(['websocket']).build());
+    //프로그램 시작 같은데서 하고 autoConnect 되게
+    socket = io(
+      'http://localhost:8080/io/history',
+      OptionBuilder().setTransports(['websocket']).build(),
+    );
 
     socket?.onConnect((_) {
       print('connected');
