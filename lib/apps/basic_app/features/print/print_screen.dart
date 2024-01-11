@@ -30,6 +30,7 @@ class _PrintScreenState extends State<PrintScreen> {
     //프린터 들을 찾고
     List<Printer> printers = await Printing.listPrinters();
     print('printers:$printers');
+    //원하는 프린터를 선택하고
     Printer? printer = const Printer(url: 'HP419A54 (HP OfficeJet Pro 8710)');
     print('printer:$printer');
     //다이렉트로 출력
