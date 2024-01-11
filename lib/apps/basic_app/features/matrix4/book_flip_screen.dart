@@ -151,38 +151,39 @@ class _BookFlipState extends State<BookFlip>
   @override
   Widget build(BuildContext context) {
     print(_flipAnimation.value);
-    return Material(
-      color: Colors.transparent,
-      child: AnimatedBuilder(
-        animation: _animation,
-        builder: (context, child) {
-          return GestureDetector(
-            onTap: () {
-              print('onTap');
-              if (_animationController.isCompleted) {
-                _animationController.reverse();
-                setState(() => _isOpen = false);
-              } else {
-                _animationController.forward();
-                setState(() => _isOpen = true);
-              }
-            },
-            child: FractionalTranslation(
+    print(-0.25 * _flipAnimation.value);
+    return GestureDetector(
+      onTap: () {
+        print('onTap');
+        if (_animationController.isCompleted) {
+          _animationController.reverse();
+          setState(() => _isOpen = false);
+        } else {
+          _animationController.forward();
+          setState(() => _isOpen = true);
+        }
+      },
+      child: Material(
+        color: Colors.transparent,
+        child: AnimatedBuilder(
+          animation: _animation,
+          builder: (context, child) {
+            return FractionalTranslation(
               //translation: const Offset(0, 0),
               //translation: Offset(-0.5 * _flipAnimation.value, 0),
               translation: Offset(-0.25 * _flipAnimation.value, 0),
-              child: Container(
+              child: AnimatedContainer(
                 constraints:
                     const BoxConstraints(maxWidth: 600, maxHeight: 300),
+                duration: BookConstants.animationDuration,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   textDirection: TextDirection.rtl,
                   children: [
-                    const Expanded(
+                    const Flexible(
                       child: BookBack(),
                     ),
-                    Expanded(
+                    Flexible(
                       child: Transform(
                         transform: Matrix4.identity()
                           ..setEntry(3, 2, BookConstants.perspectiveValue)
@@ -209,9 +210,9 @@ class _BookFlipState extends State<BookFlip>
                   ],
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

@@ -28,7 +28,11 @@ Future<void> bootstrap() async {
           backgroundColor: Colors.red,
           title: const Text('An error occurred'),
         ),
-        body: Center(child: Text(details.toString())),
+        body: Center(
+          child: Text(
+            details.toString(),
+          ),
+        ),
       );
     };
   }, (error, stackTrace) {
