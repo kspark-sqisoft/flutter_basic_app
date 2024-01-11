@@ -1,10 +1,15 @@
+import 'dart:developer';
+
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:media_kit/ffi/ffi.dart';
 
 import '../../core/theme/flex_theme_dark.dart';
 import '../../core/theme/flex_theme_light.dart';
 import '../../core/theme/theme_data_dark.dart';
 import '../../core/theme/theme_data_light.dart';
+import '../../core/theme_const/app_color.dart';
 import '../../core/theme_controller/theme_controller.dart';
 import 'basic_app_home_screen.dart';
 import 'features/dart/dart_screen.dart';
@@ -15,6 +20,13 @@ class BasicApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    for (int i = 0; i < FlexColor.schemesList.length; i++) {
+      log('FlexColor.schemesList[$i].name ${FlexColor.schemesList[i].name}');
+    }
+    //AppColor.customSchemes 에서 앞에 추가 [Example Midnight, Example Greens, Example Red & Blue]
+    log('controller.themeMode:${controller.themeMode}');
+    log('controller.schemeIndex:${controller.schemeIndex}');
+    log('selected AppColor.customSchemes[${controller.schemeIndex}].name : ${AppColor.customSchemes[controller.schemeIndex].name}');
     return ListenableBuilder(
       listenable: controller,
       builder: (context, child) {

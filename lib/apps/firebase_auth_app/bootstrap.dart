@@ -13,7 +13,7 @@ import 'firebase_auth_app.dart';
 Future<void> bootstrap() async {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
-    setPathUrlStrategy();
+    setPathUrlStrategy(); // url에서 #을 없애기
     await _initializeFirebase();
     runApp(
       const ProviderScope(child: FirebaseAuthApp()),
