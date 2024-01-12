@@ -8,6 +8,7 @@ import 'features/animation/expanded_hover_screen.dart';
 import 'features/animation/expanding_flex_cards_screen.dart';
 import 'features/constrainedbox/constrained_box_screen.dart';
 import 'features/customscrollview/customscrollview_screen.dart';
+import 'features/customscrollview/super_cupertino_navigation_bar/super_cupertino_navigation_bar_screen.dart';
 import 'features/dart/dart_screen.dart';
 import 'features/debounce/debounce_screen.dart';
 import 'features/drawer/drawer_navigation_screen.dart';
@@ -411,6 +412,19 @@ class BasicAppHomeScreen extends StatelessWidget {
                         ));
                       },
                       child: const Text('CustomScrollView'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const SuperCupertinoNavigationBarScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('SuperCupertinoNavigationBar'),
                     ),
                   ),
                   Padding(

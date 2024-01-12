@@ -109,6 +109,11 @@ dependencies:
   sembast: ^3.5.0+1
   sqflite: ^2.3.0
   socket_io_client: ^2.0.3+1
+  super_cupertino_navigation_bar: ^2.0.5
+  modal_bottom_sheet: ^3.0.0-pre
+  flutter_rating_stars: ^1.0.3+4
+  lottie: ^2.7.0
+  marvelous_carousel: ^0.0.16
   
 
 dev_dependencies:
@@ -155,6 +160,7 @@ flutter:
     #   - images/a_dot_burr.jpeg
     #   - images/a_dot_ham.jpeg
     - .env
+    - assets/
     - assets/images/
     - assets/images/etc/
     - assets/images/chat/
