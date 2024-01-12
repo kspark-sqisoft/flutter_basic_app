@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/theme_controller/theme_controller.dart';
+import 'features/animation/animation_basic_screen.dart';
 import 'features/animation/animation_screen.dart';
 import 'features/animation/expand_menu_screen.dart';
 import 'features/animation/expanded_hover_screen.dart';
@@ -423,6 +424,19 @@ class BasicAppHomeScreen extends StatelessWidget {
                         ));
                       },
                       child: const Text('Animation'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const AnimationBasicScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('AnimationBasic'),
                     ),
                   ),
                   Padding(

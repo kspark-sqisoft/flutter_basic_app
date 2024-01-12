@@ -184,6 +184,72 @@ class _OrderEntryState extends State<OrderEntry>
     }
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _toggleAnimation,
+      child: AnimatedFoldingWidget(
+        animation: Tween(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: _controller,
+            curve: const Interval(
+              0.0,
+              1 / 3,
+              curve: Curves.easeInOut,
+            ),
+          ),
+        ),
+        behind: OrderEntryHeader(
+          height: 180,
+          order: widget.order,
+        ),
+        front: OrderEntrySummary(
+          order: widget.order,
+        ),
+        next: Column(
+          children: [
+            _senderSection(),
+            AnimatedFoldingWidget(
+              animation: Tween(begin: 0.0, end: 1.0).animate(
+                CurvedAnimation(
+                  parent: _controller,
+                  curve: const Interval(
+                    1 / 3,
+                    1 / 3 * 2,
+                    curve: Curves.easeInOut,
+                  ),
+                ),
+              ),
+              behind: _addressSection(),
+              front: Container(
+                height: 75,
+                color: Colors.white,
+              ),
+              next: AnimatedFoldingWidget(
+                animation: Tween(begin: 0.0, end: 1.0).animate(
+                  CurvedAnimation(
+                    parent: _controller,
+                    curve: const Interval(
+                      1 / 3 * 2,
+                      1.0,
+                      curve: Curves.easeInOut,
+                    ),
+                  ),
+                ),
+                behind: _deliverySection(),
+                front: Container(
+                  height: 75,
+                  color: Colors.white,
+                ),
+                next: _messageSection(),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _senderSection() {
     return OrderEntrySectionRow(
       height: 75,
@@ -322,72 +388,6 @@ class _OrderEntryState extends State<OrderEntry>
               color: Colors.black54,
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _toggleAnimation,
-      child: AnimatedFoldingWidget(
-        animation: Tween(begin: 0.0, end: 1.0).animate(
-          CurvedAnimation(
-            parent: _controller,
-            curve: const Interval(
-              0.0,
-              1 / 3,
-              curve: Curves.easeInOut,
-            ),
-          ),
-        ),
-        behind: OrderEntryHeader(
-          height: 180,
-          order: widget.order,
-        ),
-        front: OrderEntrySummary(
-          order: widget.order,
-        ),
-        next: Column(
-          children: [
-            _senderSection(),
-            AnimatedFoldingWidget(
-              animation: Tween(begin: 0.0, end: 1.0).animate(
-                CurvedAnimation(
-                  parent: _controller,
-                  curve: const Interval(
-                    1 / 3,
-                    1 / 3 * 2,
-                    curve: Curves.easeInOut,
-                  ),
-                ),
-              ),
-              behind: _addressSection(),
-              front: Container(
-                height: 75,
-                color: Colors.white,
-              ),
-              next: AnimatedFoldingWidget(
-                animation: Tween(begin: 0.0, end: 1.0).animate(
-                  CurvedAnimation(
-                    parent: _controller,
-                    curve: const Interval(
-                      1 / 3 * 2,
-                      1.0,
-                      curve: Curves.easeInOut,
-                    ),
-                  ),
-                ),
-                behind: _deliverySection(),
-                front: Container(
-                  height: 75,
-                  color: Colors.white,
-                ),
-                next: _messageSection(),
-              ),
-            ),
-          ],
         ),
       ),
     );
