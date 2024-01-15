@@ -21,13 +21,13 @@ class _GithubInboxState extends State<GithubInbox> {
       appBar: SuperAppBar(
         bottomBorder: const BorderSide(color: Colors.white10, width: 1),
         backgroundColor: const Color(0xff17161b),
-        automaticallyImplyLeading: true,
+        //automaticallyImplyLeading: true,
         title: Text(
           "Github",
           style:
               TextStyle(color: Theme.of(context).textTheme.bodyMedium!.color),
         ),
-        leading: const SizedBox(),
+        //leading: const SizedBox(),
         bottom: SuperAppBarBottom(
           enabled: true,
           height: 40,

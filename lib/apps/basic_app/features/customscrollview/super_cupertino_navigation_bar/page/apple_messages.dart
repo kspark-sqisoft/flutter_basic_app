@@ -55,6 +55,7 @@ class _AppleMessagesState extends State<AppleMessages> {
             ),
           ],
         ),
+        /*
         leading: GestureDetector(
           onTap: null,
           child: Padding(
@@ -66,6 +67,7 @@ class _AppleMessagesState extends State<AppleMessages> {
             ),
           ),
         ),
+        */
         searchBar: SuperSearchBar(
           resultColor: Colors.black,
           scrollBehavior: SearchBarScrollBehavior.pinned,

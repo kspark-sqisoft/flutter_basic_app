@@ -25,7 +25,7 @@ class _AppleTipsState extends State<AppleTips> {
         backgroundColor: Colors.black.withOpacity(0.5),
         bottomBorder: const BorderSide(color: Colors.white10, width: 0),
         height: 45,
-        automaticallyImplyLeading: false,
+        //automaticallyImplyLeading: false,
         previousPageTitle: "Home",
         searchBar: SuperSearchBar(
           resultColor: Colors.black.withOpacity(0.95),

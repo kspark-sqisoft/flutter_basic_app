@@ -32,6 +32,7 @@ class _WhatsappState extends State<Whatsapp> {
           style:
               TextStyle(color: Theme.of(context).textTheme.bodyMedium!.color),
         ),
+        /*
         leading: const Padding(
           padding: EdgeInsets.only(left: 15.0),
           child: Icon(
@@ -40,6 +41,7 @@ class _WhatsappState extends State<Whatsapp> {
             size: 27,
           ),
         ),
+        */
         actions: Row(
           children: [
             const Icon(

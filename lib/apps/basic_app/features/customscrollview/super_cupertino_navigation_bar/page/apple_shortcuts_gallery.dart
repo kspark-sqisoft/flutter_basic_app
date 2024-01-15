@@ -25,7 +25,7 @@ class _ShortcutsGalleryState extends State<ShortcutsGallery> {
         bottomBorder: const BorderSide(color: Colors.white10, width: 0),
         backgroundColor: Colors.black.withOpacity(0.5),
         height: 45,
-        automaticallyImplyLeading: false,
+        //automaticallyImplyLeading: false,
         previousPageTitle: "Home",
         searchBar: SuperSearchBar(
           resultColor: Colors.black.withOpacity(0.95),
@@ -42,8 +42,8 @@ class _ShortcutsGalleryState extends State<ShortcutsGallery> {
       ),
       body: [
         Container(
-          margin: const EdgeInsets.only(top: 20),
-          height: 202,
+          margin: const EdgeInsets.only(top: 10),
+          height: 222,
           child: MarvelousCarousel(
             scrollDirection: Axis.horizontal,
             dotsVisible: false,

@@ -239,12 +239,14 @@ class _AppleStoreState extends State<AppleStore> {
       onCollapsed: (val) {
         print("collapsed => $val");
       },
-      stretch: true,
+      //stretch: true,
       appBar: SuperAppBar(
         bottomBorder: const BorderSide(color: Colors.white10, width: 0),
         backgroundColor: Colors.black,
-        automaticallyImplyLeading: false,
-        height: 40,
+        //automaticallyImplyLeading: false,
+        previousPageTitle: 'Home',
+        leadingWidth: 100,
+        //height: 40,
         searchBar: SuperSearchBar(
           resultColor: Colors.black,
           enabled: true,

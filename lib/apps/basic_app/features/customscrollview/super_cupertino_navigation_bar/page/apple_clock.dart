@@ -21,7 +21,7 @@ class _AppleClockState extends State<AppleClock> {
       appBar: SuperAppBar(
         bottomBorder: const BorderSide(color: Colors.white10, width: 0),
         backgroundColor: Colors.black,
-        height: 45,
+        //height: 45,
         automaticallyImplyLeading: true,
         previousPageTitle: "Home",
         actions: const Row(
@@ -37,6 +37,7 @@ class _AppleClockState extends State<AppleClock> {
             )
           ],
         ),
+        /*
         leading: GestureDetector(
           onTap: null,
           child: const Padding(
@@ -50,6 +51,7 @@ class _AppleClockState extends State<AppleClock> {
             ),
           ),
         ),
+        */
         searchBar: SuperSearchBar(
           // height: 190,
           enabled: false,
