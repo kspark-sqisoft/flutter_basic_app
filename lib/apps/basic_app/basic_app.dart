@@ -21,7 +21,7 @@ class BasicApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     for (int i = 0; i < FlexColor.schemesList.length; i++) {
-      log('FlexColor.schemesList[$i].name ${FlexColor.schemesList[i].name}');
+      //log('FlexColor.schemesList[$i].name ${FlexColor.schemesList[i].name}');
     }
     //AppColor.customSchemes 에서 앞에 추가 [Example Midnight, Example Greens, Example Red & Blue]
     log('controller.themeMode:${controller.themeMode}');

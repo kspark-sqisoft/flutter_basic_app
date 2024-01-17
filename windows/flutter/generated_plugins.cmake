@@ -3,6 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  camera_windows
   cloud_firestore
   emoji_picker_flutter
   file_selector_windows

@@ -6,6 +6,7 @@ import 'features/animation/animation_screen.dart';
 import 'features/animation/expand_menu_screen.dart';
 import 'features/animation/expanded_hover_screen.dart';
 import 'features/animation/expanding_flex_cards_screen.dart';
+import 'features/camera/camera_screen.dart';
 import 'features/constrainedbox/constrained_box_screen.dart';
 import 'features/customscrollview/customscrollview_screen.dart';
 import 'features/customscrollview/super_cupertino_navigation_bar/super_cupertino_navigation_bar_screen.dart';
@@ -19,6 +20,8 @@ import 'features/filedownloader/file_downloader_custom_screen.dart';
 import 'features/filedownloader/file_downloader_screen.dart';
 import 'features/flutter/flutter_screen.dart';
 import 'features/httpdio/httpdio_screen.dart';
+import 'features/image/image_merge_screen.dart';
+import 'features/image/widget_to_image_screen.dart';
 import 'features/jsonparsing/json_parsing_screen.dart';
 import 'features/layoutbuilder/layoutbuilder_screen.dart';
 import 'features/lifecycle/lifecycle2_screen.dart';
@@ -37,6 +40,7 @@ import 'features/socketio/socketio_screen.dart';
 import 'features/tab/tab_controller_screen.dart';
 import 'features/tab/tab_page_selector_screen.dart';
 import 'features/theme/theme_screen.dart';
+import 'features/timeline/timeline_screen.dart';
 import 'features/vscode/vscode_screen.dart';
 import 'features/widgets/widgets_screen.dart';
 
@@ -581,6 +585,58 @@ class BasicAppHomeScreen extends StatelessWidget {
                         ));
                       },
                       child: const Text('Widgets'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const TimelineScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('Timeline'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const CameraScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('Camera'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const ImageMergeScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('ImageMerge'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const WidgetToImageScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('WidgetToImage'),
                     ),
                   ),
                 ],
