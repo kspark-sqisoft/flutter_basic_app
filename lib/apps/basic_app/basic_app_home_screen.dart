@@ -21,6 +21,9 @@ import 'features/filedownloader/file_downloader_screen.dart';
 import 'features/flutter/flutter_screen.dart';
 import 'features/httpdio/httpdio_screen.dart';
 import 'features/image/image_merge_screen.dart';
+import 'features/image/image_processing2_screen.dart';
+import 'features/image/image_processing_screen.dart';
+import 'features/image/image_provider_screen.dart';
 import 'features/image/widget_to_image_screen.dart';
 import 'features/jsonparsing/json_parsing_screen.dart';
 import 'features/layoutbuilder/layoutbuilder_screen.dart';
@@ -637,6 +640,45 @@ class BasicAppHomeScreen extends StatelessWidget {
                         ));
                       },
                       child: const Text('WidgetToImage'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const ImageProviderScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('ImageProvider'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const ImageProcessingScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('ImageProcessing'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const ImageProcessing2Screen();
+                          },
+                        ));
+                      },
+                      child: const Text('ImageProcessing2'),
                     ),
                   ),
                 ],

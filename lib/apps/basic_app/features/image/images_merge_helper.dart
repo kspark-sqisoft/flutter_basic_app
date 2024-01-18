@@ -75,24 +75,39 @@ class ImagesMergeHelper {
     return recorder.endRecording().toImage(totalWidth, totalHeight);
   }
 
-  static Future<ui.Image> loadImageFromAsset(String asset) async {
+  static Future<ui.Image?> loadImageFromAsset(String asset) async {
     ByteData data = await rootBundle.load(asset);
     var codec = await ui.instantiateImageCodec(data.buffer.asUint8List());
     ui.FrameInfo fi = await codec.getNextFrame();
     return fi.image;
   }
 
-  static Future<ui.Image> loadImageFromFile(File file) async {
+  static Future<ui.Image?> loadImageFromFile(File file) async {
     Uint8List bytes = file.readAsBytesSync();
     return await uint8ListToImage(bytes);
   }
 
+  static Future<ui.Image?> loadImageFromNetwork(String url) async {
+    final completer = Completer<ImageInfo>();
+    final img = NetworkImage(url);
+    img.resolve(ImageConfiguration.empty).addListener(
+      ImageStreamListener((info, _) {
+        completer.complete(info);
+      }),
+    );
+    final imageInfo = await completer.future;
+
+    return imageInfo.image;
+  }
+
+  //ui.Image => Uint8List
   static Future<Uint8List?> imageToUint8List(ui.Image image,
       {ui.ImageByteFormat format = ui.ImageByteFormat.png}) async {
     ByteData? byteData = await image.toByteData(format: format);
     return byteData?.buffer.asUint8List();
   }
 
+  //Uint8List => ui.Image
   static Future<ui.Image> uint8ListToImage(Uint8List bytes) async {
     ImageProvider provider = MemoryImage(bytes);
     return await loadImageFromProvider(provider);
