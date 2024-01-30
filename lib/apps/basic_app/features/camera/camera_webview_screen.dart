@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_filter_pro/named_color_filter.dart';
 import 'package:webview_windows/webview_windows.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -138,6 +139,8 @@ class _CameraWebviewScreenState extends State<CameraWebviewScreen> {
                       children: [
                         Webview(
                           _controller,
+                          width: 1920 / 2,
+                          height: 1080 / 2,
                           permissionRequested: _onPermissionRequested,
                         ),
                         StreamBuilder<LoadingState>(
