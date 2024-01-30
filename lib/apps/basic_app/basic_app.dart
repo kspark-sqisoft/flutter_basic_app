@@ -14,6 +14,8 @@ import '../../core/theme_controller/theme_controller.dart';
 import 'basic_app_home_screen.dart';
 import 'features/dart/dart_screen.dart';
 
+final navigatorKey = GlobalKey<NavigatorState>();
+
 class BasicApp extends StatelessWidget {
   const BasicApp({super.key, required this.controller});
   final ThemeController controller;
@@ -33,6 +35,7 @@ class BasicApp extends StatelessWidget {
         return MaterialApp(
           title: 'Basic App',
           debugShowCheckedModeBanner: false,
+          navigatorKey: navigatorKey,
           scrollBehavior: const MaterialScrollBehavior().copyWith(
             dragDevices: <PointerDeviceKind>{
               PointerDeviceKind.mouse,

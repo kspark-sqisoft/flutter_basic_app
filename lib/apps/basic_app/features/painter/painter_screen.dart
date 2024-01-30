@@ -11,14 +11,20 @@ class PainterScreen extends StatefulWidget {
   State<PainterScreen> createState() => _PainterScreenState();
 }
 
-class _PainterScreenState extends State<PainterScreen> {
-  ui.Image? image;
+class _PainterScreenState extends State<PainterScreen>
+    with TickerProviderStateMixin {
+  ui.Image? _image;
+
+  late AnimationController _animationController;
+  late Animation<double> _animation;
+
+  double _progress = 0;
 
   Future<void> loadImage(String imagePath) async {
     //asset 이미지 => ui.Image
     ByteData data = await rootBundle.load(imagePath);
     List<int> bytes = data.buffer.asUint8List();
-    image = await decodeImageFromList(Uint8List.fromList(bytes));
+    _image = await decodeImageFromList(Uint8List.fromList(bytes));
 
     setState(() {});
   }
@@ -26,7 +32,31 @@ class _PainterScreenState extends State<PainterScreen> {
   @override
   void initState() {
     loadImage('assets/images/facebook/profile.jpg');
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2), // 300 밀리세컨드, 0.3 초간 실행
+    );
+
+    // _animationController에서 지정하는 범위내에서 90 에서 0 으로 점차 값이 변화한다.
+    _animation = Tween<double>(begin: 0, end: 90).animate(_animationController);
+
+    _animation.addListener(() {
+      setState(() {
+        _progress = _animation.value / 90; //0-90 => 0-1
+      });
+    });
+
+    // repeat를 이용해 애니메이션을 반복한다.
+    _animationController.repeat(reverse: true);
+
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -47,9 +77,28 @@ class _PainterScreenState extends State<PainterScreen> {
               const SizedBox(
                 height: 50,
               ),
-              if (image != null)
+              CustomPaint(
+                size: const Size(200, 200),
+                painter: PacManPainter(
+                  animation: _animation,
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              CustomPaint(
+                size: const Size(200, 200),
+                painter: RingPainter(
+                    progress: _progress,
+                    taskCompletedColor: Colors.lightBlue,
+                    taskNotCompletedColor: Colors.red),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              if (_image != null)
                 CustomPaint(
-                  painter: ImagePainter(image: image!),
+                  painter: ImagePainter(image: _image!),
                   size: const Size(200, 200),
                 ),
             ],
@@ -124,4 +173,91 @@ class ImagePainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return false;
   }
+}
+
+class PacManPainter extends CustomPainter {
+  final Animation animation;
+
+  PacManPainter({required this.animation}) : super(repaint: animation);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    var paint = Paint()..color = Colors.yellow;
+    double sweepAngle = (360.0 - animation.value) * pi / 180; // 입 벌리는 정도
+    double startAngle = (animation.value / 2) * pi / 180; // 회전
+
+    var p = Path()
+      ..moveTo(
+          size.width / 2, size.height / 2) // 중심각의 위치, 주어진 영역의 절반 위치를 중심각으로 지정
+      ..arcTo(
+          Rect.fromCircle(
+            radius: size.height / 2, //반지름, 객체의 크기를 결정한다.
+            center: Offset(size.width / 2, size.height / 2), // 객체 자체의 위치
+          ),
+          startAngle,
+          sweepAngle,
+          false)
+      ..close();
+
+    canvas.drawPath(p, paint);
+  }
+
+  @override
+  bool shouldRepaint(PacManPainter oldDelegate) {
+    return true;
+  }
+}
+
+class RingPainter extends CustomPainter {
+  // 1. add a constructor and properties that can be set from the parent widget
+  RingPainter({
+    required this.progress,
+    required this.taskNotCompletedColor,
+    required this.taskCompletedColor,
+  });
+  // a value between 0 and 1
+  final double progress;
+  // background color to use when the task is not completed
+  final Color taskNotCompletedColor;
+  // foreground color to use when the task is completed
+  final Color taskCompletedColor;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    // 2. configure the paint and drawing properties
+    final strokeWidth = size.width / 15.0;
+    final center = Offset(size.width / 2, size.height / 2);
+    final radius = (size.width - strokeWidth) / 2;
+
+    // 3. create and configure the background paint
+    final backgroundPaint = Paint()
+      ..isAntiAlias = true
+      ..strokeWidth = strokeWidth
+      ..color = taskNotCompletedColor
+      ..style = PaintingStyle.stroke;
+    // 4. draw a circle
+    canvas.drawCircle(center, radius, backgroundPaint);
+
+    // 5. create and configure the foreground paint
+    final foregroundPaint = Paint()
+      ..isAntiAlias = true
+      ..strokeWidth = strokeWidth
+      ..color = taskCompletedColor
+      ..style = PaintingStyle.stroke;
+    // 6. draw an arc that starts from the top (-pi / 2)
+    // and sweeps and angle of (2 * pi * progress)
+    canvas.drawArc(
+      Rect.fromCircle(center: center, radius: radius),
+      -pi / 2,
+      2 * pi * progress,
+      false,
+      foregroundPaint,
+    );
+  }
+
+  // 7. only return true if the old progress value
+  // is different from the new one
+  @override
+  bool shouldRepaint(covariant RingPainter oldDelegate) =>
+      oldDelegate.progress != progress;
 }

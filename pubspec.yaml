@@ -118,6 +118,8 @@ dependencies:
   camera_windows: ^0.2.1+9
   widgets_to_image: ^0.0.2
   image: ^4.1.4
+  webview_windows: ^0.3.0
+  window_manager: ^0.3.7
 
 dev_dependencies:
   flutter_test:

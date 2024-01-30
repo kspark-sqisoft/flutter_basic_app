@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:logging/logging.dart';
 import 'dart:developer';
+import 'package:window_manager/window_manager.dart';
 
 import '../../core/theme_controller/theme_controller.dart';
 import '../../core/theme_service/theme_service.dart';
@@ -29,6 +30,7 @@ Future<void> bootstrap() async {
 
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
+    await windowManager.ensureInitialized();
     Logger.root.onRecord.listen((LogRecord rec) {
       debugPrint(
           '${rec.loggerName}>${rec.level.name}: ${rec.time}: ${rec.message}');

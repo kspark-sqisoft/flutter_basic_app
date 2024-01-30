@@ -1,0 +1,35 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>웹캠 테스트</title>
+    <style>
+        body {
+            margin: 0; /* 페이지 여백 제거 */
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 비디오 비율 유지하면서 꽉 채우기 */
+        }
+    </style>
+</head>
+
+<body>
+    <video id="webcam" autoplay></video>
+
+    <script>
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                document.getElementById('webcam').srcObject = stream;
+            })
+            .catch(function (error) {
+                console.log('웹캠 액세스 중 오류 발생:', error);
+            });
+    </script>
+</body>
+
+</html>

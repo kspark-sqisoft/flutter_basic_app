@@ -7,6 +7,7 @@ import 'features/animation/expand_menu_screen.dart';
 import 'features/animation/expanded_hover_screen.dart';
 import 'features/animation/expanding_flex_cards_screen.dart';
 import 'features/camera/camera_screen.dart';
+import 'features/camera/camera_webview_screen.dart';
 import 'features/constrainedbox/constrained_box_screen.dart';
 import 'features/customscrollview/customscrollview_screen.dart';
 import 'features/customscrollview/super_cupertino_navigation_bar/super_cupertino_navigation_bar_screen.dart';
@@ -614,6 +615,19 @@ class BasicAppHomeScreen extends StatelessWidget {
                         ));
                       },
                       child: const Text('Camera'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const CameraWebviewScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('CameraWebview'),
                     ),
                   ),
                   Padding(
