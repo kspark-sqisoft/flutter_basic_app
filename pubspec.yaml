@@ -60,14 +60,14 @@ dependencies:
   background_downloader: ^8.0.2
   logging: ^1.2.0
   firebase_core: ^2.24.2
-  firebase_auth: ^4.15.3
+  firebase_auth: ^4.16.0
   google_sign_in: ^6.2.1
-  cloud_firestore: ^4.13.6
+  cloud_firestore: ^4.14.0
   cached_network_image: ^3.3.0
   image_picker: ^1.0.5
-  firebase_storage: ^11.5.6
+  firebase_storage: ^11.6.0
   emoji_picker_flutter: ^1.6.3
-  firebase_messaging: ^14.7.9
+  firebase_messaging: ^14.7.10
   flutter_local_notifications: ^16.2.0
   flutter_notification_channel: ^2.0.0
   device_info_plus: ^9.1.1
@@ -120,6 +120,8 @@ dependencies:
   image: ^4.1.4
   webview_windows: ^0.3.0
   window_manager: ^0.3.7
+  image_filter_pro: ^0.1.10
+  hangul: ^0.6.0
 
 dev_dependencies:
   flutter_test:
@@ -167,6 +169,7 @@ flutter:
     - .env
     - assets/
     - assets/images/
+    - assets/images/keyboard/
     - assets/images/etc/
     - assets/images/chat/
     - assets/images/apple/

@@ -8,6 +8,11 @@
     <style>
         body {
             margin: 0; /* 페이지 여백 제거 */
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         video {
@@ -22,9 +27,21 @@
     <video id="webcam" autoplay></video>
 
     <script>
-        navigator.mediaDevices.getUserMedia({ video: true })
+        
+        navigator.mediaDevices.getUserMedia({ video: {
+                width: { ideal: 1920 },
+                height: { ideal: 1080 }
+            } })
             .then(function (stream) {
                 document.getElementById('webcam').srcObject = stream;
+
+                // Get the video track
+                var videoTrack = stream.getVideoTracks()[0];
+
+                // Get the settings of the video track
+                var videoTrackSettings = videoTrack.getSettings();
+
+                console.log('Video Track Settings:', videoTrackSettings);
             })
             .catch(function (error) {
                 console.log('웹캠 액세스 중 오류 발생:', error);

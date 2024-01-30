@@ -9,6 +9,7 @@ import 'features/animation/expanding_flex_cards_screen.dart';
 import 'features/camera/camera_screen.dart';
 import 'features/camera/camera_webview_screen.dart';
 import 'features/constrainedbox/constrained_box_screen.dart';
+import 'features/custom_keyboard/custom_keyboard_screen.dart';
 import 'features/customscrollview/customscrollview_screen.dart';
 import 'features/customscrollview/super_cupertino_navigation_bar/super_cupertino_navigation_bar_screen.dart';
 import 'features/dart/dart_screen.dart';
@@ -21,6 +22,7 @@ import 'features/filedownloader/file_downloader_custom_screen.dart';
 import 'features/filedownloader/file_downloader_screen.dart';
 import 'features/flutter/flutter_screen.dart';
 import 'features/httpdio/httpdio_screen.dart';
+import 'features/image/image_filter_screen.dart';
 import 'features/image/image_merge_screen.dart';
 import 'features/image/image_processing2_screen.dart';
 import 'features/image/image_processing_screen.dart';
@@ -693,6 +695,32 @@ class BasicAppHomeScreen extends StatelessWidget {
                         ));
                       },
                       child: const Text('ImageProcessing2'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const ImageFilterScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('ImageFilter'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const CustomKeyboardScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('Custom Keyboard'),
                     ),
                   ),
                 ],
