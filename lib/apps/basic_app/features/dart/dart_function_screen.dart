@@ -45,6 +45,8 @@ typedef MathFunction = int Function(int a, int b);
 //typedef int MathFunction(int a, int b);
 //typedef MathFunction<T> = T Function(T a, T b);
 
+typedef MyRecord = (int, String);
+
 class DartFunctionScreen extends StatefulWidget {
   const DartFunctionScreen({super.key});
 
@@ -78,6 +80,9 @@ class _DartFunctionScreenState extends State<DartFunctionScreen> {
 
     mathFunction = minus;
     print(mathFunction(5, 2));
+
+    MyRecord myRecord = (1, 'keesoon');
+    print(myRecord);
 
     super.initState();
   }
