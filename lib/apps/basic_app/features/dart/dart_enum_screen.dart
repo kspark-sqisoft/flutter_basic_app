@@ -51,7 +51,19 @@ class _DartEnumScreenState extends State<DartEnumScreen> {
     print(statusCode2.description);
     print(statusCode2);
 
+    processStatus(statusCode2);
     super.initState();
+  }
+
+  void processStatus(StatusCode statusCode) {
+    return switch (statusCode) {
+      StatusCode.badRequest => print('badRequest'),
+      StatusCode.unAuthorized => print('unAuthorized'),
+      StatusCode.forbidden => print('forbidden'),
+      StatusCode.notFound => print('notFound'),
+      StatusCode.internalServerError => print('internalServerError'),
+      StatusCode.notImplemented => print('notImplemented'),
+    };
   }
 
   @override
