@@ -45,6 +45,7 @@ typedef MathFunction = int Function(int a, int b);
 //typedef int MathFunction(int a, int b);
 //typedef MathFunction<T> = T Function(T a, T b);
 
+//레코드의 typedef
 typedef MyRecord = (int, String);
 
 class DartFunctionScreen extends StatefulWidget {
