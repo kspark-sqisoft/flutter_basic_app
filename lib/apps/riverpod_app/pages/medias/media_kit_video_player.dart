@@ -30,6 +30,7 @@ class _MediaKitVideoPlayerState extends ConsumerState<MediaKitVideoPlayer> {
     print('MediaKitVideoPlayer initState');
     //player.setPlaylistMode(PlaylistMode.single); //하나 비디오 반복 재생
     player.open(Media(widget.path));
+
     super.initState();
   }
 

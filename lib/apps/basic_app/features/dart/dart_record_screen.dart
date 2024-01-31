@@ -55,8 +55,8 @@ class Desktop extends Laptop {
   Desktop({required super.name, required super.serialNo});
 }
 
-class DartScreen extends StatelessWidget {
-  const DartScreen({super.key});
+class DartRecordScreen extends StatelessWidget {
+  const DartRecordScreen({super.key});
   static const routeName = '/dart';
 
   @override
@@ -110,7 +110,7 @@ class DartScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dart'),
+        title: const Text('Dart Record'),
       ),
       body: SingleChildScrollView(
           child: Padding(

@@ -13,7 +13,10 @@ import 'features/constrainedbox/constrained_box_screen.dart';
 import 'features/custom_keyboard/custom_keyboard_screen.dart';
 import 'features/customscrollview/customscrollview_screen.dart';
 import 'features/customscrollview/super_cupertino_navigation_bar/super_cupertino_navigation_bar_screen.dart';
-import 'features/dart/dart_screen.dart';
+import 'features/dart/dart_enum_screen.dart';
+import 'features/dart/dart_function_screen.dart';
+import 'features/dart/dart_oop_screen.dart';
+import 'features/dart/dart_record_screen.dart';
 import 'features/debounce/debounce_screen.dart';
 import 'features/drawer/drawer_navigation_screen.dart';
 import 'features/drawer/drawer_screen.dart';
@@ -111,11 +114,50 @@ class BasicAppHomeScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
-                            return const DartScreen();
+                            return const DartRecordScreen();
                           },
                         ));
                       },
-                      child: const Text('Dart'),
+                      child: const Text('Dart Record'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const DartFunctionScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('Dart Function'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const DartOOPScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('Dart OOP'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const DartEnumScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('Dart Enum'),
                     ),
                   ),
                   Padding(

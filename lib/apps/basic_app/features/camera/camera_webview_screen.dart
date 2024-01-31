@@ -131,30 +131,32 @@ class _CameraWebviewScreenState extends State<CameraWebviewScreen> {
               ]),
             ),
             Expanded(
-                child: Card(
-                    color: Colors.transparent,
-                    elevation: 0,
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    child: Stack(
-                      children: [
-                        Webview(
-                          _controller,
-                          width: 1920 / 2,
-                          height: 1080 / 2,
-                          permissionRequested: _onPermissionRequested,
-                        ),
-                        StreamBuilder<LoadingState>(
-                            stream: _controller.loadingState,
-                            builder: (context, snapshot) {
-                              if (snapshot.hasData &&
-                                  snapshot.data == LoadingState.loading) {
-                                return const LinearProgressIndicator();
-                              } else {
-                                return const SizedBox();
-                              }
-                            }),
-                      ],
-                    ))),
+              child: Card(
+                color: Colors.transparent,
+                elevation: 0,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: Stack(
+                  children: [
+                    Webview(
+                      _controller,
+                      width: 1920 / 2,
+                      height: 1080 / 2,
+                      permissionRequested: _onPermissionRequested,
+                    ),
+                    StreamBuilder<LoadingState>(
+                        stream: _controller.loadingState,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData &&
+                              snapshot.data == LoadingState.loading) {
+                            return const LinearProgressIndicator();
+                          } else {
+                            return const SizedBox();
+                          }
+                        }),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       );

@@ -12,7 +12,7 @@ import '../../core/theme/theme_data_light.dart';
 import '../../core/theme_const/app_color.dart';
 import '../../core/theme_controller/theme_controller.dart';
 import 'basic_app_home_screen.dart';
-import 'features/dart/dart_screen.dart';
+import 'features/dart/dart_record_screen.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -59,8 +59,8 @@ class BasicApp extends StatelessWidget {
                     controller: controller,
                   ),
                 ),
-              DartScreen.routeName => MaterialPageRoute(
-                  builder: (context) => const DartScreen(),
+              DartRecordScreen.routeName => MaterialPageRoute(
+                  builder: (context) => const DartRecordScreen(),
                 ),
               _ => MaterialPageRoute(
                   builder: (context) => const Scaffold(
