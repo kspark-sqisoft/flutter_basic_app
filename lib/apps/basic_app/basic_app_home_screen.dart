@@ -15,6 +15,7 @@ import 'features/customscrollview/customscrollview_screen.dart';
 import 'features/customscrollview/super_cupertino_navigation_bar/super_cupertino_navigation_bar_screen.dart';
 import 'features/dart/dart_enum_screen.dart';
 import 'features/dart/dart_function_screen.dart';
+import 'features/dart/dart_generic_screen.dart';
 import 'features/dart/dart_oop_screen.dart';
 import 'features/dart/dart_record_screen.dart';
 import 'features/debounce/debounce_screen.dart';
@@ -158,6 +159,19 @@ class BasicAppHomeScreen extends StatelessWidget {
                         ));
                       },
                       child: const Text('Dart Enum'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const DartGenericScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('Dart Generic'),
                     ),
                   ),
                   Padding(

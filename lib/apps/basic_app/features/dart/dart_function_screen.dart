@@ -47,6 +47,13 @@ typedef MathFunction = int Function(int a, int b);
 
 //레코드의 typedef
 typedef MyRecord = (int, String);
+typedef UserRecord = ({String id, int record});
+
+class MyPoint {
+  final double x;
+  final double y;
+  MyPoint({required this.x, required this.y});
+}
 
 class DartFunctionScreen extends StatefulWidget {
   const DartFunctionScreen({super.key});
@@ -83,7 +90,16 @@ class _DartFunctionScreenState extends State<DartFunctionScreen> {
     print(mathFunction(5, 2));
 
     MyRecord myRecord = (1, 'keesoon');
+    final (idd, name) = myRecord; //구조 분해
     print(myRecord);
+
+    UserRecord userRecord = (id: 'noa99kee', record: 4);
+    final (id: id, record: record) = userRecord; //구조 분해
+    //final (: id, : record) = userRecord; //구조 분해 이렇게도 가능
+
+    MyPoint myPoint = MyPoint(x: 10, y: 10);
+    final MyPoint(:x, :y) = myPoint;
+    //final MyPoint(x: xx, y: yy) = myPoint;
 
     super.initState();
   }
