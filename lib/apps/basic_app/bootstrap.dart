@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:logging/logging.dart';
 import 'dart:developer';
 import 'package:window_manager/window_manager.dart';
@@ -30,6 +31,7 @@ Future<void> bootstrap() async {
 
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
+    await Hive.initFlutter();
     await windowManager.ensureInitialized();
     Logger.root.onRecord.listen((LogRecord rec) {
       debugPrint(

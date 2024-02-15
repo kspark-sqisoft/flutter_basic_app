@@ -54,10 +54,15 @@ class APIs {
         android: AndroidNotificationDetails(
           'channelId',
           'channelName',
+          playSound: true,
+          enableVibration: true,
         ),
         iOS: DarwinNotificationDetails(
           badgeNumber: 1,
           subtitle: '',
+          presentAlert: true,
+          presentSound: true,
+          presentBadge: true,
         ),
       ),
     );
@@ -69,10 +74,18 @@ class APIs {
 
   // for getting firebase messaging token
   static Future<void> getFirebaseMessagingToken() async {
-    await messaging.requestPermission(
-      badge: true,
+    //IOS forgrand 메시지 처리
+    await messaging.setForegroundNotificationPresentationOptions(
       alert: true,
+      badge: true,
       sound: true,
+    );
+
+    //권한 요청
+    await messaging.requestPermission(
+      alert: true, //권한 요청 알림 화면 표시 default true
+      badge: true, //뱃지 default true
+      sound: true, //소리 default true
     );
 
     await messaging.getToken().then((t) {
@@ -82,7 +95,7 @@ class APIs {
         log('me Token: ${me.pushToken}');
       }
     });
-    //포그라운드는 알림 받을 안뜸(상태바에)-로컬 노티피케이션으로 띄울수 있다.
+    //IOS 경우? 포그라운드는 알림 받을 안뜸(상태바에)-로컬 노티피케이션으로 띄울수 있다.
     /*
     //for handling foreground messages
     FirebaseMessaging.onMessage.listen(

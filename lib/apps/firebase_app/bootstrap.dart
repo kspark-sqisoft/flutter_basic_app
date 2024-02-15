@@ -58,6 +58,7 @@ Future<void> bootstrap() async {
   });
 }
 
+//백그라운드 메시지 처리
 @pragma('vm:entry-point')
 Future<void> _firebasemessagingBackgroundHandler(RemoteMessage message) async {
   RemoteNotification? notification = message.notification;
@@ -68,6 +69,7 @@ void _initializeFirebase() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  //백그라운드 메시지 처리
   FirebaseMessaging.onBackgroundMessage(_firebasemessagingBackgroundHandler);
   await APIs.setupInteractedMessage();
   await APIs.initLocalNotification();
@@ -76,6 +78,10 @@ void _initializeFirebase() async {
       description: 'For Showing Message Notification',
       id: 'chats',
       importance: NotificationImportance.IMPORTANCE_HIGH,
-      name: 'Chats');
+      name: 'Chats',
+      enableSound: true, //default true,
+      enableVibration: true, //default true,
+      showBadge: true //default true
+      );
   log('\nNotification Channel Result: $result');
 }
