@@ -18,6 +18,8 @@ import 'features/dart/dart_function_screen.dart';
 import 'features/dart/dart_generic_screen.dart';
 import 'features/dart/dart_oop_screen.dart';
 import 'features/dart/dart_record_screen.dart';
+import 'features/dart/immutable_screen.dart';
+import 'features/dart/immutable_screen2.dart';
 import 'features/debounce/debounce_screen.dart';
 import 'features/drawer/drawer_navigation_screen.dart';
 import 'features/drawer/drawer_screen.dart';
@@ -121,6 +123,32 @@ class BasicAppHomeScreen extends StatelessWidget {
                         ));
                       },
                       child: const Text('Dart Record'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const ImmutableScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('Dart Immutable Mutable'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const ImmutableScreen2();
+                          },
+                        ));
+                      },
+                      child: const Text('Dart Immutable Mutable 2'),
                     ),
                   ),
                   Padding(
