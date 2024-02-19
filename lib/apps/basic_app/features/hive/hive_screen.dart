@@ -94,7 +94,7 @@ class _HiveScreenState extends State<HiveScreen> {
         (dataBox.get('datas') as List).map<Data>((data) => data).toList();
     print('datas.runtimeType=${datas.runtimeType}  datas=$datas');
 
-    //await dataBox.add('bbumi'); //중복 허용
+    //await dataBox.add('bbumi'); //add 중복 허용
     //await dataBox.deleteAt(0);
   }
 

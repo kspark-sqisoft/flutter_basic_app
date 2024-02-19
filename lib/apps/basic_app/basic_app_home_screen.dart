@@ -29,6 +29,7 @@ import 'features/filedownloader/file_downloader_custom_screen.dart';
 import 'features/filedownloader/file_downloader_screen.dart';
 import 'features/flutter/flutter_screen.dart';
 import 'features/hive/hive_screen.dart';
+import 'features/hive/hive_screen2.dart';
 import 'features/httpdio/httpdio_screen.dart';
 import 'features/image/image_filter_screen.dart';
 import 'features/image/image_merge_screen.dart';
@@ -370,6 +371,19 @@ class BasicAppHomeScreen extends StatelessWidget {
                         ));
                       },
                       child: const Text('Hive'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const HiveScreen2();
+                          },
+                        ));
+                      },
+                      child: const Text('Hive2'),
                     ),
                   ),
                 ],
