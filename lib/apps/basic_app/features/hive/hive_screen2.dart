@@ -23,7 +23,9 @@ class _HiveScreen2State extends State<HiveScreen2> {
     if (!Hive.isAdapterRegistered(1)) {
       Hive.registerAdapter(DataAdapter());
     }
+
     dataBox = await Hive.openBox<Data>('MyData');
+
     print('dataBox.values=${dataBox.values}');
 
     final datas = dataBox.values.map<Data>((data) => data).toList();

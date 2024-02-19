@@ -122,6 +122,7 @@ dependencies:
   window_manager: ^0.3.7
   image_filter_pro: ^0.1.10
   hangul: ^0.6.0
+  pdfx: ^2.6.0
 
 dev_dependencies:
   flutter_test:
@@ -178,6 +179,7 @@ flutter:
     - assets/images/samples/
     - assets/images/samples/movies/
     - assets/google_fonts/
+    - assets/pdfs/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

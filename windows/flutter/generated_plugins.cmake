@@ -13,6 +13,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   geolocator_windows
   media_kit_libs_windows_video
   media_kit_video
+  pdfx
   permission_handler_windows
   printing
   screen_brightness_windows
