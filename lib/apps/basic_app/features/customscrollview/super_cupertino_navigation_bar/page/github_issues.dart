@@ -12,45 +12,42 @@ class GithubIssues extends StatefulWidget {
 class _GithubIssuesState extends State<GithubIssues> {
   @override
   Widget build(BuildContext context) {
-    return SuperScaffold(
+    return Scaffold(
       backgroundColor: const Color(0xff050505),
-      onCollapsed: (val) {
-        print("collapsed => $val");
-      },
-      stretch: true,
-      appBar: SuperAppBar(
-        backgroundColor: const Color(0xff17161b),
-        bottomBorder: const BorderSide(color: Colors.white10, width: 1),
-        automaticallyImplyLeading: true,
-        title: Text(
-          "Issues",
-          style: TextStyle(
-            color: Theme.of(context).textTheme.bodyMedium!.color,
+      body: SuperScaffold(
+        onCollapsed: (val) {
+          print("collapsed => $val");
+        },
+        stretch: true,
+        appBar: SuperAppBar(
+          backgroundColor: const Color(0xff17161b),
+          automaticallyImplyLeading: true,
+          title: Text(
+            "Issues",
+            style: TextStyle(
+              color: Theme.of(context).textTheme.bodyMedium!.color,
+            ),
+          ),
+          previousPageTitle: "Home",
+          bottom: SuperAppBarBottom(
+            enabled: true,
+            height: 40,
+            child: const GithubIssuesHeader(),
+          ),
+          searchBar: SuperSearchBar(
+            // height: 190,
+            enabled: true,
+            scrollBehavior: SearchBarScrollBehavior.pinned,
+            resultBehavior: SearchBarResultBehavior.neverVisible,
+          ),
+          largeTitle: SuperLargeTitle(
+            height: 50,
+            enabled: true,
+            largeTitle: "Issues",
           ),
         ),
-        previousPageTitle: "Home",
-        bottom: SuperAppBarBottom(
-          enabled: true,
-          height: 40,
-          child: const GithubIssuesHeader(),
-        ),
-        searchBar: SuperSearchBar(
-          // height: 190,
-          enabled: true,
-          scrollBehavior: SearchBarScrollBehavior.pinned,
-          resultBehavior: SearchBarResultBehavior.neverVisible,
-        ),
-        largeTitle: SuperLargeTitle(
-          height: 50,
-          enabled: true,
-          largeTitle: "Issues",
-        ),
-      ),
-      body: [
-        ListView.separated(
-          shrinkWrap: true,
+        body: ListView.separated(
           padding: EdgeInsets.zero,
-          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (c, i) => Container(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             child: const Row(
@@ -96,7 +93,7 @@ class _GithubIssuesState extends State<GithubIssues> {
           separatorBuilder: (c, i) => const Divider(),
           itemCount: 15,
         ),
-      ],
+      ),
     );
   }
 }

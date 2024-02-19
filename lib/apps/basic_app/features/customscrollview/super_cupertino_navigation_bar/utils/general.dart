@@ -37,9 +37,18 @@ class General {
     SubListItem(
       icon: Icons.star,
       iconColor: Colors.amberAccent,
+      title: "Apple iTunes",
+      screen: "/apple_tunes",
+      imageUrl: "assets/app_icon_15.png",
+      subtitle: "Only Navbar & Title Widget",
+    ),
+    SubListItem(
+      icon: Icons.star,
+      iconColor: Colors.amberAccent,
       title: "Apple Music",
       screen: "/apple_music",
       imageUrl: "assets/app_icon_7.png",
+      subtitle: "CupertinoPageScaffold",
     ),
     SubListItem(
       icon: Icons.search,
@@ -47,6 +56,7 @@ class General {
       title: "Apple Clock",
       screen: "/clock",
       imageUrl: "assets/app_icon_11.png",
+      subtitle: "CupertinoTabScaffold",
     ),
     SubListItem(
       icon: Icons.search,
@@ -54,6 +64,7 @@ class General {
       title: "Apple Store",
       screen: "/store",
       imageUrl: "assets/app_icon_1.png",
+      subtitle: "Scaffold & BottomNavigationBar",
     ),
     SubListItem(
       icon: Icons.account_circle,
@@ -221,14 +232,16 @@ class General {
     showCupertinoModalPopup(
       useRootNavigator: false,
       context: context,
-      builder: (BuildContext context) => Container(
-        height: 100,
-        width: double.infinity,
-        color: Colors.white,
-        padding: const EdgeInsets.all(15),
-        child: const Text(
-          "This is just snackbar triggered by appbar button",
-          style: TextStyle(color: Colors.black),
+      builder: (BuildContext context) => Material(
+        child: Container(
+          height: 100,
+          width: double.infinity,
+          color: Colors.white,
+          padding: const EdgeInsets.all(15),
+          child: const Text(
+            "This is just snackbar triggered by appbar button",
+            style: TextStyle(color: Colors.black),
+          ),
         ),
       ),
     );

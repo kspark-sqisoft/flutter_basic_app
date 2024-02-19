@@ -12,42 +12,39 @@ class GithubInbox extends StatefulWidget {
 class _GithubInboxState extends State<GithubInbox> {
   @override
   Widget build(BuildContext context) {
-    return SuperScaffold(
+    return Scaffold(
       backgroundColor: const Color(0xff050505),
-      onCollapsed: (val) {
-        print("collapsed => $val");
-      },
-      stretch: true,
-      appBar: SuperAppBar(
-        bottomBorder: const BorderSide(color: Colors.white10, width: 1),
-        backgroundColor: const Color(0xff17161b),
-        //automaticallyImplyLeading: true,
-        title: Text(
-          "Github",
-          style:
-              TextStyle(color: Theme.of(context).textTheme.bodyMedium!.color),
+      body: SuperScaffold(
+        onCollapsed: (val) {
+          print("collapsed => $val");
+        },
+        stretch: true,
+        appBar: SuperAppBar(
+          backgroundColor: const Color(0xff17161b),
+          automaticallyImplyLeading: true,
+          title: Text(
+            "Github",
+            style:
+                TextStyle(color: Theme.of(context).textTheme.bodyMedium!.color),
+          ),
+          leading: const SizedBox(),
+          bottom: SuperAppBarBottom(
+            enabled: true,
+            height: 40,
+            child: const GithubHeader(),
+          ),
+          searchBar: SuperSearchBar(
+            // height: 190,
+            enabled: false,
+          ),
+          largeTitle: SuperLargeTitle(
+            // height: 0,
+            enabled: true,
+            largeTitle: "Inbox",
+          ),
         ),
-        //leading: const SizedBox(),
-        bottom: SuperAppBarBottom(
-          enabled: true,
-          height: 40,
-          child: const GithubHeader(),
-        ),
-        searchBar: SuperSearchBar(
-          // height: 190,
-          enabled: false,
-        ),
-        largeTitle: SuperLargeTitle(
-          // height: 0,
-          enabled: true,
-          largeTitle: "Inbox",
-        ),
-      ),
-      body: [
-        ListView.separated(
-          shrinkWrap: true,
+        body: ListView.separated(
           padding: EdgeInsets.zero,
-          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (c, i) => Container(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             child: const Row(
@@ -93,7 +90,7 @@ class _GithubInboxState extends State<GithubInbox> {
           separatorBuilder: (c, i) => const Divider(),
           itemCount: 15,
         ),
-      ],
+      ),
     );
   }
 }
