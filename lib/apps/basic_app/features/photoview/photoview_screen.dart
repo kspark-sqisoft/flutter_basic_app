@@ -18,7 +18,7 @@ class PhotoViewScreen extends StatefulWidget {
 }
 
 class _PhotoViewScreenState extends State<PhotoViewScreen> {
-  int initialIndex = 1;
+  int initialIndex = 0;
   late PageController pageController;
   List<GalleryItem> galleryItems = [
     GalleryItem(id: 'tag1', resource: 'assets/images/facebook/user0.jpg'),
