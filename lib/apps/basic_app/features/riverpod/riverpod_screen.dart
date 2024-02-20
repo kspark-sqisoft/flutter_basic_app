@@ -47,6 +47,7 @@ class _RiverpodScreenState extends ConsumerState<RiverpodScreen> {
       ),
       body: Center(
         child: riverpodScreenController.when(
+          //skipLoadingOnReload: true,
           data: (data) {
             return Text(data.toString());
           },
