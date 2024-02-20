@@ -123,6 +123,7 @@ dependencies:
   image_filter_pro: ^0.1.10
   hangul: ^0.6.0
   pdfx: ^2.6.0
+  process_run: ^0.14.1+3
 
 dev_dependencies:
   flutter_test:
