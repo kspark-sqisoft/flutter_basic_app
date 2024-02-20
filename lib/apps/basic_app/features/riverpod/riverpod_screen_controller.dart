@@ -7,6 +7,16 @@ part 'riverpod_screen_controller.g.dart';
 part 'riverpod_screen_controller.freezed.dart';
 
 @riverpod
+Future<int> age(AgeRef ref) async {
+  print('ageProvider');
+  ref.onDispose(() {
+    print('ageProvider onDispose');
+  });
+  await Future.delayed(const Duration(seconds: 1));
+  return 44;
+}
+
+@riverpod
 class RiverpodScreenController extends _$RiverpodScreenController {
   Timer? _timer;
   int _index = 0;
@@ -22,6 +32,12 @@ class RiverpodScreenController extends _$RiverpodScreenController {
   @override
   FutureOr<List<Phone>> build() async {
     print('RiverpodScreenControllerProvider build');
+    //other provider
+
+    final age = await ref.watch(ageProvider
+        .future); //read:읽고 바로 ageProvider dispose, watch:riverpodScreenControllerProvider가 dispose 되고 dispose
+    print('age=$age');
+
     _key = Object();
     ref.onDispose(
       () {
@@ -56,6 +72,9 @@ class RiverpodScreenController extends _$RiverpodScreenController {
 
   Future<List<Phone>> fetchPhones(int index) async {
     await Future.delayed(const Duration(seconds: 1));
+    if (index == 2) {
+      throw Exception('my error');
+    }
     return _samplePhones[index];
   }
 }

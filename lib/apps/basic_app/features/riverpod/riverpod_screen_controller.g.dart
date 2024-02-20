@@ -21,8 +21,22 @@ Map<String, dynamic> _$$PhoneImplToJson(_$PhoneImpl instance) =>
 // RiverpodGenerator
 // **************************************************************************
 
+String _$ageHash() => r'409bdf9eeabc84592ac672899b1a0bf02992b4c9';
+
+/// See also [age].
+@ProviderFor(age)
+final ageProvider = AutoDisposeFutureProvider<int>.internal(
+  age,
+  name: r'ageProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$ageHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef AgeRef = AutoDisposeFutureProviderRef<int>;
 String _$riverpodScreenControllerHash() =>
-    r'5647587776493c81a380ae17b50c5cd3f5428d87';
+    r'5fe2046816861ca48e59198239f2d448076c0310';
 
 /// See also [RiverpodScreenController].
 @ProviderFor(RiverpodScreenController)
