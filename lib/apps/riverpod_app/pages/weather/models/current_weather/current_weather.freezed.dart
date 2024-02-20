@@ -12,7 +12,7 @@ part of 'current_weather.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CurrentWeather _$CurrentWeatherFromJson(Map<String, dynamic> json) {
   return _CurrentWeather.fromJson(json);
@@ -199,7 +199,7 @@ class _$CurrentWeatherImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CurrentWeatherImpl &&
@@ -386,7 +386,7 @@ class _$WeatherImpl with DiagnosticableTreeMixin implements _Weather {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WeatherImpl &&
@@ -577,7 +577,7 @@ class _$MainImpl with DiagnosticableTreeMixin implements _Main {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MainImpl &&
@@ -725,7 +725,7 @@ class _$SysImpl with DiagnosticableTreeMixin implements _Sys {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SysImpl &&

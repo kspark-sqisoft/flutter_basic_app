@@ -52,6 +52,7 @@ import 'features/pdf/pdf_screen.dart';
 import 'features/photoview/photoview_screen.dart';
 import 'features/print/print_screen.dart';
 import 'features/process/process_screen.dart';
+import 'features/riverpod/riverpod_screen.dart';
 import 'features/rxdart/rxdart_screen.dart';
 import 'features/serialization/serialization_screen.dart';
 import 'features/shapes/shapes_screen.dart';
@@ -401,6 +402,19 @@ class BasicAppHomeScreen extends StatelessWidget {
                         ));
                       },
                       child: const Text('Process'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const RiverpodScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('Riverpod'),
                     ),
                   ),
                 ],
