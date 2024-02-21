@@ -12,7 +12,7 @@ int totalPages = 1;
 
 @riverpod
 ProductRepository productRepository(ProductRepositoryRef ref) =>
-    ProductRepository(dio: ref.watch(dioProvider));
+    ProductRepository(dio: ref.watch(dioProvider()));
 
 class ProductRepository {
   final Dio dio;

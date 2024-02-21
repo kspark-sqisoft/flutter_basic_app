@@ -3,17 +3,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'riverpod_screen_controller.dart';
 
-class RiverpodScreen extends ConsumerStatefulWidget {
-  const RiverpodScreen({super.key});
+class RiverpodControllerScreen extends ConsumerStatefulWidget {
+  const RiverpodControllerScreen({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _RiverpodScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _RiverpodControllerScreenState();
 }
 
-class _RiverpodScreenState extends ConsumerState<RiverpodScreen> {
+class _RiverpodControllerScreenState
+    extends ConsumerState<RiverpodControllerScreen> {
   @override
   void initState() {
-    print('_RiverpodScreenState initState');
+    print('_RiverpodControllerScreenState initState');
 
     /*
     ref.listenManual(riverpodScreenControllerProvider, (previous, next) {
@@ -38,12 +40,15 @@ class _RiverpodScreenState extends ConsumerState<RiverpodScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('_RiverpodScreenState build');
-    final riverpodScreenController =
+    print('_RiverpodControllerScreenState build');
+    final AsyncValue<List<Phone>> riverpodScreenController =
         ref.watch(riverpodScreenControllerProvider);
+
+    print('state:${riverpodScreenController.toStr}');
+    print('props:${riverpodScreenController.props}');
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Riverpod'),
+        title: const Text('RiverpodController'),
       ),
       body: Center(
         child: riverpodScreenController.when(

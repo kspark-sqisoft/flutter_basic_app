@@ -6,6 +6,21 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'riverpod_screen_controller.g.dart';
 part 'riverpod_screen_controller.freezed.dart';
 
+extension AsyncValueExtension on AsyncValue {
+  String get toStr {
+    final content = [
+      if (isLoading && this is! AsyncLoading) 'isLoading: $isLoading',
+      if (hasValue) 'value: $value',
+      if (hasError) ...['error: $error'],
+    ].join(', ');
+    return '$runtimeType($content)';
+  }
+
+  String get props {
+    return 'isLoading: $isLoading, isRefreshing: $isRefreshing, isReloading: $isReloading\nhasValue: $hasValue, hasError:$hasError';
+  }
+}
+
 @riverpod
 Future<int> age(AgeRef ref) async {
   print('ageProvider');
