@@ -87,9 +87,11 @@ class RiverpodScreenController extends _$RiverpodScreenController {
 
   Future<List<Phone>> fetchPhones(int index) async {
     await Future.delayed(const Duration(seconds: 1));
+
     if (index == 2) {
       throw Exception('my error');
     }
+
     return _samplePhones[index];
   }
 }

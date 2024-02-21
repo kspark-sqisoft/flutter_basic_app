@@ -79,7 +79,11 @@ class _HiveScreenState extends State<HiveScreen> {
 
     var dataBox = await Hive.openBox('data');
 
+    dataBox.add('keesoon');
+
+    print('dataBox.keys=${dataBox.keys}');
     print('dataBox.values=${dataBox.values}');
+
     await dataBox.put('name', 'younga');
     await dataBox.put('datas', [
       Data(id: 4, message: '4'),

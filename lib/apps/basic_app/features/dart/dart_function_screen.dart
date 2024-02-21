@@ -55,6 +55,19 @@ class MyPoint {
   MyPoint({required this.x, required this.y});
 }
 
+//함수 파라미터가 옵셔널 하냐? nullable 하냐?
+String getIphone(String name, [int? version]) {
+  return 'Iphone(name:$name, version:$version)';
+}
+
+String getMacbook({required String name, int? version = 11}) {
+  return 'Macbook(name:$name, version:$version)';
+}
+
+String getWatch({required String name, int version = 11}) {
+  return 'Watch(name:$name, version:$version)';
+}
+
 class DartFunctionScreen extends StatefulWidget {
   const DartFunctionScreen({super.key});
 
@@ -65,6 +78,12 @@ class DartFunctionScreen extends StatefulWidget {
 class _DartFunctionScreenState extends State<DartFunctionScreen> {
   @override
   void initState() {
+    final iphone = getIphone('iPhone14', null);
+    print(iphone);
+    final macbook = getMacbook(name: 'macbook pro');
+    print(macbook);
+    final watch = getWatch(name: 'watch');
+    print(watch);
     //함수 기본형
     print('sum(2,2)=${sum(2, 2)}');
 

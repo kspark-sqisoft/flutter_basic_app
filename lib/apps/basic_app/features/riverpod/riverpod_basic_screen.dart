@@ -10,6 +10,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../riverpod_app/providers/dio_provider.dart';
+import 'riverpod_screen_controller.dart';
 
 part 'riverpod_basic_screen.g.dart';
 part 'riverpod_basic_screen.freezed.dart';
@@ -381,7 +382,49 @@ class _RiverpodBasicScreenState extends ConsumerState<RiverpodBasicScreen> {
     Future.microtask(() => print('microtask 1'));
     Future.microtask(() => print('microtask 2'));
 
+    //ActivityStatus.loading, ActivityStatus.success, ActivityStatus.failure
+    ref.listenManual<ActivityState>(normalActivityProvider, (previous, next) {
+      if (next.status == ActivityStatus.failure) {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text(next.error.toString()),
+              );
+            });
+      }
+    });
+    //AsyncValue 하위 클래스 아래
+    //AsyncLoading, AsyncData, AsyncError
+    ref.listenManual<AsyncValue<Activity>>(asyncActivityProvider,
+        (previous, next) {
+      if (next.hasError && !next.isLoading) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text(next.error.toString()),
+            );
+          },
+        );
+      }
+    });
+
+    final personPositionedParams = getPersonPositionedParams('keesoon');
+    print(personPositionedParams);
+
+    final personNamedParams = getPersonNamedParams(name: 'keesoon');
+    print(personNamedParams);
+
     super.initState();
+  }
+
+  String getPersonPositionedParams(String name, [int? age = 1]) {
+    return 'Person(name:$name, age:$age)';
+  }
+
+  String getPersonNamedParams({required String name, int? age = 1}) {
+    return 'Person(name:$name, age:$age)';
   }
 
   @override
@@ -422,7 +465,7 @@ class _RiverpodBasicScreenState extends ConsumerState<RiverpodBasicScreen> {
             },
           ),
           SizedBox(
-            height: 200,
+            height: 300,
             child: Consumer(
               builder: (context, ref, child) {
                 final users = ref.watch(usersProvider);
@@ -477,8 +520,8 @@ class _RiverpodBasicScreenState extends ConsumerState<RiverpodBasicScreen> {
               Flexible(
                 child: Consumer(
                   builder: (context, ref, child) {
-                    final normalActivityState =
-                        ref.watch(normalActivityProvider);
+                    final normalActivity = ref.watch(normalActivityProvider);
+                    print('normalActivity:$normalActivity');
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -491,7 +534,7 @@ class _RiverpodBasicScreenState extends ConsumerState<RiverpodBasicScreen> {
                                   .fetchActivity(activityTypes[randomNumber]);
                             },
                             child: const Text('NormalActivity')),
-                        switch (normalActivityState.status) {
+                        switch (normalActivity.status) {
                           ActivityStatus.initial => const Center(
                               child: Text(
                                 'Get some activity',
@@ -503,7 +546,7 @@ class _RiverpodBasicScreenState extends ConsumerState<RiverpodBasicScreen> {
                             ),
                           ActivityStatus.failure => Center(
                               child: Text(
-                                'Get some activity error: ${normalActivityState.error}',
+                                'Get some activity error: ${normalActivity.error}',
                                 style: const TextStyle(
                                   fontSize: 14,
                                   color: Colors.red,
@@ -511,8 +554,8 @@ class _RiverpodBasicScreenState extends ConsumerState<RiverpodBasicScreen> {
                                 textAlign: TextAlign.center,
                               ),
                             ),
-                          ActivityStatus.success => ActivityWidget(
-                              activity: normalActivityState.activity)
+                          ActivityStatus.success =>
+                            ActivityWidget(activity: normalActivity.activity)
                         }
                       ],
                     );
@@ -523,6 +566,13 @@ class _RiverpodBasicScreenState extends ConsumerState<RiverpodBasicScreen> {
               Flexible(child: Consumer(
                 builder: (context, ref, child) {
                   final asyncActivity = ref.watch(asyncActivityProvider);
+                  print('asyncActivity:${asyncActivity.toStr}');
+                  print(asyncActivity.props);
+
+                  if (asyncActivity.hasValue) {
+                    print('has value ====== ${asyncActivity.value}');
+                  }
+
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -537,7 +587,8 @@ class _RiverpodBasicScreenState extends ConsumerState<RiverpodBasicScreen> {
                           child: const Text('AsyncActivity')),
                       asyncActivity.when(
                         //skipError: true,
-                        //skipLoadingOnRefresh: false,
+                        //skipLoadingOnRefresh: true,
+                        //skipLoadingOnReload: true,
                         data: (activity) => ActivityWidget(activity: activity),
                         error: (e, st) => Center(
                           child: Text(
