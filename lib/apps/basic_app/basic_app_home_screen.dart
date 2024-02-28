@@ -59,6 +59,7 @@ import 'features/rxdart/rxdart_screen.dart';
 import 'features/serialization/serialization_screen.dart';
 import 'features/shapes/shapes_screen.dart';
 import 'features/socketio/socketio_screen.dart';
+import 'features/tab/buttons_tabbar_screen.dart';
 import 'features/tab/tab_controller_screen.dart';
 import 'features/tab/tab_page_selector_screen.dart';
 import 'features/theme/theme_screen.dart';
@@ -553,6 +554,19 @@ class BasicAppHomeScreen extends StatelessWidget {
                         ));
                       },
                       child: const Text('Tab TabPageSelector'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const ButtonsTabbarScreen();
+                          },
+                        ));
+                      },
+                      child: const Text('Tab Buttons Tabbar'),
                     ),
                   ),
                   Padding(
